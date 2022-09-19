@@ -4,10 +4,15 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Logo from "./Logo";
 import { HiSearch } from "react-icons/hi";
+import { BsQuestionCircle } from "react-icons/bs";
+import HelpModal from "./HelpModal";
 
 function Navbar() {
   const [key, setKey] = useState("");
   const navigate = useNavigate();
+
+  //모달
+  const [isModal, setIsModal] = useState(false);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -21,12 +26,17 @@ function Navbar() {
     console.log("검색");
   };
 
+  const ModalHandler = () => {
+    console.log("modal");
+    setIsModal((prev) => !prev);
+  };
+
   return (
     <Container>
       <Logo />
       <NavSearch onSubmit={onSubmit}>
         <Button type="submit" aria-label="search">
-          <HiSearch />
+          <HiSearch size={25} />
         </Button>
         <SearchBox
           type="text"
@@ -36,6 +46,16 @@ function Navbar() {
           onChange={(e) => setKey(e.target.value)}
         />
       </NavSearch>
+      <Help>
+        <BsQuestionCircle
+          className="helpicon"
+          size={50}
+          onClick={ModalHandler}
+        />
+      </Help>
+      <HelpModal open={isModal} close={ModalHandler} title="도움 모달">
+        모달 내용
+      </HelpModal>
     </Container>
   );
 }
@@ -61,19 +81,19 @@ const NavSearch = styled.form`
   display: flex;
   background-color: ${(props) => props.theme.colors.mainYellow};
   border: none;
-  border-radius: 5px;
+  border-radius: 20px;
   align-items: center;
   margin: 0 auto;
 `;
 
 const SearchBox = styled.input`
   background-color: ${(props) => props.theme.colors.mainYellow};
-  height: 35px;
+  height: 40px;
   border: none;
-  border-radius: 5px;
   margin-left: 10px;
+  border-radius: 20px;
   color: ${(props) => props.theme.colors.pointBlack};
-  width: 380px;
+  width: 600px;
   &:focus {
     outline: none;
   }
@@ -89,4 +109,15 @@ const Button = styled.button`
   display: flex;
   align-items: center;
   color: ${(props) => props.theme.colors.white};
+`;
+
+const Help = styled.div`
+  margin-right: 20px;
+  .helpicon {
+    background-color: white;
+    border-radius: 50%;
+    &:hover {
+      cursor: pointer;
+    }
+  }
 `;

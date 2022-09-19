@@ -9,10 +9,8 @@ function MainPage() {
     <div>
       <Container>
         <Navbar />
-        <main>
-          <HelloMain />
-          <Bookiz />
-        </main>
+        <HelloMain />
+        <Bookiz />
       </Container>
     </div>
   );
