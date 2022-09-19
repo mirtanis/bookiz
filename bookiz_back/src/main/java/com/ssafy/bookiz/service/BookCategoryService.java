@@ -22,4 +22,12 @@ public class BookCategoryService {
     public List<Object> getBooksByCategoryId(Long id) {
         return bookCategoryRepository.findAllByCategoryId(id);
     }
+
+    public List<Object> getBestBooks() {
+        return bookCategoryRepository.findAllOrderByCnt();
+    }
+
+    public List<Object> getNewBooks() {
+        return bookCategoryRepository.findAllOrderByCreatdate();
+    }
 }

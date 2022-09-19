@@ -43,4 +43,27 @@ public class BookController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping("/rank")
+    public ResponseEntity<?> getBestBooks() {
+        try {
+            List<Object> books = bookCategoryService.getBestBooks();
+            return new ResponseEntity<List<Object>>(books, HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/new")
+    public ResponseEntity<?> getNewBooks() {
+        try {
+            List<Object> books = bookCategoryService.getNewBooks();
+            return new ResponseEntity<List<Object>>(books, HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
 }
