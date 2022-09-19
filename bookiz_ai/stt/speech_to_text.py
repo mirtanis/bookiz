@@ -1,9 +1,16 @@
 import speech_recognition as sr
-r = sr.Recognizer()
 
-with sr.Microphone() as source:
+# 마이크
+# r = sr.Recognizer()
+# with sr.Microphone() as source:
+#     print('listening...')
+#     audio = r.listen(source)
+
+# 오디오 파일
+r = sr.Recognizer()
+with sr.AudioFile('testaudio.wav') as source:
     print('listening...')
-    audio = r.listen(source)
+    audio = r.record(source)
 
 try:
     text = r.recognize_google(audio, language='ko')
