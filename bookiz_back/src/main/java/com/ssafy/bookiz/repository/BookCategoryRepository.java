@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public interface BookCategoryRepository extends JpaRepository<BookCategory, Long> {
 //    @EntityGraph(attributePaths = {""}, type=EntityGraph.EntityGraphType.LOAD)
-    @Query(value = "SELECT bc.book FROM BookCategory bc WHERE bc.category.id =:id")
+    @Query(value = "SELECT bc.book FROM BookCategory bc WHERE bc.category.category_id =:id")
     public List<Object> findAllByCategoryId(@Param("id") Long id);
 
     @Query(value = "SELECT b FROM Book b ORDER BY b.cnt DESC")
@@ -21,7 +21,5 @@ public interface BookCategoryRepository extends JpaRepository<BookCategory, Long
 
     @Query(value = "SELECT b FROM Book b ORDER BY b.createdate DESC")
     public List<Object> findAllOrderByCreatdate();
-
-
 }
 
