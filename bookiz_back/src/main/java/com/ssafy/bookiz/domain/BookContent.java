@@ -1,5 +1,6 @@
 package com.ssafy.bookiz.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 
 import javax.persistence.*;
@@ -11,8 +12,8 @@ public class BookContent {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", columnDefinition = "INT UNSIGNED")
-    private Long id;
+    @Column(name = "book_content_id", columnDefinition = "INT UNSIGNED")
+    private Long book_content_id;
 
     @Column(columnDefinition = "INT UNSIGNED")
     private Integer page;
@@ -32,5 +33,6 @@ public class BookContent {
 
     @ManyToOne
     @JoinColumn(name = "book_id")
+    @JsonIgnore
     private Book book;
 }

@@ -11,8 +11,8 @@ public class BookCategory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", columnDefinition = "INT UNSIGNED")
-    private Long id;
+    @Column(name = "book_category_id", columnDefinition = "INT UNSIGNED")
+    private Long book_category_id;
 
     @ManyToOne
     @JoinColumn(name = "book_id")

@@ -2,6 +2,7 @@ package com.ssafy.bookiz.controller;
 
 import com.ssafy.bookiz.domain.Book;
 import com.ssafy.bookiz.domain.BookCategory;
+import com.ssafy.bookiz.service.BookContentService;
 import com.ssafy.bookiz.service.BookService;
 import com.ssafy.bookiz.service.BookCategoryService;
 import lombok.extern.slf4j.Slf4j;
@@ -23,6 +24,9 @@ public class BookController {
 
     @Autowired
     BookCategoryService bookCategoryService;
+
+    @Autowired
+    BookContentService bookContentService;
 
     @GetMapping("/all")
     public ResponseEntity<List<Book>> findAll() throws Exception {
@@ -59,6 +63,17 @@ public class BookController {
     public ResponseEntity<?> getNewBooks() {
         try {
             List<Object> books = bookCategoryService.getNewBooks();
+            return new ResponseEntity<List<Object>>(books, HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("")
+    public ResponseEntity<?> getBookContents(@RequestParam Long id) {
+        try {
+            List<Object> books = bookContentService.getBookContents(id);
             return new ResponseEntity<List<Object>>(books, HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
