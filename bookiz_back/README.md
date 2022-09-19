@@ -26,5 +26,5 @@
    6. Parameters > Password > Store in Vault : 1-7에서 생성할 때 비밀번호 (bookiz1234) 입력
    7. Test Connection : Countinue Anyway -> Ok -> Ok
    8. Create a new schema > Name : bookiz, Charset/Collation : utf8, utf8_bin 체크 > Apply
-   9. 네브바 > File > Open SQL Script > bookiz query 불러오기
+   9. 네브바 > File > Open SQL Script > dummy.sql 불러오기
    10. 불러온 sql문에서 마우스 커서를 빈 줄에 깜빡이게 해놓고, Ctrl + Shift + Enter
