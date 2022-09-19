@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Table(name = "book_category")
-public class Book_Category {
+public class BookCategory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +17,7 @@ public class Book_Category {
     @ManyToOne
     @JoinColumn(name = "book_id")
     private Book book;
+
 
     @ManyToOne
     @JoinColumn(name = "category_id")
