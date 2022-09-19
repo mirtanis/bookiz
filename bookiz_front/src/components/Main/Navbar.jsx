@@ -6,6 +6,7 @@ import Logo from "./Logo";
 import { HiSearch } from "react-icons/hi";
 import { BsQuestionCircle } from "react-icons/bs";
 import HelpModal from "./HelpModal";
+import HelpSwiper from "./HelpSwiper";
 
 function Navbar() {
   const [key, setKey] = useState("");
@@ -54,7 +55,9 @@ function Navbar() {
         />
       </Help>
       <HelpModal open={isModal} close={ModalHandler} title="도움 모달">
-        모달 내용
+        <HelpContainer>
+          <HelpSwiper />
+        </HelpContainer>
       </HelpModal>
     </Container>
   );
@@ -120,4 +123,9 @@ const Help = styled.div`
       cursor: pointer;
     }
   }
+`;
+
+const HelpContainer = styled.main`
+  max-width: 1440px;
+  max-height: 600px;
 `;

@@ -46,8 +46,9 @@ const Background = styled.div`
     & header {
       display: flex;
       justify-content: space-between;
+      padding-left: 30px;
+      padding-right: 30px;
       align-items: center;
-      padding: 30px;
       color: ${(props) => props.theme.colors.white};
       & p {
         font-size: 24px;
