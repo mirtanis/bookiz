@@ -10,6 +10,6 @@ export default HelloMain;
 const MainHead = styled.header`
   font-size: 50px;
   font-weight: bold;
-  margin-top: 50px;
   text-align: center;
+  margin-top: 80px;
 `;

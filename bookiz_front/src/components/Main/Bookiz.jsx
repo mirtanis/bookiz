@@ -10,7 +10,6 @@ export default Bookiz;
 const BookizMain = styled.main`
   font-size: 80px;
   font-weight: bold;
-  margin-top: 10px;
-  color: rebeccapurple;
+  color: ${(props) => props.theme.colors.subBlack};
   text-align: center;
 `;

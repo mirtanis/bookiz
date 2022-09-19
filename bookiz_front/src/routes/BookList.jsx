@@ -1,24 +1,19 @@
 import React from "react";
-import HelloMain from "../components/Main/HelloMain";
 import styled from "styled-components";
-import Bookiz from "../components/Main/Bookiz";
 import Navbar from "../components/Main/Navbar";
 
-function MainPage() {
+function BookListPage() {
   return (
     <div>
       <Container>
         <Navbar />
-        <main>
-          <HelloMain />
-          <Bookiz />
-        </main>
+        동화 목록이 출력 됩니다.
       </Container>
     </div>
   );
 }
 
-export default MainPage;
+export default BookListPage;
 
 const Container = styled.div`
   width: 1440px;

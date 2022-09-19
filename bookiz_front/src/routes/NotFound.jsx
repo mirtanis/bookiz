@@ -68,11 +68,12 @@ const NotFoundContainer = styled.div`
       font-family: "Montserrat", sans-serif;
       font-size: 14px;
       text-decoration: none;
+      font-weight: bold;
       text-transform: uppercase;
       display: inline-block;
       padding: 15px 30px;
       border-radius: 40px;
-      color: black;
+      color: red;
       font-weight: 700;
     }
   }
