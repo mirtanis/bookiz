@@ -5,6 +5,7 @@ import { BrowserRouter,Route, Routes } from "react-router-dom";
 import MainPage from "./routes/Main";
 import BookPage from "./routes/Book";
 import NotFoundPage from "./routes/NotFound";
+import BookListPage from "./routes/BookList";
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <Routes>
           <Route path="" element={<MainPage/>}/>
           <Route path="/book" element={<BookPage/>}/>          
+          <Route path="/booklist" element={<BookListPage/>}/>
           <Route path="*" element={<NotFoundPage/>}/>
       </Routes> 
     </BrowserRouter>
