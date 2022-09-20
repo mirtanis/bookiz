@@ -2,11 +2,14 @@ package com.ssafy.bookiz.service;
 
 import com.ssafy.bookiz.domain.Book;
 import com.ssafy.bookiz.repository.BookRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 @Service
 public class BookService {
 
@@ -28,7 +31,15 @@ public class BookService {
         return book;
     }
 
-    public List<Book> findByTitle(String word) {
-        return bookRepository.findByTitle(word);
+    public List<Book> findAllByTitle(String word) {
+        log.info(word);
+        log.info(word.trim());
+//        List<Book> books = new ArrayList<>();
+//        for (Book b : bookRepository.findAll()) {
+//            if (b.getTitle().contains(word.trim()) && b.getTitle().replaceAll(" ", "").contains(word)) {
+//                books.add(b);
+//            }
+//        }
+        return bookRepository.findAllByTitle(word);
     }
 }

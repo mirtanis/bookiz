@@ -95,7 +95,7 @@ public class BookController {
     @GetMapping("/search")
     public ResponseEntity<?> searchBook(@RequestParam String word) {
         try {
-            List<Book> books = bookService.findByTitle(word);
+            List<Book> books = bookService.findAllByTitle(word);
             return new ResponseEntity<List<Book>>(books, HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
