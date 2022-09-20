@@ -6,11 +6,11 @@ SELECT * FROM bookiz.book;
 INSERT INTO bookiz.category (name) VALUES ("잠자기 좋은");
 INSERT INTO bookiz.category (name) VALUES ("전래동화");
 
-INSERT INTO bookiz.book (cnt, createdate, image, info, page, title) 
+INSERT INTO bookiz.book (cnt, create_date, image, info, page, title) 
 VALUES (0, "2022-01-01", "썸네일주소", "흥부와 놀부의 인생 이야기", 18, "흥부와 놀부");
-INSERT INTO bookiz.book (cnt, createdate, image, info, page, title) 
+INSERT INTO bookiz.book (cnt, create_date, image, info, page, title) 
 VALUES (5, "2022-06-01", "썸네일주소", "인력거 장사가 잘돼도 너무 잘된다..?", 22, "운수 좋은 날");
-INSERT INTO bookiz.book (cnt, createdate, image, info, page, title) 
+INSERT INTO bookiz.book (cnt, create_date, image, info, page, title) 
 VALUES (3, "2022-12-31", "썸네일주소", "토끼와 거북이가 달리기 시합을..?", 15, "토끼와 거북이");
 
 INSERT INTO bookiz.book_content (audio, content, image, page, type, book_id)
