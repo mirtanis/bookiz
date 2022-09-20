@@ -1,13 +1,17 @@
 package com.ssafy.bookiz.service;
 
 import com.ssafy.bookiz.domain.Book;
+import com.ssafy.bookiz.domain.BookDto;
 import com.ssafy.bookiz.repository.BookRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -15,8 +19,11 @@ public class BookService {
 
     private BookRepository bookRepository;
 
-    public BookService(BookRepository bookRepository) {
+    private final ModelMapper modelMapper;
+
+    public BookService(BookRepository bookRepository, ModelMapper modelMapper) {
         this.bookRepository = bookRepository;
+        this.modelMapper = modelMapper;
     }
 
     public List<Book> findAll() {
@@ -25,15 +32,26 @@ public class BookService {
         return books;
     }
 
-    public Book findById(Long id) {
-//        Book book = new Book();
+    public BookDto findById(Long id) {
         Book book = bookRepository.findById(id).get();
-        return book;
+        BookDto bookDto = modelMapper.map(book, BookDto.class);
+        return bookDto;
+    }
+
+    public List<Object> getBestBooks() {
+        List<Object> books = bookRepository.findAllOrderByCnt();
+        List<Object> bestBooks = books.stream()
+                .map(book -> modelMapper.map(book, BookDto.class))
+                .collect(Collectors.toList());
+//        return bookRepository.findAllOrderByCnt();
+        return bestBooks;
+    }
+
+    public List<Object> getNewBooks() {
+        return bookRepository.findAllOrderByCreateDate();
     }
 
     public List<Book> findAllByTitle(String word) {
-        log.info(word);
-        log.info(word.trim());
 //        List<Book> books = new ArrayList<>();
 //        for (Book b : bookRepository.findAll()) {
 //            if (b.getTitle().contains(word.trim()) && b.getTitle().replaceAll(" ", "").contains(word)) {
@@ -41,5 +59,12 @@ public class BookService {
 //            }
 //        }
         return bookRepository.findAllByTitle(word);
+    }
+
+    public Book plusCnt(Long id) {
+        Book book = bookRepository.findById(id).get();
+        book.setCnt(book.getCnt() + 1);
+        bookRepository.save(book);
+        return book;
     }
 }

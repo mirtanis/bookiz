@@ -1,11 +1,12 @@
 package com.ssafy.bookiz.domain;
 
 import lombok.Getter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
+
 
 @Entity
 @Getter
@@ -15,7 +16,7 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "book_id", columnDefinition = "INT UNSIGNED")
-    private Long book_id;
+    private Long id;
 
     @Column(length = 50)
     private String title;
@@ -23,7 +24,8 @@ public class Book {
     @Column(length = 300)
     private String info;
 
-    private Timestamp createdate;
+    @Column(nullable = false)
+    private Timestamp create_date;
 
     @Column(length = 100)
     private String image;
@@ -31,6 +33,10 @@ public class Book {
     @Column(columnDefinition = "INT UNSIGNED")
     private Integer page;
 
-    @Column(columnDefinition = "INT UNSIGNED")
+    @Column(nullable = false, columnDefinition = "INT UNSIGNED")
     private Integer cnt;
+
+    public void setCnt(Integer cnt) {
+        this.cnt = cnt;
+    }
 }

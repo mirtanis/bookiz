@@ -12,7 +12,7 @@ public class BookCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "book_category_id", columnDefinition = "INT UNSIGNED")
-    private Long book_category_id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "book_id")
