@@ -81,4 +81,26 @@ public class BookController {
         }
     }
 
+    @GetMapping("/detail")
+    public ResponseEntity<?> getBook(@RequestParam Long id) {
+        try {
+            Book book = bookService.findById(id);
+            return new ResponseEntity<>(book, HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<?> searchBook(@RequestParam String word) {
+        try {
+            List<Book> books = bookService.findByTitle(word);
+            return new ResponseEntity<List<Book>>(books, HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
 }
