@@ -21,4 +21,14 @@ public class BookService {
         bookRepository.findAll().forEach(book -> books.add(book));
         return books;
     }
+
+    public Book findById(Long id) {
+//        Book book = new Book();
+        Book book = bookRepository.findById(id).get();
+        return book;
+    }
+
+    public List<Book> findByTitle(String word) {
+        return bookRepository.findByTitle(word);
+    }
 }
