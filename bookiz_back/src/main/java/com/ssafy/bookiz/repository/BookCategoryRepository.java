@@ -1,0 +1,25 @@
+package com.ssafy.bookiz.repository;
+
+import com.ssafy.bookiz.domain.BookCategory;
+import org.springframework.data.jpa.repository.EntityGraph;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+
+@Repository
+public interface BookCategoryRepository extends JpaRepository<BookCategory, Long> {
+//    @EntityGraph(attributePaths = {""}, type=EntityGraph.EntityGraphType.LOAD)
+    @Query(value = "SELECT bc.book FROM BookCategory bc WHERE bc.category.category_id =:id")
+    public List<Object> findAllByCategoryId(@Param("id") Long id);
+
+    @Query(value = "SELECT b FROM Book b ORDER BY b.cnt DESC")
+    public List<Object> findAllOrderByCnt();
+
+    @Query(value = "SELECT b FROM Book b ORDER BY b.createdate DESC")
+    public List<Object> findAllOrderByCreatdate();
+}
+
