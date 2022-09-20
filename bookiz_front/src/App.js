@@ -6,6 +6,7 @@ import MainPage from "./routes/Main";
 import BookPage from "./routes/Book";
 import NotFoundPage from "./routes/NotFound";
 import BookListPage from "./routes/BookList";
+import TestPage from "./routes/Test";
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route path="/book" element={<BookPage/>}/>          
           <Route path="/booklist" element={<BookListPage/>}/>
           <Route path="*" element={<NotFoundPage/>}/>
+          <Route path="/test" element={<TestPage/>}/>
       </Routes> 
     </BrowserRouter>
   );
