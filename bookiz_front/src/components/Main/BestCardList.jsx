@@ -5,11 +5,6 @@ import GoldCrown from '../../assets/images/goldcrown.svg';
 import SilverCrown from '../../assets/images/silvercrown.svg';
 import BronzeCrown from '../../assets/images/bronzecrown.svg';
 import Arrow from '../../assets/images/arrow.svg';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/effect-coverflow';
-import { Navigation, EffectCoverflow } from 'swiper';
 
 function BestCardList() {
 	const [bestSellers, setBestSellers] = useState([
@@ -25,7 +20,7 @@ function BestCardList() {
 				<ContentText>베스트 셀러</ContentText>
 				<BestCards>
 					{bestSellers.map((bestSeller, index) => {
-						return <BestCard key={index} crown={bestSeller.crown} title={bestSeller.title} image={bestSeller.image} />;
+						return (<BestCard key={index} crown={bestSeller.crown} title={bestSeller.title} image={bestSeller.image} />)
 					})}
 				</BestCards>
 			</Content>

@@ -2,6 +2,7 @@ import React from "react";
 import HelloMain from "../components/Main/HelloMain";
 import styled from "styled-components";
 import Bookiz from "../components/Main/Bookiz";
+import Navbar from "../components/Main/Navbar";
 import BestCardList from "../components/Main/BestCardList";
 import NewCardList from "../components/Main/NewCardList";
 
@@ -9,6 +10,7 @@ function MainPage() {
   return (
     <div>
       <Container>
+        <Navbar />
         <HelloMain />
         <Bookiz />
         <BestCardList />
