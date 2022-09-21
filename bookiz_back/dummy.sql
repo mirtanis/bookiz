@@ -6,12 +6,14 @@ SELECT * FROM bookiz.book;
 INSERT INTO bookiz.category (name) VALUES ("잠자기 좋은");
 INSERT INTO bookiz.category (name) VALUES ("전래동화");
 
-INSERT INTO bookiz.book (cnt, create_date, image, info, page, title) 
-VALUES (0, "2022-01-01", "썸네일주소", "흥부와 놀부의 인생 이야기", 18, "흥부와 놀부");
-INSERT INTO bookiz.book (cnt, create_date, image, info, page, title) 
-VALUES (5, "2022-06-01", "썸네일주소", "인력거 장사가 잘돼도 너무 잘된다..?", 22, "운수 좋은 날");
-INSERT INTO bookiz.book (cnt, create_date, image, info, page, title) 
-VALUES (3, "2022-12-31", "썸네일주소", "토끼와 거북이가 달리기 시합을..?", 15, "토끼와 거북이");
+INSERT INTO bookiz.book (cnt, image, info, page, title, createdate) 
+VALUES (0, "썸네일주소", "흥부와 놀부의 인생 이야기", 18, "흥부와 놀부", DATE_FORMAT(now(), '%Y-%m-%d %H:%i:%s'));
+INSERT INTO bookiz.book (cnt, image, info, page, title, createdate) 
+VALUES (5, "썸네일주소", "인력거 장사가 잘돼도 너무 잘된다..?", 22, "운수 좋은 날", DATE_FORMAT(now(), '%Y-%m-%d %H:%i:%s'));
+INSERT INTO bookiz.book (cnt, image, info, page, title, createdate) 
+VALUES (3, "썸네일주소", "토끼와 거북이가 달리기 시합을..?", 15, "토끼와 거북이", DATE_FORMAT(now(), '%Y-%m-%d %H:%i:%s'));
+INSERT INTO bookiz.book (cnt, image, info, page, title, createdate) 
+VALUES (10, "썸네일주소", "강에 도끼를 빠드린 나무꾼의 운명은..!?", 12, "금도끼 은도끼", DATE_FORMAT(now(), '%Y-%m-%d %H:%i:%s'));
 
 INSERT INTO bookiz.book_content (audio, content, image, page, type, book_id)
 VALUES ("오디오주소", "옛날 옛적에, 흥부와 놀부가 살고 있었어요.", "페이지사진", 1, 1, 1);
@@ -34,8 +36,14 @@ VALUES ("오디오주소", "거북이가 토끼에게 말해요.", "페이지사
 INSERT INTO bookiz.book_content (audio, content, image, page, type, book_id)
 VALUES ("오디오주소", "내가 널 이겨주겠어.", "페이지사진", 3, 0, 3);
 
+INSERT INTO bookiz.book_content (audio, content, image, page, type, book_id)
+VALUES ("오디오주소", "나무꾼이 도끼로 나무를 베고 있어요.", "페이지사진", 1, 1, 4);
+INSERT INTO bookiz.book_content (audio, content, image, page, type, book_id)
+VALUES ("오디오주소", "이런! 도끼를 강에 빠뜨렸어요.", "페이지사진", 2, 1, 4);
+INSERT INTO bookiz.book_content (audio, content, image, page, type, book_id)
+VALUES ("오디오주소", "나무꾼은 강에 주저앉아 울기 시작했어요.", "페이지사진", 3, 1, 4);
+
 INSERT INTO bookiz.book_category (book_id, category_id) VALUES (1, 2);
 INSERT INTO bookiz.book_category (book_id, category_id) VALUES (3, 2);
 INSERT INTO bookiz.book_category (book_id, category_id) VALUES (2, 1);
-
-
+INSERT INTO bookiz.book_category (book_id, category_id) VALUES (4, 2);

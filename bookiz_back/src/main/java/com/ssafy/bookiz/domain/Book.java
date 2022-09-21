@@ -1,15 +1,18 @@
 package com.ssafy.bookiz.domain;
 
 import lombok.Getter;
-import org.springframework.format.annotation.DateTimeFormat;
+import lombok.Setter;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 
 @Entity
 @Getter
+@Setter
+@EntityListeners(AuditingEntityListener.class)
 @Table(name = "book")
 public class Book {
 
@@ -24,8 +27,9 @@ public class Book {
     @Column(length = 300)
     private String info;
 
-    @Column(nullable = false)
-    private Timestamp create_date;
+//    @CreatedDate
+    @Column(name = "createdate", updatable = false)
+    private Timestamp createdate;
 
     @Column(length = 100)
     private String image;
@@ -39,4 +43,10 @@ public class Book {
     public void setCnt(Integer cnt) {
         this.cnt = cnt;
     }
+
+//    @PrePersist
+//    public void beforeCreate() {
+//        createdate = LocalDateTime.now();
+//    }
+
 }
