@@ -107,11 +107,11 @@ public class BookController {
     @GetMapping("/search")
     public ResponseEntity<?> searchBook(@RequestParam String word) {
         try {
-            List<Book> books = bookService.findAllByTitle(word);
+            List<Object> books = bookService.findAllByTitle(word);
             if (books.size() == 0) {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
-            return new ResponseEntity<List<Book>>(books, HttpStatus.OK);
+            return new ResponseEntity<List<Object>>(books, HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
@@ -120,7 +120,7 @@ public class BookController {
 
     @PatchMapping("")
     public ResponseEntity<?> plusCnt(@RequestBody BookDto bookDto) {
-        Book book = bookService.plusCnt(bookDto.getId());
+        BookDto book = bookService.plusCnt(bookDto.getId());
         return new ResponseEntity<>(book, HttpStatus.OK);
     }
 }

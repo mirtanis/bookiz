@@ -16,7 +16,7 @@ public class BookDto {
     private String info;
 
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
-    private Timestamp create_date;
+    private Timestamp createdate;
 
     private String image;
 

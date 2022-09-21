@@ -11,11 +11,10 @@ import java.util.List;
 public interface BookRepository extends JpaRepository<Book, Long> {
 
     @Query(value = "SELECT b FROM Book b WHERE b.title LIKE CONCAT('%', :word, '%')")
-    public List<Book> findAllByTitle(@Param("word") String word);
+    public List<Object> findAllByTitle(@Param("word") String word);
 
-    @Query(value = "SELECT b FROM Book b ORDER BY b.cnt DESC")
-    public List<Object> findAllOrderByCnt();
+    public List<Book> findTop3ByOrderByCntDesc();
 
-    @Query(value = "SELECT b FROM Book b ORDER BY b.create_date DESC")
-    public List<Object> findAllOrderByCreateDate();
+    @Query(value = "SELECT b FROM Book b ORDER BY b.createdate DESC")
+    public List<Object> findAllOrderByCreatedateDesc();
 }

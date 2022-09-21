@@ -5,12 +5,10 @@ import com.ssafy.bookiz.domain.BookDto;
 import com.ssafy.bookiz.repository.BookRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -39,32 +37,34 @@ public class BookService {
     }
 
     public List<Object> getBestBooks() {
-        List<Object> books = bookRepository.findAllOrderByCnt();
+        List<Book> books = bookRepository.findTop3ByOrderByCntDesc();
         List<Object> bestBooks = books.stream()
                 .map(book -> modelMapper.map(book, BookDto.class))
                 .collect(Collectors.toList());
-//        return bookRepository.findAllOrderByCnt();
         return bestBooks;
     }
 
     public List<Object> getNewBooks() {
-        return bookRepository.findAllOrderByCreateDate();
+        List<Object> books = bookRepository.findAllOrderByCreatedateDesc();
+        List<Object> newBooks = books.stream()
+                .map(book -> modelMapper.map(book, BookDto.class))
+                .collect(Collectors.toList());
+        return newBooks;
     }
 
-    public List<Book> findAllByTitle(String word) {
-//        List<Book> books = new ArrayList<>();
-//        for (Book b : bookRepository.findAll()) {
-//            if (b.getTitle().contains(word.trim()) && b.getTitle().replaceAll(" ", "").contains(word)) {
-//                books.add(b);
-//            }
-//        }
-        return bookRepository.findAllByTitle(word);
+    public List<Object> findAllByTitle(String word) {
+        List<Object> books = bookRepository.findAllByTitle(word);
+        List<Object> searchBooks = books.stream()
+                .map(book -> modelMapper.map(book, BookDto.class))
+                .collect(Collectors.toList());
+        return searchBooks;
     }
 
-    public Book plusCnt(Long id) {
+    public BookDto plusCnt(Long id) {
         Book book = bookRepository.findById(id).get();
         book.setCnt(book.getCnt() + 1);
         bookRepository.save(book);
-        return book;
+        BookDto bookDto = modelMapper.map(book, BookDto.class);
+        return bookDto;
     }
 }
