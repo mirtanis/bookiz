@@ -29,6 +29,9 @@ const Label = styled.img`
 	position: absolute;
 	top: 0.2083vw;
 	left: 0.4444vh;
+	width: 5.2083vw !important;
+	height: 6.1111vh !important;
+	border-radius: 5px;
 `;
 
 const Image = styled.img`
