@@ -36,7 +36,7 @@ const Label = styled.img`
 
 const Image = styled.img`
 	width: 100%;
-	height: 36.8889vh;
+	height: 36.8889vh !important;
 `;
 
 const Title = styled.div`
