@@ -17,20 +17,20 @@ function BookModal(props) {
       {open ? (
       <Background onClick={close}>
         <Modal onClick={(e) => e.stopPropagation()}>
-          <header>
-            <IoClose
-              className="closeicon"
-              size={40}
-              color="#ffffff"
-              onClick={close}
-              ></IoClose>
-          </header>
           <main>
+            <header>
+              <IoClose
+                className="closeicon"
+                size={40}
+                color="#ffffff"
+                onClick={close}
+                ></IoClose>
+            </header>
             <Book>
-              <div>
-              <img src={image} alt="" style={{ width: "565px", height: "363px" }}/>
+              <div style={{ padding: "0 5% 0 1%", width: "50%", height: "100%"}}>
+                <img src={image} alt="" style={{ width: "100%", height: "100%" }}/>
               </div>
-              <div style={{ padding: "0 20px 0 20px", height: "363px" }}>
+              <div style={{ padding: "0 1% 0 5%", width: "50%", height: "100%" }}>
                 <Text>{title}</Text>
                 <Info>{info}</Info>
               </div>
@@ -43,7 +43,7 @@ function BookModal(props) {
                   <BsMicMute className="micmuteicon" size={40} color="#000000"/>
                 )}
               </div> */}
-              <Link to="/booklist" style={{ textDecoration: 'none' }}>
+              <Link to="/book" style={{ textDecoration: "none", width: "30%", height: "70%"}}>
                 <StartBtn className="startbtn">시작하기</StartBtn>
               </Link>
               <Page>총 {page} 페이지</Page>
@@ -72,15 +72,17 @@ const Background = styled.div`
   & section {
     display: flex;
     flex-direction: column;
-    width: 1400px;
-    height: 600px;
-    max-width: 1440px;
+    width: 90%;
+    height: 70%;
+    // max-width: 1400px;
     background-color: ${(props) => props.theme.colors.gray};
     & header {
       display: flex;
+      border-width: 100%;
+      height: 5%;
       justify-content: flex-end;
-      padding-left: 30px;
-      padding-right: 30px;
+      padding-left: 2%;
+      padding-right: 2%;
       align-items: end;
       color: ${(props) => props.theme.colors.white};
       & p {
@@ -92,25 +94,34 @@ const Background = styled.div`
       }
     }
     & main {
-      padding: 0 20px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 100%;
+      height: 100%;
+      // padding: 0 20px 20px;
     }
   }
 `;
 
 const Start = styled.div`
   display: flex;
+  width: 73%;
+  height: 23%;
   justify-content: space-between;
   align-items: center;
-  padding: 0 200px 0 200px;
+  padding: 0 12% 0 15%;
 `;
 
 const Book = styled.div`
   display: flex;
-  height: 363px;
+  // height: 363px;
+  width: 80%;
+  height: 70%;
   justify-content: space-between;
   align-items: center;
-  padding: 0 100px 0 100px;
-  margin: 0 0 30px 0;
+  padding: 0 10% 0 10%;
+  // margin: 0 0 10px 0;
 `;
 
 const Modal = styled.section`
@@ -119,21 +130,21 @@ const Modal = styled.section`
 
 const Text = styled.p`
   color: black;
-  font-size: 80px;
+  font-size: 4vw;
   display: flex;
   font-weight: bold;
   text-align: center;
   align-items: center;
   justify-content: center;
-  margin: 0 0 30px 0;
+  margin: 10% 0 20% 0;
 `;
 
 const Info = styled.div`
-  border-width: 597px;
-  height: 216px;
+  border-width: 100%;
+  height: 40%;
   background-color: white;
   border-radius: 10px;
-  font-size: 40px;
+  font-size: 2vw;
   display: flex;
   text-align: center;
   word-break:break-all;
@@ -143,12 +154,12 @@ const Info = styled.div`
 `;
 
 const StartBtn = styled.button`
-  width: 350px;
-  height: 130px;
+  width: 100%;
+  height: 100%;
   border-radius: 50px;
   border: 0;
   background-color: skyblue;
-  font-size: 60px;
+  font-size: 3vw;
   display: flex;
   text-align: center;
   align-items: center;
@@ -156,11 +167,11 @@ const StartBtn = styled.button`
 `;
 
 const Page = styled.div`
-  width: 298px;
-  height: 86px;
+  width: 20%;
+  height: 50%;
   border-radius: 10px;
   background-color: #c99999;
-  font-size: 50px;
+  font-size: 2vw;
   display: flex;
   text-align: center;
   align-items: center;
