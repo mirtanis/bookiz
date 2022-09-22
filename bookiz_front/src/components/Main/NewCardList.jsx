@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import NewCard from './NewCard';
-import Arrow from '../../assets/images/arrow.svg';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
+import { Link } from 'react-router-dom';
 
 function NewCardList() {
 	const [newBooks, setNewBooks] = useState([
@@ -42,9 +42,11 @@ function NewCardList() {
 					</Swiper>
 				</SwiperContainer>
 			</Content>
-			<More href="#">
-				<MoreText>더보기</MoreText>
-				<MoreImage src={Arrow} />
+			<More>
+				<Link to="/">
+					<MoreText>더보기</MoreText>
+					<MoreImage src="assets/images/arrow.svg" />
+				</Link>
 			</More>
 		</Container>
 	)
@@ -77,14 +79,12 @@ const SwiperContainer = styled.div`
 	width: 100%;
 `;
 
-const More = styled.a`
+const More = styled.div`
 	width: 4.4792vw;
 	margin-top: 2.2222vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	text-decoration: none;
-	color: black;
 `;
 
 const MoreText = styled.p`

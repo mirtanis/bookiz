@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import NewLabel from '../../assets/images/newlabel.svg'
+// import NewLabel from '../../assets/images/newlabel.svg'
 
 function NewCard(props) {
 	return (
 		<NewCardContainer>
-			<Label src={NewLabel} />
+			<Label src="assets/images/newlabel.svg" />
 			<Image src={props.image} />
 			<Title>
 				{props.title}

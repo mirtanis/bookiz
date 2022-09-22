@@ -31,6 +31,8 @@ const Container = styled.div`
 const BookImageDiv = styled.div`
 	width: 100%;
 	height: 88.8889vh;
+	display: flex;
+	justify-content: center;
 `;
 
 const BookImage = styled.img`

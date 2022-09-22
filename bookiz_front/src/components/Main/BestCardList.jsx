@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import BestCard from './BestCard';
-import GoldCrown from '../../assets/images/goldcrown.svg';
-import SilverCrown from '../../assets/images/silvercrown.svg';
-import BronzeCrown from '../../assets/images/bronzecrown.svg';
-import Arrow from '../../assets/images/arrow.svg';
+import { Link } from 'react-router-dom';
 
 function BestCardList() {
 	const [bestSellers, setBestSellers] = useState([
-    {crown: GoldCrown, title: "토끼와 거북이", image: "https://www.dasobook.com/shop/data/editor/bef9d99d4de10797.jpg"},
-    {crown: SilverCrown, title: "금도끼 은도끼", image: "http://image.kyobobook.co.kr/images/book/xlarge/705/x9788915102705.jpg"},
-    {crown: BronzeCrown, title: "선녀와 나무꾼", image: "https://image.aladin.co.kr/product/184/92/cover500/8901073420_1.jpg"}
+    {crown: "assets/images/goldcrown.svg", title: "토끼와 거북이", image: "https://www.dasobook.com/shop/data/editor/bef9d99d4de10797.jpg"},
+    {crown: "assets/images/silvercrown.svg", title: "금도끼 은도끼", image: "http://image.kyobobook.co.kr/images/book/xlarge/705/x9788915102705.jpg"},
+    {crown: "assets/images/bronzecrown.svg", title: "선녀와 나무꾼", image: "https://image.aladin.co.kr/product/184/92/cover500/8901073420_1.jpg"}
   ]);
 
 	return (
@@ -24,9 +21,11 @@ function BestCardList() {
 					})}
 				</BestCards>
 			</Content>
-			<More href="#">
-				<MoreText>전체보기</MoreText>
-				<MoreImage src={Arrow} />
+			<More>
+				<Link to="/">
+					<MoreText>전체보기</MoreText>
+					<MoreImage src="assets/images/arrow.svg" />
+				</Link>
 			</More>
 		</Container>
 	)
@@ -61,14 +60,12 @@ const BestCards = styled.div`
   justify-content: space-between;
 `;
 
-const More = styled.a`
+const More = styled.div`
 	width: 4.4792vw;
 	margin-top: 2.2222vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	text-decoration: none;
-	color: black;
 `;
 
 const MoreText = styled.p`
