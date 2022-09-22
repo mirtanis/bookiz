@@ -13,7 +13,7 @@ public class BookContent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "book_content_id", columnDefinition = "INT UNSIGNED")
-    private Long book_content_id;
+    private Long id;
 
     @Column(columnDefinition = "INT UNSIGNED")
     private Integer page;

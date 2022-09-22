@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
+import './swiperCSS.css';
 import { Navigation } from "swiper";
 
 import helpimg1 from "../../assets/images/help1.PNG";
