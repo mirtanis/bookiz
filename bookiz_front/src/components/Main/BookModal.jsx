@@ -1,16 +1,9 @@
-// import { useState } from "react";
 import styled from "styled-components";
 import { IoClose } from "react-icons/io5";
-// import { BsMic } from "react-icons/bs";
-// import { BsMicMute } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 function BookModal(props) {
   const { open, close, title, info, image, page } = props;
-  // const [mic, setMic] = useState(false);
-  // const handleMic = () => {
-  //   setMic(!mic);
-  // }
 
   return (
     <div>
@@ -27,22 +20,15 @@ function BookModal(props) {
                 ></IoClose>
             </header>
             <Book>
-              <div style={{ padding: "0 5% 0 1%", width: "50%", height: "100%"}}>
-                <img src={image} alt="" style={{ width: "100%", height: "100%" }}/>
+              <div style={{ padding: "0 2% 0 1%", width: "60%", height: "100%"}}>
+                <img src={image} alt="" style={{ width: "100%", height: "100%", objectFit: "contain" }}/>
               </div>
-              <div style={{ padding: "0 1% 0 5%", width: "50%", height: "100%" }}>
+              <BookInfo>
                 <Text>{title}</Text>
                 <Info>{info}</Info>
-              </div>
+              </BookInfo>
             </Book>
             <Start>
-              {/* <div className="micIcon" onClick={handleMic}>
-                {mic ? (
-                  <BsMic className="micicon" size={40} color="#000000"/>
-                ) : (
-                  <BsMicMute className="micmuteicon" size={40} color="#000000"/>
-                )}
-              </div> */}
               <Link to="/book" style={{ textDecoration: "none", width: "30%", height: "70%"}}>
                 <StartBtn className="startbtn">시작하기</StartBtn>
               </Link>
@@ -72,7 +58,7 @@ const Background = styled.div`
   & section {
     display: flex;
     flex-direction: column;
-    width: 90%;
+    width: 80%;
     height: 70%;
     // max-width: 1400px;
     background-color: ${(props) => props.theme.colors.gray};
@@ -104,6 +90,15 @@ const Background = styled.div`
   }
 `;
 
+const BookInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 0 1% 0 2%;
+  width: 40%;
+  height: 100%;
+`;
+
 const Start = styled.div`
   display: flex;
   width: 73%;
@@ -116,11 +111,11 @@ const Start = styled.div`
 const Book = styled.div`
   display: flex;
   // height: 363px;
-  width: 80%;
+  width: 90%;
   height: 70%;
   justify-content: space-between;
   align-items: center;
-  padding: 0 10% 0 10%;
+  padding: 0 5% 0 5%;
   // margin: 0 0 10px 0;
 `;
 
@@ -136,7 +131,7 @@ const Text = styled.p`
   text-align: center;
   align-items: center;
   justify-content: center;
-  margin: 10% 0 20% 0;
+  margin: 10% 0 15% 0;
 `;
 
 const Info = styled.div`
@@ -144,13 +139,14 @@ const Info = styled.div`
   height: 40%;
   background-color: white;
   border-radius: 10px;
-  font-size: 2vw;
+  font-size: 1.8vw;
+  // font-size: 3.5vh;
   display: flex;
   text-align: center;
   word-break:break-all;
   justify-content: center;
   align-items: center;
-  padding: 0 10px 0 10px;
+  padding: 0 20px 0 2px;
 `;
 
 const StartBtn = styled.button`
