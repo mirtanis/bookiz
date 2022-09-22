@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Navbar from "../components/Main/Navbar";
 import { useSearchParams } from "react-router-dom";
+import BookList from "../components/BookList/BookList";
 
 function BookListPage() {
   const [searchParams] = useSearchParams();
@@ -12,7 +13,7 @@ function BookListPage() {
       <Container>
         <Navbar />
         <KeywordContainer>'{key}' 검색 결과</KeywordContainer>
-        동화 목록이 출력 됩니다.
+        <BookList/>
       </Container>
     </div>
   );
@@ -21,7 +22,7 @@ function BookListPage() {
 export default BookListPage;
 
 const Container = styled.div`
-  width: 1440px;
+  width: 90%;
   margin: auto;
 `;
 
