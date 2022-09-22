@@ -32,12 +32,17 @@ public class BookController {
     private ModelMapper modelMapper;
 
     @GetMapping("/all")
-    public ResponseEntity<List<Book>> findAll() throws Exception {
-        List<Book> allBooks = bookService.findAll();
-        if (allBooks.size() == 0)
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-
-        return new ResponseEntity<List<Book>>(allBooks, HttpStatus.OK);
+    public ResponseEntity<?> findAll() throws Exception {
+        try {
+            List<Object> allBooks = bookService.findAll();
+            if (allBooks.size() == 0) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+            return new ResponseEntity<List<Object>>(allBooks, HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
     }
 
     @GetMapping("/category")
