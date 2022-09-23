@@ -6,9 +6,9 @@ import "swiper/css/navigation";
 import './swiperCSS.css';
 import { Navigation } from "swiper";
 
-import helpimg1 from "../../assets/images/help1.PNG";
-import helpimg2 from "../../assets/images/help2.PNG";
-import helpimg3 from "../../assets/images/help3.PNG";
+// import helpimg1 from "../../assets/images/help1.PNG";
+// import helpimg2 from "../../assets/images/help2.PNG";
+// import helpimg3 from "../../assets/images/help3.PNG";
 
 function HelpSwiper() {
   return (
@@ -31,7 +31,7 @@ function HelpSwiper() {
           >
             <div>
               <img
-                src={helpimg1}
+                src="assets/images/help1.png"
                 alt="도움 이미지1"
                 width="1440"
                 height="600"
@@ -41,7 +41,7 @@ function HelpSwiper() {
           <SwiperSlide>
             <div>
               <img
-                src={helpimg2}
+                src="assets/images/help2.png"
                 alt="도움 이미지2"
                 width="1440"
                 height="600"
@@ -51,7 +51,7 @@ function HelpSwiper() {
           <SwiperSlide>
             <div>
               <img
-                src={helpimg3}
+                src="assets/images/help3.png"
                 alt="도움 이미지3"
                 width="1440"
                 height="600"
