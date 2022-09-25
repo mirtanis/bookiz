@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 
 function BestCardList() {
 	const [bestSellers, setBestSellers] = useState([
-    {crown: "assets/images/goldcrown.svg", title: "토끼와 거북이", image: "https://www.dasobook.com/shop/data/editor/bef9d99d4de10797.jpg"},
-    {crown: "assets/images/silvercrown.svg", title: "금도끼 은도끼", image: "http://image.kyobobook.co.kr/images/book/xlarge/705/x9788915102705.jpg"},
-    {crown: "assets/images/bronzecrown.svg", title: "선녀와 나무꾼", image: "https://image.aladin.co.kr/product/184/92/cover500/8901073420_1.jpg"}
+    {crown: "assets/images/goldcrown.svg", title: "토끼와 거북이", image: "https://www.dasobook.com/shop/data/editor/bef9d99d4de10797.jpg", info: "토끼와 거북이는 경주를 해요. 거북이는 느려요. 토끼는 빨라요 과연 어떻게 될까요?", page: "15"},
+    {crown: "assets/images/silvercrown.svg", title: "금도끼 은도끼", image: "http://image.kyobobook.co.kr/images/book/xlarge/705/x9788915102705.jpg", info: "금도끼 은도끼 줄거리", page: "12"},
+    {crown: "assets/images/bronzecrown.svg", title: "선녀와 나무꾼", image: "https://image.aladin.co.kr/product/184/92/cover500/8901073420_1.jpg", info: "선녀와 나무꾼 줄거리", page: "10"}
   ]);
 
 	return (
@@ -17,7 +17,7 @@ function BestCardList() {
 				<ContentText>베스트 셀러</ContentText>
 				<BestCards>
 					{bestSellers.map((bestSeller, index) => {
-						return (<BestCard key={index} crown={bestSeller.crown} title={bestSeller.title} image={bestSeller.image} />)
+						return (<BestCard key={index} crown={bestSeller.crown} title={bestSeller.title} image={bestSeller.image} info={bestSeller.info} page={bestSeller.page}/>)
 					})}
 				</BestCards>
 			</Content>

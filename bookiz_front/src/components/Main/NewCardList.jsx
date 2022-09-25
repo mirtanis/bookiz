@@ -6,15 +6,17 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import { Link } from 'react-router-dom';
+// import BookModal from './BookModal';
 
-function NewCardList() {
+function NewCardList(props) {
 	const [newBooks, setNewBooks] = useState([
-    {title: "견우와 직녀", image: "http://image.kyobobook.co.kr/images/book/xlarge/813/x9788967000813.jpg"},
-    {title: "먹어도 먹어도 줄지 않는 죽", image: "https://image.yes24.com/goods/72352412/XL"},
-    {title: "다이너마이트 소동", image: "https://image.aladin.co.kr/product/4434/21/cover500/1185423192_1.jpg"},
-    {title: "살려줘!", image: "https://image.yes24.com/goods/57883038/XL"},
-    {title: "견우와 직녀", image: "http://image.kyobobook.co.kr/images/book/xlarge/813/x9788967000813.jpg"}
+    {title: "견우와 직녀", image: "http://image.kyobobook.co.kr/images/book/xlarge/813/x9788967000813.jpg", info: "견우와 직녀 줄거리", page: "8"},
+    {title: "먹어도 먹어도 줄지 않는 죽", image: "https://image.yes24.com/goods/72352412/XL", info: "먹어도 먹어도 줄지 않는 죽 줄거리", page: "10"},
+    {title: "다이너마이트 소동", image: "https://image.aladin.co.kr/product/4434/21/cover500/1185423192_1.jpg", info: "다이너마이트 소동 줄거리", page: "12"},
+    {title: "살려줘!", image: "https://image.yes24.com/goods/57883038/XL", info: "살려줘! 줄거리", page: "14"},
+    {title: "견우와 직녀", image: "http://image.kyobobook.co.kr/images/book/xlarge/813/x9788967000813.jpg", info: "견우와 직녀 줄거리", page: "16"}
   ]);
+	
 
 	return (
 		<Container>
@@ -34,9 +36,11 @@ function NewCardList() {
 					className="mySwiper">
 						{newBooks.map((newBook, index) => {
 							return (
-								<SwiperSlide key={index}>
-									<NewCard title={newBook.title} image={newBook.image} />
-								</SwiperSlide>
+								<div>
+									<SwiperSlide key={index}>
+										<NewCard title={newBook.title} image={newBook.image} info={newBook.info} page={newBook.page}/>
+									</SwiperSlide>
+								</div>
 							);
 						})}
 					</Swiper>

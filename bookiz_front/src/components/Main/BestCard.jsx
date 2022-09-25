@@ -1,15 +1,27 @@
 import React from 'react';
+import { useState } from "react";
 import styled from 'styled-components';
+import BookModal from './BookModal';
 
 function BestCard(props) {
+
+	const [isModal, setIsModal] = useState(false);
+
+  const ModalHandler = () => {
+    setIsModal((prev) => !prev);
+  };
+
 	return (
-		<BestCardContainer>
-			<Crown src={props.crown} />
-			<Image src={props.image} />
-			<Title>
-				{props.title}
-			</Title>
-		</BestCardContainer>
+		<div>
+			<BestCardContainer onClick={ModalHandler}>
+				<Crown src={props.crown} />
+				<Image src={props.image}/>
+				<Title>
+					{props.title}
+				</Title>
+			</BestCardContainer>
+			<BookModal open={isModal} close={ModalHandler} title={props.title} info={props.info} image={props.image} page={props.page}></BookModal>
+		</div>
 	)
 }
 

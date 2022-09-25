@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import BookModalPortal from "./Portal";
 import { IoClose } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
@@ -6,7 +7,7 @@ function BookModal(props) {
   const { open, close, title, info, image, page } = props;
 
   return (
-    <div>
+    <BookModalPortal>
       {open ? (
       <Background onClick={close}>
         <Modal onClick={(e) => e.stopPropagation()}>
@@ -38,7 +39,7 @@ function BookModal(props) {
         </Modal>
       </Background>
       ) : null}
-    </div>
+    </BookModalPortal>
   );
 }
 
@@ -60,6 +61,8 @@ const Background = styled.div`
     flex-direction: column;
     width: 80%;
     height: 70%;
+    // width: 80vw;
+    // height: 70vh;
     // max-width: 1400px;
     background-color: ${(props) => props.theme.colors.gray};
     & header {
