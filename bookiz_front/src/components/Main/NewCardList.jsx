@@ -5,60 +5,60 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
-import { bookListApis, fetchData } from "../../utils/apis/api";
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import { bookListApis, fetchData } from '../../utils/apis/api';
+
 
 function NewCardList() {
-  const [newBooks, setNewBooks] = useState([]);
-  useEffect(() => {
-    const getRankList = async () => {
-      return await fetchData.get(bookListApis.BOOK_NEW_LIST);
-    };
-    const res = getRankList(bookListApis.BOOK_NEW_LIST);
-    res.then((newlist) => {
-      setNewBooks(newlist.data);
-    });
-  }, []);
-  console.log(newBooks);
+	const [newBooks, setNewBooks] = useState([]);
 
-  return (
-    <Container>
-      <Empty />
-      <Content>
-        <ContentText>신간 동화</ContentText>
-        <SwiperContainer>
-          <Swiper
-            watchOverflow={true}
-            navigation={true}
-            centeredSlides={false}
-            initialSlide={0}
-            slidesPerView={4}
-            spaceBetween={0}
-            allowTouchMove={false}
-            modules={[Navigation]}
-            className="mySwiper"
-          >
-            {newBooks.map((newBook, index) => {
-              return (
-                <SwiperSlide key={index}>
-                  <NewCard title={newBook.title} image={newBook.image} />
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
-        </SwiperContainer>
-      </Content>
-      <More>
-        <Link
-          to="/booklist/new"
-          style={{ textDecoration: "none", color: "black" }}
-        >
-          <MoreText>더보기</MoreText>
-          <MoreImage src="assets/images/arrow.svg" />
-        </Link>
-      </More>
-    </Container>
-  );
+	useEffect(() => {
+		const getnewBookList = async (url) => {
+			return await fetchData.get(url);
+		};
+		const res = getnewBookList(bookListApis.BOOK_NEW_LIST);
+		res.then((newlist) => {
+			setNewBooks(newlist.data);
+		});
+
+	}, []);
+
+	return (
+		<Container>
+			<Empty />
+			<Content>
+				<ContentText>신간 동화</ContentText>
+				<SwiperContainer>
+					<Swiper
+					watchOverflow={true}
+					navigation={true}
+					centeredSlides={false}
+					initialSlide={0}
+					slidesPerView={4}
+					spaceBetween={0}
+					allowTouchMove={false}
+					modules={[Navigation]}
+					className="mySwiper">
+						{newBooks.map((newBook, index) => {
+							return (
+								<div>
+									<SwiperSlide key={index}>
+										<NewCard title={newBook.title} image={newBook.image} info={newBook.info} page={newBook.page}/>
+									</SwiperSlide>
+								</div>
+							);
+						})}
+					</Swiper>
+				</SwiperContainer>
+			</Content>
+			<More>
+				<Link to="/booklist/new" style={{ textDecoration: "none", color: "black" }}>
+					<MoreText>더보기</MoreText>
+					<MoreImage src="assets/images/arrow.svg" />
+				</Link>
+			</More>
+		</Container>
+	);
 }
 
 export default NewCardList;

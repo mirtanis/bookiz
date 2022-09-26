@@ -1,16 +1,29 @@
 import React from 'react';
+import { useState } from "react";
 import styled from 'styled-components';
+import BookModal from './BookModal';
 // import NewLabel from '../../assets/images/newlabel.svg'
 
 function NewCard(props) {
+
+	
+	const [isModal, setIsModal] = useState(false);
+
+  const ModalHandler = () => {
+    setIsModal((prev) => !prev);
+  };
+
 	return (
-		<NewCardContainer>
-			<Label src="assets/images/newlabel.svg" />
-			<Image src={props.image} />
+		<div>
+		<NewCardContainer onClick={ModalHandler}>
+			<Label src="assets/images/newlabel.svg"/>
+			<Image src={props.image}/>
 			<Title>
 				{props.title}
 			</Title>
 		</NewCardContainer>
+		<BookModal open={isModal} close={ModalHandler} title={props.title} info={props.info} image={props.image} page={props.page}></BookModal>
+		</div>
 	)
 }
 

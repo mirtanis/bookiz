@@ -6,6 +6,7 @@ import MainPage from "./routes/Main";
 import BookPage from "./routes/Book";
 import NotFoundPage from "./routes/NotFound";
 import BookListPage from "./routes/BookList";
+import TestPage from "./routes/Test";
 import BookAllPage from "./routes/BookAll";
 import BookSearchPage from "./routes/BookSearch";
 import BookNewPage from "./routes/BookNew";
@@ -21,6 +22,7 @@ function App() {
           <Route path="/booklist/new" element={<BookNewPage/>} />
           <Route path="/search" element={<BookSearchPage/>} />
           <Route path="*" element={<NotFoundPage/>}/>
+          <Route path="/test" element={<TestPage/>}/>
       </Routes> 
     </BrowserRouter>
   );

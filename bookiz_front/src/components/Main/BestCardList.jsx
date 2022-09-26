@@ -3,10 +3,11 @@ import styled from "styled-components";
 import BestCard from "./BestCard";
 import { bookListApis, fetchData } from "../../utils/apis/api";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 function BestCardList() {
-  const [bestSellers, setBestSellers] = useState([]);
+	const [bestSellers, setBestSellers] = useState([]);
+
   useEffect(() => {
     const getRankList = async () => {
       return await fetchData.get(bookListApis.BOOK_RANK_LIST);
@@ -17,24 +18,27 @@ function BestCardList() {
     });
   }, []);
 
-  const getCrown = {
-    1: "assets/images/goldcrown.svg",
-    2: "assets/images/silvercrown.svg",
-    3: "assets/images/bronzecrown.svg",
-  };
-  return (
-    <Container>
-      <Empty />
-      <Content>
-        <ContentText>베스트 셀러</ContentText>
-        <BestCards>
-          {bestSellers.map((bestSeller, index) => {
+	const getCrown = [
+		"assets/images/goldcrown.svg",
+		"assets/images/silvercrown.svg",
+		"assets/images/bronzecrown.svg"
+	]
+
+	return (
+		<Container>
+			<Empty />
+			<Content>
+				<ContentText>베스트 셀러</ContentText>
+				<BestCards>
+				{bestSellers.map((bestSeller, index) => {
             return (
               <BestCard
                 key={index}
-                crown={getCrown[index + 1]}
+                crown={getCrown[index]}
                 title={bestSeller.title}
                 image={bestSeller.image}
+								info={bestSeller.info}
+								page={bestSeller.page}
               />
             );
           })}
