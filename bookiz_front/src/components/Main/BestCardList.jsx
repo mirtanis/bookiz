@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import BestCard from "./BestCard";
-import GoldCrown from "../../assets/images/goldcrown.svg";
-import SilverCrown from "../../assets/images/silvercrown.svg";
-import BronzeCrown from "../../assets/images/bronzecrown.svg";
-import Arrow from "../../assets/images/arrow.svg";
 import { bookListApis, fetchData } from "../../utils/apis/api";
 import { useEffect } from "react";
 
@@ -21,9 +17,9 @@ function BestCardList() {
   }, []);
 
   const getCrown = {
-    1: GoldCrown,
-    2: SilverCrown,
-    3: BronzeCrown,
+    1: "assets/images/goldcrown.svg",
+    2: "assets/images/silvercrown.svg",
+    3: "assets/images/bronzecrown.svg",
   };
   return (
     <Container>
@@ -45,7 +41,7 @@ function BestCardList() {
       </Content>
       <More href="#">
         <MoreText>전체보기</MoreText>
-        <MoreImage src={Arrow} />
+        <MoreImage src="assets/images/arrow.svg" />
       </More>
     </Container>
   );
