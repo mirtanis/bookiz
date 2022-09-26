@@ -42,16 +42,19 @@ function BestCardList() {
               />
             );
           })}
-				</BestCards>
-			</Content>
-			<More>
-				<Link to="/">
-					<MoreText>전체보기</MoreText>
-					<MoreImage src="assets/images/arrow.svg" />
-				</Link>
-			</More>
-		</Container>
-	)
+        </BestCards>
+      </Content>
+      <More>
+        <Link
+          to="/booklist/all"
+          style={{ textDecoration: "none", color: "black" }}
+        >
+          <MoreText>전체보기</MoreText>
+          <MoreImage src="assets/images/arrow.svg" />
+        </Link>
+      </More>
+    </Container>
+  );
 }
 
 export default BestCardList;
@@ -83,7 +86,7 @@ const BestCards = styled.div`
   justify-content: space-between;
 `;
 
-const More = styled.a`
+const More = styled.div`
   width: 4.4792vw;
   margin-top: 2.2222vh;
   display: flex;
