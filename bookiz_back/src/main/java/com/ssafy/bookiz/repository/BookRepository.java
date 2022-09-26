@@ -15,6 +15,8 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     public List<Book> findTop3ByOrderByCntDesc();
 
+    public List<Book> findAllByOrderByCntDesc();
+
     @Query(value = "SELECT b FROM Book b ORDER BY b.createdate DESC")
     public List<Object> findAllOrderByCreatedateDesc();
 }

@@ -24,10 +24,12 @@ public class BookService {
         this.modelMapper = modelMapper;
     }
 
-    public List<Book> findAll() {
-        List<Book> books = new ArrayList<>();
-        bookRepository.findAll().forEach(book -> books.add(book));
-        return books;
+    public List<Object> findAll() {
+        List<Book> books = bookRepository.findAllByOrderByCntDesc();
+        List<Object> allBooks = books.stream()
+                .map(book -> modelMapper.map(book, BookDto.class))
+                .collect(Collectors.toList());
+        return allBooks;
     }
 
     public BookDto findById(Long id) {

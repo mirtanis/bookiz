@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import NewLabel from '../../assets/images/newlabel.svg'
+// import NewLabel from '../../assets/images/newlabel.svg'
 
 function NewCard(props) {
 	return (
 		<NewCardContainer>
-			<Label src={NewLabel} />
+			<Label src="assets/images/newlabel.svg" />
 			<Image src={props.image} />
 			<Title>
 				{props.title}
@@ -29,11 +29,14 @@ const Label = styled.img`
 	position: absolute;
 	top: 0.2083vw;
 	left: 0.4444vh;
+	width: 5.2083vw !important;
+	height: 6.1111vh !important;
+	border-radius: 5px;
 `;
 
 const Image = styled.img`
 	width: 100%;
-	height: 36.8889vh;
+	height: 36.8889vh !important;
 `;
 
 const Title = styled.div`
