@@ -18,7 +18,6 @@ function BookAllList() {
     };
     const res = getCateList(bookListApis.BOOK_ALL_LIST);
     res.then((alllist) => {
-      console.log(alllist.data);
       setBooks(alllist.data);
     });
   }, []);
@@ -45,6 +44,8 @@ function BookAllList() {
             <BookListCard
               title={newBook.title}
               image={newBook.image}
+              info={newBook.info}
+              page={newBook.page}
               key={index}
             />
           );

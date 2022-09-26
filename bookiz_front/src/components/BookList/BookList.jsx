@@ -48,6 +48,8 @@ function BookList() {
             <BookListCard
               title={newBook.title}
               image={newBook.image}
+              info={newBook.info}
+              page={newBook.page}
               key={index}
             />
           );

@@ -18,7 +18,6 @@ function BookNewList() {
     };
     const res = getCateList(bookListApis.BOOK_NEW_LIST);
     res.then((newlist) => {
-      console.log(newlist.data);
       setBooks(newlist.data);
     });
   }, []);
@@ -45,6 +44,8 @@ function BookNewList() {
             <BookListCard
               title={newBook.title}
               image={newBook.image}
+              info={newBook.info}
+              page={newBook.page}
               key={index}
             />
           );
