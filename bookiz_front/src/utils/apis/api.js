@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const instance = axios.create({
-  baseURL: "j7a103.p.ssafy.io",
+  baseURL: "https://j7a103.p.ssafy.io",
   headers: {
     'Content-Type': 'application/json',
   },
@@ -22,7 +22,7 @@ export const bookListApis = {
   BOOK_RANK_LIST : '/api/books/rank',
   BOOK_NEW_LIST : '/api/books/new',
   BOOK_CATEGORY_LIST: (id) => {
-    return (page) => `/api/books/category?category-id=${id}`; 
+    return (page) => `/api/books/category?id=${id}`; 
   },
   BOOK_ALL_LIST : '/api/books/all',
 }

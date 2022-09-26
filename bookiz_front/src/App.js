@@ -13,7 +13,7 @@ function App() {
       <Routes>
           <Route path="" element={<MainPage/>}/>
           <Route path="/book" element={<BookPage/>}/>          
-          <Route path="/booklist/:book_id" element={<BookListPage/>}/>
+          <Route path="/booklist/:id" element={<BookListPage/>}/>
           <Route path="*" element={<NotFoundPage/>}/>
       </Routes> 
     </BrowserRouter>

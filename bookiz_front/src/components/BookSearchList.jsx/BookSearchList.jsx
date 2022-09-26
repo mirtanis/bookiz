@@ -5,7 +5,6 @@ import BookListCard from "./BookListCard";
 import Pagination from "./Pagination";
 import { bookListApis, fetchData } from "../../utils/apis/api";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
 
 function BookList() {
   const [books, setBooks] = useState([
@@ -105,31 +104,20 @@ function BookList() {
     //     "http://image.kyobobook.co.kr/images/book/xlarge/813/x9788967000813.jpg",
     // },
   ]);
-  const categoryid = useParams();
-  console.log(categoryid.id);
 
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(1);
   const offset = (page - 1) * limit;
 
   useEffect(() => {
-    const getRankList = async () => {
-      return await fetchData.get(
-        bookListApis.BOOK_CATEGORY_LIST(categoryid.id)
-      );
+    const getBookList = async () => {
+      return await fetchData.get(bookListApis.BOOK_RANK_LIST);
     };
-    const res = getRankList(bookListApis.BOOK_CATEGORY_LIST(categoryid.id));
-    res.then((ranklist) => {
-      setBooks(ranklist.data);
+    const res = getBookList(bookListApis.BOOK_RANK_LIST);
+    res.then((booklist) => {
+      setBooks(booklist.data);
     });
   }, []);
-
-  // useEffect(() => {
-  //   fetchData.get(bookListApis.BOOK_CATEGORY_LIST(categoryid)).then((res) => {
-  //     setBooks(res.data);
-  //   });
-  //   console.log('잘 실행되나요?');
-  // }, []);
   return (
     <Container>
       <Label>
