@@ -21,7 +21,7 @@ function Navbar() {
     if (!word) return;
     setKey(word);
     navigate({
-      pathname: "/booklist",
+      pathname: "/search",
       search: `?&keyword=${word}`,
     });
     console.log("검색");
