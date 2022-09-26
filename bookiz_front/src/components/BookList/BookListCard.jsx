@@ -1,14 +1,27 @@
 import React from 'react';
+import { useState } from "react";
 import styled from 'styled-components';
+import BookModal from '../Main/BookModal';
 
 function BookListCard(props) {
+
+	const [isModal, setIsModal] = useState(false);
+
+	const ModalHandler = () => {
+		setIsModal((prev) => !prev);
+	};
+
+
 	return (
-		<CardContainer>
+		<div>
+		<CardContainer onClick={ModalHandler}>
 			<Image src={props.image} />
 			<Title>
 				{props.title}
 			</Title>
 		</CardContainer>
+		<BookModal open={isModal} close={ModalHandler} title={props.title} info={props.info} image={props.image} page={props.page}></BookModal>
+		</div>
 	)
 }
 

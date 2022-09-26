@@ -14,7 +14,7 @@ function BookSearchList() {
   const [page, setPage] = useState(1);
 
   const key = searchParams.get("keyword");
-  console.log(key);
+
 
   const offset = (page - 1) * limit;
 
@@ -24,7 +24,6 @@ function BookSearchList() {
     };
     const res = getSearchList(bookListApis.BOOK_SEARCH_LIST(key));
     res.then((searchlist) => {
-      console.log(searchlist.data);
       setBooks(searchlist.data);
     });
   }, [key]);
@@ -51,6 +50,8 @@ function BookSearchList() {
             <BookListCard
               title={newBook.title}
               image={newBook.image}
+              info={newBook.info}
+              page={newBook.page}
               key={index}
             />
           );

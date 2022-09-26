@@ -24,11 +24,9 @@ function Navbar() {
       pathname: "/search",
       search: `?&keyword=${word}`,
     });
-    console.log("검색");
   };
 
   const ModalHandler = () => {
-    console.log("modal");
     setIsModal((prev) => !prev);
   };
 
