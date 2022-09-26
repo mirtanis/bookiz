@@ -1,20 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 import Navbar from "../components/Main/Navbar";
-import BookList from "../components/BookList/BookList";
+import BookAllList from "../components/BookAllList/BookAllList";
 
-function BookListPage() {
+function BookAllPage() {
   return (
     <div>
       <Container>
         <Navbar />
-        <BookList />
+        <BookAllList />
       </Container>
     </div>
   );
 }
 
-export default BookListPage;
+export default BookAllPage;
 
 const Container = styled.div`
   width: 90%;

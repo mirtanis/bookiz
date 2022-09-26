@@ -22,7 +22,7 @@ export const bookListApis = {
   BOOK_RANK_LIST : '/api/books/rank',
   BOOK_NEW_LIST : '/api/books/new',
   BOOK_CATEGORY_LIST: (id) => {
-    return `/api/books/category?category-id=${id}`; 
+    return `/api/books/category?id=${id}`; 
   },
   BOOK_ALL_LIST : '/api/books/all',
 }

@@ -25,8 +25,16 @@ SECRET_KEY = 'django-insecure-yk#16-izf@tt&6nkoo%o7=$9d+e8sqozaix)l34#kn&iw=*#!v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+]
 
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'https://localhost:3000',
+]
+
+# CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
 
@@ -44,9 +52,16 @@ INSTALLED_APPS = [
 
     # APP
     'tts',
+
+    # CORS
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    # CORS
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

@@ -7,15 +7,18 @@ import BookPage from "./routes/Book";
 import NotFoundPage from "./routes/NotFound";
 import BookListPage from "./routes/BookList";
 import TestPage from "./routes/Test";
-
+import BookAllPage from "./routes/BookAll";
+import BookSearchPage from "./routes/BookSearch";
 
 function App() {
   return (
     <BrowserRouter>    
       <Routes>
           <Route path="" element={<MainPage/>}/>
-          <Route path="/book" element={<BookPage/>}/>          
-          <Route path="/booklist" element={<BookListPage/>}/>
+          <Route path="/book" element={<BookPage/>}/>
+          <Route path="/booklist/all" element={<BookAllPage/>}/>      
+          <Route path="/booklist/:id" element={<BookListPage/>}/>
+          <Route path="/search" element={<BookSearchPage/>} />
           <Route path="*" element={<NotFoundPage/>}/>
           <Route path="/test" element={<TestPage/>}/>
       </Routes> 
