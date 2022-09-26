@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import NewCard from './NewCard';
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -6,17 +6,29 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import { Link } from 'react-router-dom';
+import { bookListApis, fetchData } from '../../utils/apis/api';
 // import BookModal from './BookModal';
 
 function NewCardList(props) {
-	const [newBooks, setNewBooks] = useState([
-    {title: "견우와 직녀", image: "http://image.kyobobook.co.kr/images/book/xlarge/813/x9788967000813.jpg", info: "견우와 직녀 줄거리", page: "8"},
-    {title: "먹어도 먹어도 줄지 않는 죽", image: "https://image.yes24.com/goods/72352412/XL", info: "먹어도 먹어도 줄지 않는 죽 줄거리", page: "10"},
-    {title: "다이너마이트 소동", image: "https://image.aladin.co.kr/product/4434/21/cover500/1185423192_1.jpg", info: "다이너마이트 소동 줄거리", page: "12"},
-    {title: "살려줘!", image: "https://image.yes24.com/goods/57883038/XL", info: "살려줘! 줄거리", page: "14"},
-    {title: "견우와 직녀", image: "http://image.kyobobook.co.kr/images/book/xlarge/813/x9788967000813.jpg", info: "견우와 직녀 줄거리", page: "16"}
-  ]);
-	
+	// const [newBooks, setNewBooks] = useState([
+  //   {title: "견우와 직녀", image: "http://image.kyobobook.co.kr/images/book/xlarge/813/x9788967000813.jpg", info: "견우와 직녀 줄거리", page: "8"},
+  //   {title: "먹어도 먹어도 줄지 않는 죽", image: "https://image.yes24.com/goods/72352412/XL", info: "먹어도 먹어도 줄지 않는 죽 줄거리", page: "10"},
+  //   {title: "다이너마이트 소동", image: "https://image.aladin.co.kr/product/4434/21/cover500/1185423192_1.jpg", info: "다이너마이트 소동 줄거리", page: "12"},
+  //   {title: "살려줘!", image: "https://image.yes24.com/goods/57883038/XL", info: "살려줘! 줄거리", page: "14"},
+  //   {title: "견우와 직녀", image: "http://image.kyobobook.co.kr/images/book/xlarge/813/x9788967000813.jpg", info: "견우와 직녀 줄거리", page: "16"}
+  // ]);
+	const [newBooks, setNewBooks] = useState([]);
+
+	useEffect(() => {
+		const getnewBookList = async (url) => {
+			return await fetchData.get(url);
+		};
+		const res = getnewBookList(bookListApis.BOOK_NEW_LIST);
+		res.then((newlist) => {
+			setNewBooks(newlist.data);
+		});
+
+	}, []);
 
 	return (
 		<Container>
