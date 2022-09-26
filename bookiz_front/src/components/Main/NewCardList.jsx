@@ -1,37 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import NewCard from "./NewCard";
-import Arrow from "../../assets/images/arrow.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import { bookListApis, fetchData } from "../../utils/apis/api";
-import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function NewCardList() {
-  const [newBooks, setNewBooks] = useState([
-    // {
-    //   title: "견우와 직녀",
-    //   image:
-    //     "http://image.kyobobook.co.kr/images/book/xlarge/813/x9788967000813.jpg",
-    // },
-    // {
-    //   title: "먹어도 먹어도 줄지 않는 죽",
-    //   image: "https://image.yes24.com/goods/72352412/XL",
-    // },
-    // {
-    //   title: "다이너마이트 소동",
-    //   image:
-    //     "https://image.aladin.co.kr/product/4434/21/cover500/1185423192_1.jpg",
-    // },
-    // { title: "살려줘!", image: "https://image.yes24.com/goods/57883038/XL" },
-    // {
-    //   title: "견우와 직녀",
-    //   image:
-    //     "http://image.kyobobook.co.kr/images/book/xlarge/813/x9788967000813.jpg",
-    // },
-  ]);
+  const [newBooks, setNewBooks] = useState([]);
   useEffect(() => {
     const getRankList = async () => {
       return await fetchData.get(bookListApis.BOOK_NEW_LIST);
@@ -70,9 +48,11 @@ function NewCardList() {
           </Swiper>
         </SwiperContainer>
       </Content>
-      <More href="#">
-        <MoreText>더보기</MoreText>
-        <MoreImage src={Arrow} />
+      <More>
+        <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+          <MoreText>더보기</MoreText>
+          <MoreImage src="assets/images/arrow.svg" />
+        </Link>
       </More>
     </Container>
   );
