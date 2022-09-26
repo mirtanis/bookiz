@@ -3,6 +3,7 @@ import styled from "styled-components";
 import BestCard from "./BestCard";
 import { bookListApis, fetchData } from "../../utils/apis/api";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function BestCardList() {
   const [bestSellers, setBestSellers] = useState([]);
@@ -39,9 +40,14 @@ function BestCardList() {
           })}
         </BestCards>
       </Content>
-      <More href="#">
-        <MoreText>전체보기</MoreText>
-        <MoreImage src="assets/images/arrow.svg" />
+      <More>
+        <Link
+          to="/booklist/all"
+          style={{ textDecoration: "none", color: "black" }}
+        >
+          <MoreText>전체보기</MoreText>
+          <MoreImage src="assets/images/arrow.svg" />
+        </Link>
       </More>
     </Container>
   );
@@ -76,7 +82,7 @@ const BestCards = styled.div`
   justify-content: space-between;
 `;
 
-const More = styled.a`
+const More = styled.div`
   width: 4.4792vw;
   margin-top: 2.2222vh;
   display: flex;

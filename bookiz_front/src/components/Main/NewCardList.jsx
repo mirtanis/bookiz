@@ -49,7 +49,10 @@ function NewCardList() {
         </SwiperContainer>
       </Content>
       <More>
-        <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+        <Link
+          to="/booklist/new"
+          style={{ textDecoration: "none", color: "black" }}
+        >
           <MoreText>더보기</MoreText>
           <MoreImage src="assets/images/arrow.svg" />
         </Link>
@@ -85,7 +88,7 @@ const SwiperContainer = styled.div`
   width: 100%;
 `;
 
-const More = styled.a`
+const More = styled.div`
   width: 4.4792vw;
   margin-top: 2.2222vh;
   display: flex;
