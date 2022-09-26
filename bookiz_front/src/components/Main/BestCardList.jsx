@@ -9,25 +9,7 @@ import { bookListApis, fetchData } from "../../utils/apis/api";
 import { useEffect } from "react";
 
 function BestCardList() {
-  const [bestSellers, setBestSellers] = useState([
-    //   {
-    //     crown: GoldCrown,
-    //     title: "토끼와 거북이",
-    //     image: "https://www.dasobook.com/shop/data/editor/bef9d99d4de10797.jpg",
-    //   },
-    //   {
-    //     crown: SilverCrown,
-    //     title: "금도끼 은도끼",
-    //     image:
-    //       "http://image.kyobobook.co.kr/images/book/xlarge/705/x9788915102705.jpg",
-    //   },
-    //   {
-    //     crown: BronzeCrown,
-    //     title: "선녀와 나무꾼",
-    //     image:
-    //       "https://image.aladin.co.kr/product/184/92/cover500/8901073420_1.jpg",
-    //   },
-  ]);
+  const [bestSellers, setBestSellers] = useState([]);
   useEffect(() => {
     const getRankList = async () => {
       return await fetchData.get(bookListApis.BOOK_RANK_LIST);

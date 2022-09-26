@@ -8,128 +8,24 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 function BookList() {
-  const [books, setBooks] = useState([
-    // {
-    //   title: "견우와 직녀",
-    //   image:
-    //     "http://image.kyobobook.co.kr/images/book/xlarge/813/x9788967000813.jpg",
-    // },
-    // {
-    //   title: "먹어도 먹어도 줄지 않는 죽",
-    //   image: "https://image.yes24.com/goods/72352412/XL",
-    // },
-    // {
-    //   title: "다이너마이트 소동",
-    //   image:
-    //     "https://image.aladin.co.kr/product/4434/21/cover500/1185423192_1.jpg",
-    // },
-    // { title: "살려줘!", image: "https://image.yes24.com/goods/57883038/XL" },
-    // {
-    //   title: "견우와 직녀",
-    //   image:
-    //     "http://image.kyobobook.co.kr/images/book/xlarge/813/x9788967000813.jpg",
-    // },
-    // {
-    //   title: "먹어도 먹어도 줄지 않는 죽",
-    //   image: "https://image.yes24.com/goods/72352412/XL",
-    // },
-    // {
-    //   title: "다이너마이트 소동",
-    //   image:
-    //     "https://image.aladin.co.kr/product/4434/21/cover500/1185423192_1.jpg",
-    // },
-    // { title: "살려줘!", image: "https://image.yes24.com/goods/57883038/XL" },
-    // {
-    //   title: "견우와 직녀",
-    //   image:
-    //     "http://image.kyobobook.co.kr/images/book/xlarge/813/x9788967000813.jpg",
-    // },
-    // {
-    //   title: "먹어도 먹어도 줄지 않는 죽",
-    //   image: "https://image.yes24.com/goods/72352412/XL",
-    // },
-    // {
-    //   title: "다이너마이트 소동",
-    //   image:
-    //     "https://image.aladin.co.kr/product/4434/21/cover500/1185423192_1.jpg",
-    // },
-    // { title: "살려줘!", image: "https://image.yes24.com/goods/57883038/XL" },
-    // {
-    //   title: "견우와 직녀",
-    //   image:
-    //     "http://image.kyobobook.co.kr/images/book/xlarge/813/x9788967000813.jpg",
-    // },
-    // {
-    //   title: "먹어도 먹어도 줄지 않는 죽",
-    //   image: "https://image.yes24.com/goods/72352412/XL",
-    // },
-    // {
-    //   title: "다이너마이트 소동",
-    //   image:
-    //     "https://image.aladin.co.kr/product/4434/21/cover500/1185423192_1.jpg",
-    // },
-    // { title: "살려줘!", image: "https://image.yes24.com/goods/57883038/XL" },
-    // {
-    //   title: "견우와 직녀",
-    //   image:
-    //     "http://image.kyobobook.co.kr/images/book/xlarge/813/x9788967000813.jpg",
-    // },
-    // {
-    //   title: "먹어도 먹어도 줄지 않는 죽",
-    //   image: "https://image.yes24.com/goods/72352412/XL",
-    // },
-    // {
-    //   title: "다이너마이트 소동",
-    //   image:
-    //     "https://image.aladin.co.kr/product/4434/21/cover500/1185423192_1.jpg",
-    // },
-    // { title: "살려줘!", image: "https://image.yes24.com/goods/57883038/XL" },
-    // {
-    //   title: "견우와 직녀",
-    //   image:
-    //     "http://image.kyobobook.co.kr/images/book/xlarge/813/x9788967000813.jpg",
-    // },
-    // {
-    //   title: "먹어도 먹어도 줄지 않는 죽",
-    //   image: "https://image.yes24.com/goods/72352412/XL",
-    // },
-    // {
-    //   title: "다이너마이트 소동",
-    //   image:
-    //     "https://image.aladin.co.kr/product/4434/21/cover500/1185423192_1.jpg",
-    // },
-    // { title: "살려줘!", image: "https://image.yes24.com/goods/57883038/XL" },
-    // {
-    //   title: "견우와 직녀",
-    //   image:
-    //     "http://image.kyobobook.co.kr/images/book/xlarge/813/x9788967000813.jpg",
-    // },
-  ]);
+  const [books, setBooks] = useState([]);
   const categoryid = useParams();
   console.log(categoryid.id);
 
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(1);
   const offset = (page - 1) * limit;
-
   useEffect(() => {
-    const getRankList = async () => {
-      return await fetchData.get(
-        bookListApis.BOOK_CATEGORY_LIST(categoryid.id)
-      );
+    const getCateList = async (url) => {
+      return await fetchData.get(url);
     };
-    const res = getRankList(bookListApis.BOOK_CATEGORY_LIST(categoryid.id));
-    res.then((ranklist) => {
-      setBooks(ranklist.data);
+    const res = getCateList(bookListApis.BOOK_CATEGORY_LIST(categoryid.id));
+    res.then((catelist) => {
+      console.log(catelist.data);
+      setBooks(catelist.data);
     });
   }, []);
 
-  // useEffect(() => {
-  //   fetchData.get(bookListApis.BOOK_CATEGORY_LIST(categoryid)).then((res) => {
-  //     setBooks(res.data);
-  //   });
-  //   console.log('잘 실행되나요?');
-  // }, []);
   return (
     <Container>
       <Label>

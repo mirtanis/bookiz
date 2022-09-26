@@ -1,33 +1,27 @@
 import React from "react";
 import styled from "styled-components";
 import { useState } from "react";
-import Pagination from "../BookList/Pagination";
 import BookListCard from "../BookList/BookListCard";
+import Pagination from "../BookList/Pagination";
 import { bookListApis, fetchData } from "../../utils/apis/api";
 import { useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
 
-function BookSearchList() {
-  const [searchParams] = useSearchParams();
+function BookAllList() {
   const [books, setBooks] = useState([]);
+
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(1);
-
-  const key = searchParams.get("keyword");
-  console.log(key);
-
   const offset = (page - 1) * limit;
-
   useEffect(() => {
-    const getSearchList = async (url) => {
+    const getCateList = async (url) => {
       return await fetchData.get(url);
     };
-    const res = getSearchList(bookListApis.BOOK_SEARCH_LIST(key));
-    res.then((searchlist) => {
-      console.log(searchlist.data);
-      setBooks(searchlist.data);
+    const res = getCateList(bookListApis.BOOK_ALL_LIST);
+    res.then((alllist) => {
+      console.log(alllist.data);
+      setBooks(alllist.data);
     });
-  }, [key]);
+  }, []);
 
   return (
     <Container>
@@ -69,7 +63,7 @@ function BookSearchList() {
   );
 }
 
-export default BookSearchList;
+export default BookAllList;
 
 const Container = styled.div`
   width: 100%;
