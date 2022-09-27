@@ -1,14 +1,16 @@
 package com.ssafy.bookiz.controller;
 
 import com.ssafy.bookiz.domain.Book;
+import com.ssafy.bookiz.domain.BookContent;
 import com.ssafy.bookiz.domain.BookDto;
+import com.ssafy.bookiz.service.BookCategoryService;
 import com.ssafy.bookiz.service.BookContentService;
 import com.ssafy.bookiz.service.BookService;
-import com.ssafy.bookiz.service.BookCategoryService;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -127,5 +129,29 @@ public class BookController {
     public ResponseEntity<?> plusCnt(@RequestBody BookDto bookDto) {
         BookDto book = bookService.plusCnt(bookDto.getId());
         return new ResponseEntity<>(book, HttpStatus.OK);
+    }
+
+    @PostMapping("/addBook")
+    public ResponseEntity<?> addBook(@RequestBody Book bookInput, @RequestBody List<BookContent> contents) {
+        System.out.println("addbook 호출");
+        //List<Object> books = bookService.findAllByTitle(bookInput.getTitle());
+        Book book = bookInput;
+//        if(books.size() > 0) {
+//            book = (Book)books.get(0);
+//        }else {
+//            book = bookInput;
+//        }
+        bookService.addBook(book);
+        bookContentService.addContents(contents);
+
+        return new ResponseEntity<>(book, HttpStatus.OK);
+    }
+
+    @PostMapping("/addContents")
+    public ResponseEntity<?> addContents(@RequestBody List<BookContent> contents) {
+        System.out.println("addContents 호출");
+        bookContentService.addContents(contents);
+        String res = "good";
+        return new ResponseEntity(HttpStatus.OK);
     }
 }

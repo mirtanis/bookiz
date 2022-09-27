@@ -69,4 +69,8 @@ public class BookService {
         BookDto bookDto = modelMapper.map(book, BookDto.class);
         return bookDto;
     }
+    public long addBook(Book book) {
+        bookRepository.save(book);
+        return book.getId();
+    }
 }
