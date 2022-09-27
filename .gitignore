@@ -25,7 +25,6 @@ media
 
 # Distribution / packaging
 .Python
-build/
 develop-eggs/
 dist/
 downloads/
@@ -363,7 +362,6 @@ fabric.properties
 .mtj.tmp/
 
 # Package Files #
-*.jar
 *.war
 *.nar
 *.ear
@@ -779,8 +777,6 @@ $RECYCLE.BIN/
 
 ### Gradle ###
 .gradle
-**/build/
-!src/**/build/
 
 # Ignore Gradle GUI config
 gradle-app.setting
