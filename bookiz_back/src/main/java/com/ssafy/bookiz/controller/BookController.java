@@ -1,8 +1,8 @@
 package com.ssafy.bookiz.controller;
 
 import com.ssafy.bookiz.domain.Book;
-import com.ssafy.bookiz.domain.BookContent;
 import com.ssafy.bookiz.domain.BookDto;
+import com.ssafy.bookiz.domain.RequestBookContent;
 import com.ssafy.bookiz.service.BookCategoryService;
 import com.ssafy.bookiz.service.BookContentService;
 import com.ssafy.bookiz.service.BookService;
@@ -10,7 +10,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -132,26 +131,26 @@ public class BookController {
     }
 
     @PostMapping("/addBook")
-    public ResponseEntity<?> addBook(@RequestBody Book bookInput, @RequestBody List<BookContent> contents) {
-        System.out.println("addbook 호출");
+    public ResponseEntity<?> addBook(@RequestBody Book bookInput) {
+        System.out.println("addBook 호출");
         //List<Object> books = bookService.findAllByTitle(bookInput.getTitle());
         Book book = bookInput;
 //        if(books.size() > 0) {
-//            book = (Book)books.get(0);
+//            BookDto bookDto = (BookDto) books.get(0);
+//            book = bookService.findById2(bookDto.getId());
 //        }else {
 //            book = bookInput;
 //        }
         bookService.addBook(book);
-        bookContentService.addContents(contents);
 
         return new ResponseEntity<>(book, HttpStatus.OK);
     }
 
     @PostMapping("/addContents")
-    public ResponseEntity<?> addContents(@RequestBody List<BookContent> contents) {
+    public ResponseEntity<?> addContents(@RequestBody List<RequestBookContent> reqs) {
         System.out.println("addContents 호출");
-        bookContentService.addContents(contents);
-        String res = "good";
+        Book book = bookService.findById2(reqs.get(0).getBook_id());
+        bookContentService.addContents(reqs, book);
         return new ResponseEntity(HttpStatus.OK);
     }
 }

@@ -38,6 +38,11 @@ public class BookService {
         return bookDto;
     }
 
+    public Book findById2(Long id) {
+        Book book = bookRepository.findById(id).get();
+        return book;
+    }
+
     public List<Object> getBestBooks() {
         List<Book> books = bookRepository.findTop3ByOrderByCntDesc();
         List<Object> bestBooks = books.stream()

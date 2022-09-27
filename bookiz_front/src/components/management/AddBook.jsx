@@ -67,50 +67,39 @@ function AddBook() {
             info: document.getElementById("inputInfo").value,
             title: document.getElementById("inputText").files[0].name.slice(0, -4)
         };
-        let contents = [];
-        let content;
         let imageName = document.getElementById("inputImage").files[0].name;
-        for (let i = 0; i < pageNum; i++) {
-            content = { audio: '', content: '', image: '', page: '', type: ''};
-            content.content = document.getElementById("str" + i).textContent;
-            console.log(content.content[0]);
-            content.page = i;
-            if (content.content[0] !== `"`) {
-                content.type = 1;
-            } else if (document.getElementById("audio" + i).files.length > 0) {
-                content.type = 2;
-                content.audio = document.getElementById("audio" + i).files[0].name;
-            } else {
-                content.type = 3;
-            }
-            if (document.getElementById("image" + i).files.length > 0) {
-                imageName = document.getElementById("image" + i).files[0].name;
-            }
-            content.image = imageName;
-            contents.push(content);
-        }//end of for contents
         
-        const req = {
-            bookInput: book,
-            contents: contents,
-        };
-        const res = addBook(bookApis.BOOK_ADDBOOK, req);
+        const req1 = addBook(bookApis.BOOK_ADDBOOK, book);
         
-        res.then((data) => {
-            console.log(data.data);
+        let id = -1;
+        req1.then((res) => {
+            console.log(res.data.id);
+            id = res.data.id;
+            let contents = [];
+            let content;
+            for (let i = 0; i < pageNum; i++) {
+                content = { audio: '', content: '', image: '', page: '', type: '', book_id: id};
+                content.content = document.getElementById("str" + i).textContent;
+                content.page = i;
+                if (content.content[0] !== `"`) {
+                    content.type = 1;
+                } else if (document.getElementById("audio" + i).files.length > 0) {
+                    content.type = 2;
+                    content.audio = document.getElementById("audio" + i).files[0].name;
+                } else {
+                    content.type = 3;
+                }
+                if (document.getElementById("image" + i).files.length > 0) {
+                    imageName = document.getElementById("image" + i).files[0].name;
+                }
+                content.image = imageName;
+                contents.push(content);
+            }//end of for contents
+            const req2 = addContents(bookApis.BOOK_ADDCONTENTS, contents)
+            req2.then((res) => {
+                console.log(res);
+            });
         });
-
-        // res1.then((data) => {
-        //     console.log(data.data);
-        //     tempbook = data.data;
-        //     console.log(contents);
-        //     console.log("굿");
-        //     const res2 = addContents(bookApis.BOOK_ADDCONTENTS, contents);
-        //     res2.then((data) => {
-        //         console.log(data);
-        //     });
-        // });
-
     }
 
     const addBook = async (url, body) => {
