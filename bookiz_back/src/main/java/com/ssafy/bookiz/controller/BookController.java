@@ -123,7 +123,7 @@ public class BookController {
         }
     }
 
-    @PatchMapping("/pluscnt")
+    @PutMapping("/pluscnt")
     public ResponseEntity<?> plusCnt(@RequestBody BookDto bookDto) {
         BookDto book = bookService.plusCnt(bookDto.getId());
         return new ResponseEntity<>(book, HttpStatus.OK);
