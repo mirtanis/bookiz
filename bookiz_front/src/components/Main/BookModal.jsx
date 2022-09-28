@@ -137,6 +137,8 @@ const Modal = styled.section`
 const Text = styled.p`
   color: black;
   font-size: 4vw;
+  white-space: pre-line;
+  word-break: keep-all;
   display: flex;
   font-weight: bold;
   text-align: center;
@@ -147,7 +149,7 @@ const Text = styled.p`
 
 const Info = styled.div`
   border-width: 100%;
-  height: 40%;
+  height: 50%;
   background-color: white;
   border-radius: 10px;
   // font-size: 1.8vw;
@@ -159,7 +161,7 @@ const Info = styled.div`
   word-break:break-all;
   justify-content: center;
   align-items: center;
-  padding: 5px 2px 5px 2px;
+  padding: 10px 10px 10px 10px;
 `;
 
 const StartBtn = styled.button`
