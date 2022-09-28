@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import BookPage from "./BookPage"
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
@@ -13,23 +12,36 @@ function Content() {
 
   const [page, setPage] = useState(1);
 
+  const [isPageChanged, setIsPageChanged] = useState(true);
+
   return (
     <Container>
-      {/* <BookizMain>nowbook[setPage]</BookizMain> */}
-      <BookPage page={bookContents[page - 1].page} content={bookContents[page - 1].content} image={bookContents[page - 1].image} totalpage={bookContents.length} />
+      <BookPage
+        page={bookContents[page - 1].page}
+        content={bookContents[page - 1].content}
+        image={bookContents[page - 1].image}
+        totalpage={bookContents.length}
+        type={bookContents[page - 1].type}
+        setPage={setPage}
+        isPageChanged={isPageChanged}
+        setIsPageChanged={setIsPageChanged}
+      />
       {page > 1 &&
-        <LeftPageButton onClick={() => setPage(page - 1)}>
-          <AiOutlineLeft size={50} />
+        <LeftPageButton onClick={() => {
+          setPage(page - 1)
+          setIsPageChanged(true)
+          }}>
+          <AiOutlineLeft size={50} color={"white"} />
         </LeftPageButton>
       }
       {page < bookContents.length &&
-        <RightPageButton onClick={() => setPage(page + 1)}>
-          <AiOutlineRight size={50} />
+        <RightPageButton onClick={() => {
+          setPage(page + 1)
+          setIsPageChanged(true)
+        }}>
+          <AiOutlineRight size={50} color={"white"} />
         </RightPageButton>
       }
-      {/* <Link to="/">
-        <button>메인으로 돌아가기</button>
-      </Link> */}
     </Container>
   );
 }
@@ -41,24 +53,16 @@ const Container = styled.div`
   position: relative;
 `;
 
-const BookizMain = styled.main`
-  font-size: 80px;
-  font-weight: bold;
-  margin-top: 10px;
-  color: ${(props) => props.theme.colors.mainYellow};
-  text-align: center;
-`;
-
-const LeftPageButton = styled.a`
+const LeftPageButton = styled.div`
   position: absolute;
-  top: 35.5556vh;
+  top: 45vh;
   left: 5.4167vw;
   cursor: pointer;
 `;
 
-const RightPageButton = styled.a`
+const RightPageButton = styled.div`
   position: absolute;
-  top: 35.5556vh;
+  top: 45vh;
   right: 5.4167vw;
   cursor: pointer;
 `;

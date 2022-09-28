@@ -2,11 +2,8 @@ import React from 'react';
 import { useState } from "react";
 import styled from 'styled-components';
 import BookModal from './BookModal';
-// import NewLabel from '../../assets/images/newlabel.svg'
 
 function NewCard(props) {
-
-	
 	const [isModal, setIsModal] = useState(false);
 
   const ModalHandler = () => {
@@ -22,7 +19,7 @@ function NewCard(props) {
 				{props.title}
 			</Title>
 		</NewCardContainer>
-		<BookModal open={isModal} close={ModalHandler} title={props.title} info={props.info} image={props.image} page={props.page}></BookModal>
+		<BookModal open={isModal} close={ModalHandler} id={props.id} title={props.title} info={props.info} image={props.image} page={props.page}></BookModal>
 		</div>
 	)
 }
@@ -45,11 +42,13 @@ const Label = styled.img`
 	width: 5.2083vw !important;
 	height: 6.1111vh !important;
 	border-radius: 5px;
+	object-fit: fill !important;
 `;
 
 const Image = styled.img`
 	width: 100%;
 	height: 36.8889vh !important;
+	object-fit: fill !important;
 `;
 
 const Title = styled.div`
