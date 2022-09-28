@@ -48,6 +48,7 @@ function BookSearchList() {
         {books.slice(offset, offset + limit).map((newBook, index) => {
           return (
             <BookListCard
+              id={newBook.id}
               title={newBook.title}
               image={newBook.image}
               info={newBook.info}

@@ -2,9 +2,17 @@ import styled from "styled-components";
 import BookModalPortal from "./Portal";
 import { IoClose } from "react-icons/io5";
 import { Link } from "react-router-dom";
+// import { useEffect, useState } from "react";
+import { bookApis, fetchData } from "../../utils/apis/api";
 
 function BookModal(props) {
   const { open, close, title, info, image, page } = props;
+
+  const getPlusCnt = async (url) => {
+    return await fetchData.get(url)
+  }
+
+  const onclick = getPlusCnt(bookApis.BOOK_CNTUP(props.id))
 
   return (
     <BookModalPortal>
@@ -15,14 +23,14 @@ function BookModal(props) {
             <header>
               <IoClose
                 className="closeicon"
-                size={40}
+                size={20}
                 color="#ffffff"
                 onClick={close}
                 ></IoClose>
             </header>
             <Book>
               <div style={{ padding: "0 2% 0 1%", width: "60%", height: "100%"}}>
-                <img src={image} alt="" style={{ width: "100%", height: "100%", objectFit: "contain" }}/>
+                <img src={image} alt={image} style={{ width: "100%", height: "100%", objectFit: "contain" }}/>
               </div>
               <BookInfo>
                 <Text>{title}</Text>
@@ -31,7 +39,7 @@ function BookModal(props) {
             </Book>
             <Start>
               <Link to="/book" style={{ textDecoration: "none", width: "30%", height: "70%"}}>
-                <StartBtn className="startbtn">시작하기</StartBtn>
+                <StartBtn className="startbtn" onClick={onclick}>시작하기</StartBtn>
               </Link>
               <Page>총 {page} 페이지</Page>
             </Start>

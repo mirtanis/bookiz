@@ -43,7 +43,7 @@ function NewCardList() {
 							return (
 								<div>
 									<SwiperSlide key={index}>
-										<NewCard title={newBook.title} image={newBook.image} info={newBook.info} page={newBook.page}/>
+										<NewCard id={newBook.id} title={newBook.title} image={newBook.image} info={newBook.info} page={newBook.page}/>
 									</SwiperSlide>
 								</div>
 							);
@@ -94,8 +94,6 @@ const More = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-decoration: none;
-  color: black;
 `;
 
 const MoreText = styled.p`

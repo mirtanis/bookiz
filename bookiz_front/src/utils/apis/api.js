@@ -32,7 +32,7 @@ export const bookApis = {
     return `/api/books?book-id${id}`
   },
   BOOK_CNTUP : (id) => {
-    return `/api/books?book-id${id}`
+    return `/api/books/pluscnt?id=${id}`
   },
 }
 

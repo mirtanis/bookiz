@@ -123,9 +123,9 @@ public class BookController {
         }
     }
 
-    @PutMapping("")
-    public ResponseEntity<?> plusCnt(@RequestBody BookDto bookDto) {
-        BookDto book = bookService.plusCnt(bookDto.getId());
+    @GetMapping("/pluscnt")
+    public ResponseEntity<?> plusCnt(@RequestParam Long id) {
+        BookDto book = bookService.plusCnt(id);
         return new ResponseEntity<>(book, HttpStatus.OK);
     }
 }
