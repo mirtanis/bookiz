@@ -7,8 +7,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -75,6 +79,10 @@ public class BookService {
         return bookDto;
     }
     public long addBook(Book book) {
+        Date today = new Date();
+        SimpleDateFormat form = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        form.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));
+        book.setCreatedate(Timestamp.valueOf(form.format(today)));
         bookRepository.save(book);
         return book.getId();
     }
