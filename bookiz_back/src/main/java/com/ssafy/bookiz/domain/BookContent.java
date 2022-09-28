@@ -35,4 +35,16 @@ public class BookContent {
     @JoinColumn(name = "book_id")
     @JsonIgnore
     private Book book;
+
+    public BookContent(RequestBookContent content) {
+        super();
+        this.audio = content.getAudio();
+        this.content = content.getContent();
+        this.type = content.getType();
+        this.image = content.getImage();
+        this.page = content.getPage();
+    }
+    public void setBook(Book book) {
+        this.book = book;
+    }
 }

@@ -45,6 +45,7 @@ function BestCardList() {
               <BestCard
                 key={index}
                 crown={getCrown[index]}
+                id={bestSeller.id}
                 title={bestSeller.title}
                 image={bestSeller.image}
                 info={bestSeller.info}
