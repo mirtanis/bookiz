@@ -1,12 +1,14 @@
 .swiper-button-prev {
-  color: black;
+  color: white;
+  scale: 2;
 }
 .swiper-button-prev:hover {
   opacity: 0.6;
 }
 
 .swiper-button-next {
-  color: black;
+  color: white;
+  scale: 2;
 }
 
 .swiper-button-next:hover {
