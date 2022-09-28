@@ -6,10 +6,6 @@ import "swiper/css/navigation";
 import './swiperCSS.css';
 import { Navigation } from "swiper";
 
-// import helpimg1 from "../../assets/images/help1.PNG";
-// import helpimg2 from "../../assets/images/help2.PNG";
-// import helpimg3 from "../../assets/images/help3.PNG";
-
 function HelpSwiper() {
   return (
     <Content>
@@ -25,9 +21,7 @@ function HelpSwiper() {
           modules={[Navigation]}
           className="mySwiper"
         >
-          {/* {data.map((auction, idx) => ( */}
           <SwiperSlide
-          // key={idx}
           >
             <div>
               <img
@@ -58,7 +52,6 @@ function HelpSwiper() {
               />
             </div>
           </SwiperSlide>
-          {/* ))} */}
         </Swiper>
       </SwipeContainer>
     </Content>
