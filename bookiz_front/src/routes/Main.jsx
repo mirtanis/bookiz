@@ -6,6 +6,7 @@ import Bookiz from "../components/Main/Bookiz";
 import Navbar from "../components/Main/Navbar";
 import BestCardList from "../components/Main/BestCardList";
 import NewCardList from "../components/Main/NewCardList";
+import SideEffects from "../components/Main/SideEffects";
 // import BookModal from "../components/Main/BookModal";
 
 function MainPage() {
@@ -15,6 +16,7 @@ function MainPage() {
       <Container>
         <Navbar />
         <HelloMain />
+        <SideEffects />
         <Bookiz />
         <BestCardList />
         <NewCardList/>
