@@ -137,27 +137,31 @@ const Modal = styled.section`
 const Text = styled.p`
   color: black;
   font-size: 4vw;
+  white-space: pre-line;
+  word-break: keep-all;
   display: flex;
   font-weight: bold;
   text-align: center;
   align-items: center;
   justify-content: center;
-  margin: 10% 0 15% 0;
+  margin: 10% 0 10% 0;
 `;
 
 const Info = styled.div`
   border-width: 100%;
-  height: 40%;
+  height: 50%;
   background-color: white;
   border-radius: 10px;
-  font-size: 1.8vw;
+  // font-size: 1.8vw;
   // font-size: 3.5vh;
+  white-space: pre-line;
+  word-break: keep-all;
   display: flex;
   text-align: center;
   word-break:break-all;
   justify-content: center;
   align-items: center;
-  padding: 0 20px 0 2px;
+  padding: 10px 10px 10px 10px;
 `;
 
 const StartBtn = styled.button`
@@ -166,7 +170,9 @@ const StartBtn = styled.button`
   border-radius: 50px;
   border: 0;
   background-color: skyblue;
-  font-size: 3vw;
+  font-size: 2vw;
+  white-space: pre-line;
+  word-break: keep-all;
   display: flex;
   text-align: center;
   align-items: center;
@@ -178,7 +184,9 @@ const Page = styled.div`
   height: 50%;
   border-radius: 10px;
   background-color: #c99999;
-  font-size: 2vw;
+  font-size: 1.5vw;
+  white-space: pre-line;
+  word-break: keep-all;
   display: flex;
   text-align: center;
   align-items: center;
