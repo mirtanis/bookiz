@@ -53,7 +53,7 @@ const Image = styled.img`
   width: 100%;
   height: 100%;
   border-radius: 20px;
-  box-shadow: 3px 3px 3px 3px #999;
+  box-shadow: 3px 3px 3px 3px black;
 `;
 
 const Title = styled.div`
