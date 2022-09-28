@@ -20,7 +20,7 @@ function BestCard(props) {
 					{props.title}
 				</Title>
 			</BestCardContainer>
-			<BookModal open={isModal} close={ModalHandler} title={props.title} info={props.info} image={props.image} page={props.page}></BookModal>
+			<BookModal open={isModal} close={ModalHandler} id={props.id} title={props.title} info={props.info} image={props.image} page={props.page}></BookModal>
 		</div>
 	)
 }
