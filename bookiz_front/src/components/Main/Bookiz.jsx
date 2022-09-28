@@ -12,4 +12,5 @@ const BookizMain = styled.main`
   font-weight: bold;
   color: ${(props) => props.theme.colors.subBlack};
   text-align: center;
+  margin-top: 80px;
 `;

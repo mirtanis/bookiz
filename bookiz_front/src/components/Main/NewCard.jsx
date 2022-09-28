@@ -12,13 +12,15 @@ function NewCard(props) {
 
   return (
     <div>
-      <NewCardContainer onClick={ModalHandler}>
-        <Label>
-          <p>NEW</p>
-        </Label>
-        <Image src={props.image} />
-        <Title>{props.title}</Title>
-      </NewCardContainer>
+      <Container>
+        <NewCardContainer onClick={ModalHandler}>
+          <Label>
+            <p>NEW</p>
+          </Label>
+          <Image src={props.image} />
+          <Title>{props.title}</Title>
+        </NewCardContainer>
+      </Container>
       <BookModal
         open={isModal}
         close={ModalHandler}
@@ -33,13 +35,21 @@ function NewCard(props) {
 
 export default NewCard;
 
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 46.6667vh;
+`;
+
 const NewCardContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  height: 46.6667vh;
+  width: 90%;
+  height: 91%;
   border-radius: 20px;
   box-shadow: 3px 3px 3px 3px #999;
   &:hover {
