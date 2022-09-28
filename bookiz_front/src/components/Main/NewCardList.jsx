@@ -94,8 +94,6 @@ const More = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-decoration: none;
-  color: black;
 `;
 
 const MoreText = styled.p`
