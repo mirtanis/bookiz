@@ -91,11 +91,11 @@ function AddBook() {
                 }
                 content.image = fileName;
                 contents.push(content);
-                const req2 = addContents(bookApis.BOOK_ADDCONTENTS, contents)
-                req2.then((res) => {
-                    console.log("컨텐츠 업로드 완료");
-                });
             }// end of for
+            const req2 = addContents(bookApis.BOOK_ADDCONTENTS, contents)
+            req2.then((res) => {
+                console.log("컨텐츠 업로드 완료");
+            });
         });//end of for contents
     }
 
