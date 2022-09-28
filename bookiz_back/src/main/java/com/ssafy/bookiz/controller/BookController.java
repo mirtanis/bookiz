@@ -161,11 +161,13 @@ public class BookController {
 
     @PostMapping("/uploadFile")
     public ResponseEntity<?> uploadFile(@RequestParam("file") MultipartFile file, @RequestParam("book_id") Long book_id) {
+        System.out.println("uploadFile 호출");
         String fileName = file.getOriginalFilename();
         String filePath = Paths.get("").toAbsolutePath() + File.separator + "tale" + File.separator + book_id;
         File folder = new File(filePath);
         if(!folder.exists()) {
             folder.mkdir();
+            System.out.println("폴더생성");
         }
         filePath = filePath + File.separator + fileName;
         File temp = new File(filePath);
