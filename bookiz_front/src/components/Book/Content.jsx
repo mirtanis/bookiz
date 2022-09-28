@@ -12,16 +12,33 @@ function Content() {
 
   const [page, setPage] = useState(1);
 
+  const [isPageChanged, setIsPageChanged] = useState(true);
+
   return (
     <Container>
-      <BookPage page={bookContents[page - 1].page} content={bookContents[page - 1].content} image={bookContents[page - 1].image} totalpage={bookContents.length} type={bookContents[page - 1].type} setPage={setPage} />
+      <BookPage
+        page={bookContents[page - 1].page}
+        content={bookContents[page - 1].content}
+        image={bookContents[page - 1].image}
+        totalpage={bookContents.length}
+        type={bookContents[page - 1].type}
+        setPage={setPage}
+        isPageChanged={isPageChanged}
+        setIsPageChanged={setIsPageChanged}
+      />
       {page > 1 &&
-        <LeftPageButton onClick={() => setPage(page - 1)}>
+        <LeftPageButton onClick={() => {
+          setPage(page - 1)
+          setIsPageChanged(true)
+          }}>
           <AiOutlineLeft size={50} color={"white"} />
         </LeftPageButton>
       }
       {page < bookContents.length &&
-        <RightPageButton onClick={() => setPage(page + 1)}>
+        <RightPageButton onClick={() => {
+          setPage(page + 1)
+          setIsPageChanged(true)
+        }}>
           <AiOutlineRight size={50} color={"white"} />
         </RightPageButton>
       }
