@@ -38,6 +38,11 @@ public class BookService {
         return bookDto;
     }
 
+    public Book findById2(Long id) {
+        Book book = bookRepository.findById(id).get();
+        return book;
+    }
+
     public List<Object> getBestBooks() {
         List<Book> books = bookRepository.findTop3ByOrderByCntDesc();
         List<Object> bestBooks = books.stream()
@@ -68,5 +73,9 @@ public class BookService {
         bookRepository.save(book);
         BookDto bookDto = modelMapper.map(book, BookDto.class);
         return bookDto;
+    }
+    public long addBook(Book book) {
+        bookRepository.save(book);
+        return book.getId();
     }
 }
