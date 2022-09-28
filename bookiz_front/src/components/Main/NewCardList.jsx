@@ -5,60 +5,84 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
-import { Link } from 'react-router-dom';
-import { bookListApis, fetchData } from '../../utils/apis/api';
-
+import { Link } from "react-router-dom";
+import { bookListApis, fetchData } from "../../utils/apis/api";
 
 function NewCardList() {
-	const [newBooks, setNewBooks] = useState([]);
+  const [newBooks, setNewBooks] = useState([]);
 
-	useEffect(() => {
-		const getnewBookList = async (url) => {
-			return await fetchData.get(url);
-		};
-		const res = getnewBookList(bookListApis.BOOK_NEW_LIST);
-		res.then((newlist) => {
-			setNewBooks(newlist.data);
-		});
+  useEffect(() => {
+    const getnewBookList = async (url) => {
+      return await fetchData.get(url);
+    };
+    const res = getnewBookList(bookListApis.BOOK_NEW_LIST);
+    res.then((newlist) => {
+      setNewBooks(newlist.data);
+    });
+  }, []);
 
-	}, []);
-
-	return (
-		<Container>
-			<Empty />
-			<Content>
-				<ContentText>신간 동화</ContentText>
-				<SwiperContainer>
-					<Swiper
-					watchOverflow={true}
-					navigation={true}
-					centeredSlides={false}
-					initialSlide={0}
-					slidesPerView={4}
-					spaceBetween={0}
-					allowTouchMove={false}
-					modules={[Navigation]}
-					className="mySwiper">
-						{newBooks.map((newBook, index) => {
-							return (
-								<div>
-									<SwiperSlide key={index}>
-										<NewCard title={newBook.title} image={newBook.image} info={newBook.info} page={newBook.page}/>
-									</SwiperSlide>
-								</div>
-							);
-						})}
-					</Swiper>
-				</SwiperContainer>
-			</Content>
-			<More>
-				<Link to="/booklist/new" style={{ textDecoration: "none", color: "black" }}>
-					<MoreText>더보기</MoreText>
-					<MoreImage src="assets/images/arrow.svg" />
-				</Link>
-			</More>
-		</Container>
-	);
+  return (
+    <Container>
+      <Empty />
+      <Content>
+        <ContentText>신간 동화</ContentText>
+        <SwiperContainer>
+          <Swiper
+            watchOverflow={true}
+            navigation={true}
+            centeredSlides={false}
+            initialSlide={0}
+            slidesPerView={4}
+            spaceBetween={20}
+            allowTouchMove={false}
+            breakpoints={{
+              10: {
+                slidesPerView: 1,
+              },
+              576: {
+                slidesPerView: 1,
+              },
+              768: {
+                slidesPerView: 2,
+              },
+              992: {
+                slidesPerView: 3,
+              },
+              1280: {
+                slidesPerView: 4,
+              },
+            }}
+            modules={[Navigation]}
+            className="mySwiper"
+          >
+            {newBooks.map((newBook, index) => {
+              return (
+                <div>
+                  <SwiperSlide key={index}>
+                    <NewCard
+                      title={newBook.title}
+                      image={newBook.image}
+                      info={newBook.info}
+                      page={newBook.page}
+                    />
+                  </SwiperSlide>
+                </div>
+              );
+            })}
+          </Swiper>
+        </SwiperContainer>
+      </Content>
+      <More>
+        <Link
+          to="/booklist/new"
+          style={{ textDecoration: "none", color: "black" }}
+        >
+          <MoreText>더보기</MoreText>
+          <MoreImage src="assets/images/arrow.svg" />
+        </Link>
+      </More>
+    </Container>
+  );
 }
 
 export default NewCardList;
@@ -67,6 +91,7 @@ const Container = styled.div`
   width: 100%;
   display: flex;
   margin-top: 10.6667vh;
+  margin-bottom: 10px;
 `;
 
 const Empty = styled.div`
