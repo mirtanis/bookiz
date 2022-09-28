@@ -37,5 +37,6 @@ export const bookApis = {
   },
   BOOK_ADDBOOK: `/api/books/addBook`,
   BOOK_ADDCONTENTS: `/api/books/addContents`,
+  BOOK_FILEUPLOAD: `/api/books/uploadFile`
 }
 

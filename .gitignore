@@ -799,5 +799,6 @@ gradle-app.setting
 ### Gradle Patch ###
 # Java heap dump
 *.hprof
+**/tale/*
 
 # End of https://www.toptal.com/developers/gitignore/api/eclipse,intellij,react,visualstudiocode,windows,macos,java,python,pycharm,gradle,node,django,jupyternotebooks

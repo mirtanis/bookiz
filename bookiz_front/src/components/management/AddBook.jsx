@@ -1,19 +1,15 @@
 import React, {useState} from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { bookApis, fetchData } from "../../utils/apis/api";
 
 function AddBook() {
-    const [ taleText, setTaleText] = useState("동화내용");
     const [ table, setTable] = useState(<div></div>);
     const result = [];
     let str = [];
-    let cnt = 0;
     async function loadFile() {
         if (document.getElementById("inputText").files.length > 0) {
             let tempText = await document.getElementById("inputText").files[0].text();
             str =  tempText.split('\n');
-            cnt = str.length;
             for(let i = 0; i < str.length; i++) {
                 let strId = "str" + i;
                 let imageId = "image" + i;
@@ -44,20 +40,6 @@ function AddBook() {
         );
     }
 
-    const changeImage = (e) => {
-        let result = table;
-        let cnt = document.getElementById("textTable").rows.length;
-        console.log(document.getElementById("image"+[e.target.name]).value);
-        let t = loadImage([e.target.name]);
-        console.log(t);
-    }
-
-    async function loadImage(name) {
-        if(await document.getElementById("image"+name).files.length > 0){
-            return document.getElementById("image"+name).files.length;
-        }
-    }
-
     async function insertDB() {
         let pageNum = document.getElementById("textTable").rows.length;
         const book = {
@@ -67,14 +49,18 @@ function AddBook() {
             info: document.getElementById("inputInfo").value,
             title: document.getElementById("inputText").files[0].name.slice(0, -4)
         };
-        let imageName = document.getElementById("inputImage").files[0].name;
+        let fileName = document.getElementById("inputImage").files[0].name;
         
         const req1 = addBook(bookApis.BOOK_ADDBOOK, book);
-        
         let id = -1;
         req1.then((res) => {
             console.log(res.data.id);
             id = res.data.id;
+            let formData = makeForm(document.getElementById("inputImage").files[0], fileName, id);
+            let req3 = upload(bookApis.BOOK_FILEUPLOAD, formData);
+            req3.then((res) => {
+                console.log("표지 업로드 완료");
+            });
             let contents = [];
             let content;
             for (let i = 0; i < pageNum; i++) {
@@ -85,21 +71,39 @@ function AddBook() {
                     content.type = 1;
                 } else if (document.getElementById("audio" + i).files.length > 0) {
                     content.type = 2;
-                    content.audio = document.getElementById("audio" + i).files[0].name;
+                    let audioName = document.getElementById("audio" + i).files[0].name;
+                    content.audio = audioName;
+                    let audioData = makeForm(document.getElementById("audio"+i).files[0], audioName, id);
+                    req3 = upload(bookApis.BOOK_FILEUPLOAD, audioData);
+                    req3.then((res) => {
+                        console.log("오디오 업로드 완료");
+                    });
                 } else {
                     content.type = 3;
                 }
                 if (document.getElementById("image" + i).files.length > 0) {
-                    imageName = document.getElementById("image" + i).files[0].name;
+                    fileName = document.getElementById("image" + i).files[0].name;
+                    formData = makeForm(document.getElementById("image"+i).files[0], fileName, id);
+                    req3 = upload(bookApis.BOOK_FILEUPLOAD, formData);
+                    req3.then((res) => {
+                        console.log("이미지 업로드 완료");
+                    });
                 }
-                content.image = imageName;
+                content.image = fileName;
                 contents.push(content);
-            }//end of for contents
-            const req2 = addContents(bookApis.BOOK_ADDCONTENTS, contents)
-            req2.then((res) => {
-                console.log(res);
-            });
-        });
+                const req2 = addContents(bookApis.BOOK_ADDCONTENTS, contents)
+                req2.then((res) => {
+                    console.log("컨텐츠 업로드 완료");
+                });
+            }// end of for
+        });//end of for contents
+    }
+
+    function makeForm(file, name, book_id) {
+        let formData = new FormData();
+        formData.append("file", file, name);
+        formData.append("book_id", book_id);
+        return formData;
     }
 
     const addBook = async (url, body) => {
@@ -108,6 +112,10 @@ function AddBook() {
 
     const addContents = async (url, body) => {
         return await fetchData.post(url, body);
+    };
+
+    const upload = async (url, body) => {
+        return await fetchData.post(url, body, {headers: {"Content-Type": "multipart/form-data"}});
     };
     
     return (
