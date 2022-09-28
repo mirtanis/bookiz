@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export const instance = axios.create({
   baseURL: "https://j7a103.p.ssafy.io",
+  // baseURL: "http://localhost:8081",
   headers: {
     'Content-Type': 'application/json',
   },
@@ -24,15 +25,18 @@ export const bookListApis = {
   BOOK_CATEGORY_LIST: (id) => {
     return `/api/books/category?id=${id}`; 
   },
-  BOOK_ALL_LIST : '/api/books/all',
+  BOOK_ALL_LIST: '/api/books/all',
 }
 
 export const bookApis = {
   BOOK_START : (id) => {
-    return `/api/books?book-id${id}`
+    return `/api/books?id=${id}`
   },
   BOOK_CNTUP : (id) => {
-    return `/api/books?book-id${id}`
+    return `/api/books/pluscnt?id=${id}`
   },
+  BOOK_ADDBOOK: `/api/books/addBook`,
+  BOOK_ADDCONTENTS: `/api/books/addContents`,
+  BOOK_FILEUPLOAD: `/api/books/uploadFile`
 }
 

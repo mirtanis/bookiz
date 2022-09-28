@@ -78,6 +78,14 @@ const Container = styled.nav`
   left: 0;
   top: 0;
   z-index: 10;
+  > p {
+    font-size: 50px;
+    font-family: "KOTRAHOPE";
+    font-weight: normal;
+    > span {
+      color: red;
+    }
+  }
 `;
 
 const NavSearch = styled.form`

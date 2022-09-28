@@ -7,8 +7,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -36,6 +40,11 @@ public class BookService {
         Book book = bookRepository.findById(id).get();
         BookDto bookDto = modelMapper.map(book, BookDto.class);
         return bookDto;
+    }
+
+    public Book findById2(Long id) {
+        Book book = bookRepository.findById(id).get();
+        return book;
     }
 
     public List<Object> getBestBooks() {
@@ -68,5 +77,13 @@ public class BookService {
         bookRepository.save(book);
         BookDto bookDto = modelMapper.map(book, BookDto.class);
         return bookDto;
+    }
+    public long addBook(Book book) {
+        Date today = new Date();
+        SimpleDateFormat form = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        form.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));
+        book.setCreatedate(Timestamp.valueOf(form.format(today)));
+        bookRepository.save(book);
+        return book.getId();
     }
 }

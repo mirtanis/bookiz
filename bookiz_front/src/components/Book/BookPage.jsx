@@ -1,39 +1,58 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { BsQuestionCircle, BsMic, BsPlayFill } from "react-icons/bs";
-import { IoMdExit } from "react-icons/io";
+import { BsQuestionCircle, BsMic } from "react-icons/bs";
+import { IoMdExit, IoIosExit } from "react-icons/io";
+import { FaRegPlayCircle, FaRegPauseCircle } from "react-icons/fa";
 import HelpModal from "../Main/HelpModal";
 import HelpSwiper from "../Main/HelpSwiper";
 
 function BookPage(props) {
 	const [isModal, setIsModal] = useState(false);
 
+	const [outButtonHover, setOutButtonHover] = useState(false);
+
+	const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+
 	const ModalHandler = () => {
 		console.log("modal");
 		setIsModal((prev) => !prev);
 	};
 
-	const Tts = () => {
-		if (window.audio !== undefined){
-			window.audio.pause();
-		}
-		window.audio = new Audio();
-		window.audio.src = `https://j7a103.p.ssafy.io/tts?text=${props.content}`;
+	const TtsPlay = () => {
 		window.audio.play();
-		window.audio.addEventListener("ended", function() {
-			if(props.page !== props.totalpage){
-				props.setPage((page) => page + 1);
-			}
-		})
+		setIsAudioPlaying(true);
 	};
 
+	const TtsPause = () => {
+		window.audio.pause();
+		setIsAudioPlaying(false);
+	}
+
+	const Tts = () => {
+		window.audio = new Audio();
+		window.audio.src = `https://j7a103.p.ssafy.io/tts?text=${props.content}`;
+		window.audio.addEventListener("ended", function() {
+			if(props.page !== props.totalpage){
+				props.setIsPageChanged(true);
+				props.setPage((page) => page + 1);
+			} else {
+				setIsAudioPlaying(false);
+				Tts();
+			}
+		})
+	}
+
 	useEffect(() => {
-		if(window.audio !== undefined){
-			window.audio.pause();
-		}
-		if(props.type === 0){
+		if(props.isPageChanged){
+			props.setIsPageChanged(false)
+			if(window.audio !== undefined){
+				TtsPause();
+			}
 			Tts();
+			if(props.type === 0){
+				TtsPlay();
+			}
 		}
 	});
 
@@ -48,7 +67,7 @@ function BookPage(props) {
 					<SpeakerDiv>
 						{props.type === 1 &&
 							<SpeakerImage>
-								<BsMic size={40} />
+								<BsMic size={25} />
 							</SpeakerImage>
 						}
 					</SpeakerDiv>
@@ -58,12 +77,18 @@ function BookPage(props) {
 						</BookContentText>
 					</BookContent>
 					<SpeakerIconDiv>
-						<BsPlayFill size={50} style={{ cursor: 'pointer' }} onClick={Tts} />
+						{isAudioPlaying ?
+							<FaRegPauseCircle size={50} style={{ cursor: 'pointer' }} onClick={TtsPause} />
+							: <FaRegPlayCircle size={50} style={{ cursor: 'pointer' }} onClick={TtsPlay} />
+						}
 					</SpeakerIconDiv>
 				</BookContentContainer>
-				<OutButtonDiv>
+				<OutButtonDiv onMouseEnter={() => setOutButtonHover(true)} onMouseLeave={() => setOutButtonHover(false)}>
 					<Link to="/" style={{ color: 'black', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-						<IoMdExit size={30} />
+						{outButtonHover ? 
+							<IoIosExit size={25} />
+							: <IoMdExit size={25} />
+						}
 					</Link>
 				</OutButtonDiv>
 			</BookContentDiv>
@@ -141,8 +166,8 @@ const SpeakerDiv = styled.div`
 `;
 
 const SpeakerImage = styled.div`
-	width: 3.125vw;
-	height: 6.6667vh;
+	width: 35px;
+	height: 35px;
 	background-color: #00FF19;
 	border-radius: 50%;
 	display: flex;
@@ -173,8 +198,8 @@ const SpeakerIconDiv = styled.div`
 `;
 
 const OutButtonDiv = styled.div`
-	width: 3.125vw;
-	height: 6.6667vh;
+	width: 35px;
+	height: 35px;
 	background-color: #BE3030;
 	margin: 0;
 	margin-left: 3.6458vw;

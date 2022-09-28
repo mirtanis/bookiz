@@ -2,16 +2,22 @@ package com.ssafy.bookiz.controller;
 
 import com.ssafy.bookiz.domain.Book;
 import com.ssafy.bookiz.domain.BookDto;
+import com.ssafy.bookiz.domain.RequestBookContent;
+import com.ssafy.bookiz.service.BookCategoryService;
 import com.ssafy.bookiz.service.BookContentService;
 import com.ssafy.bookiz.service.BookService;
-import com.ssafy.bookiz.service.BookCategoryService;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.nio.file.Paths;
 import java.util.List;
 
 @RestController
@@ -123,9 +129,55 @@ public class BookController {
         }
     }
 
-    @PutMapping("")
-    public ResponseEntity<?> plusCnt(@RequestBody BookDto bookDto) {
-        BookDto book = bookService.plusCnt(bookDto.getId());
+    @GetMapping("/pluscnt")
+    public ResponseEntity<?> plusCnt(@RequestParam Long id) {
+        BookDto book = bookService.plusCnt(id);
         return new ResponseEntity<>(book, HttpStatus.OK);
+    }
+
+    @PostMapping("/addBook")
+    public ResponseEntity<?> addBook(@RequestBody Book bookInput) {
+        System.out.println("addBook 호출");
+        //List<Object> books = bookService.findAllByTitle(bookInput.getTitle());
+        Book book = bookInput;
+//        if(books.size() > 0) {
+//            BookDto bookDto = (BookDto) books.get(0);
+//            book = bookService.findById2(bookDto.getId());
+//        }else {
+//            book = bookInput;
+//        }
+        bookService.addBook(book);
+
+        return new ResponseEntity<>(book, HttpStatus.OK);
+    }
+
+    @PostMapping("/addContents")
+    public ResponseEntity<?> addContents(@RequestBody List<RequestBookContent> reqs) {
+        System.out.println("addContents 호출");
+        Book book = bookService.findById2(reqs.get(0).getBook_id());
+        bookContentService.addContents(reqs, book);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @PostMapping("/uploadFile")
+    public ResponseEntity<?> uploadFile(@RequestParam("file") MultipartFile file, @RequestParam("book_id") Long book_id) {
+        String fileName = file.getOriginalFilename();
+        String filePath = Paths.get("").toAbsolutePath() + File.separator + "tale" + File.separator + book_id;
+        File folder = new File(filePath);
+        if(!folder.exists()) {
+            folder.mkdir();
+        }
+        filePath = filePath + File.separator + fileName;
+        File temp = new File(filePath);
+        if(!(new File(filePath).exists())) {
+            try (FileOutputStream fos = new FileOutputStream(filePath)){
+                fos.write(file.getBytes());
+                System.out.println("파일 업로드 성공 : "+fileName);
+            } catch (Exception e) {
+                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity(filePath, HttpStatus.OK);
     }
 }
