@@ -32,31 +32,46 @@ function BestCard(props) {
 export default BestCard;
 
 const BestCardContainer = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 18.75vw;
-  height: 57.7778vh;
+  height: 60vh;
+  &:hover {
+    transform: scale(1.05);
+    transition: transform 0.8s;
+  }
 `;
 
 const Crown = styled.img`
   width: 6.25vw;
   height: 13.3333vh;
-  color: black;
 `;
 
 const Image = styled.img`
   width: 100%;
-  height: 34.6667vh;
+  height: 100%;
+  border-radius: 20px;
+  box-shadow: 3px 3px 3px 3px #999;
 `;
 
 const Title = styled.div`
   display: flex;
-  background-color: #d9d9d9;
+  background: linear-gradient(to bottom, rgba(1, 0, 0, 0), rgba(1, 1, 1, 1));
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 9.7778vh;
-  font-size: 3.3333vh;
+  width: 18.75vw;
+  font-size: 30px;
+  font-family: "KOTRAHOPE";
+  font-weight: normal;
+  font-style: normal;
+  color: ${(props) => props.theme.colors.mainYellow};
   text-align: center;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  position: absolute;
+  bottom: 0px;
 `;

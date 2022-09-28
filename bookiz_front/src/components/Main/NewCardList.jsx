@@ -23,9 +23,19 @@ function NewCardList() {
 
   return (
     <Container>
-      <Empty />
-      <Content>
+      <Head>
         <ContentText>신간 동화</ContentText>
+        <More>
+          <Link
+            to="/booklist/new"
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <MoreText>더보기</MoreText>
+            <MoreImage src="assets/images/arrow.svg" />
+          </Link>
+        </More>
+      </Head>
+      <Content>
         <SwiperContainer>
           <Swiper
             watchOverflow={true}
@@ -34,6 +44,7 @@ function NewCardList() {
             initialSlide={0}
             slidesPerView={4}
             spaceBetween={20}
+            space
             allowTouchMove={false}
             breakpoints={{
               10: {
@@ -72,15 +83,6 @@ function NewCardList() {
           </Swiper>
         </SwiperContainer>
       </Content>
-      <More>
-        <Link
-          to="/booklist/new"
-          style={{ textDecoration: "none", color: "black" }}
-        >
-          <MoreText>더보기</MoreText>
-          <MoreImage src="assets/images/arrow.svg" />
-        </Link>
-      </More>
     </Container>
   );
 }
@@ -88,25 +90,29 @@ function NewCardList() {
 export default NewCardList;
 
 const Container = styled.div`
-  width: 100%;
+  width: 80%;
   display: flex;
-  margin-top: 10.6667vh;
-  margin-bottom: 10px;
-`;
-
-const Empty = styled.div`
-  width: 13.5417vw;
-`;
-
-const Content = styled.div`
-  width: 72.9167vw;
-  display: flex;
+  margin-top: 20px;
+  margin: auto;
+  justify-content: center;
   flex-direction: column;
+  margin-bottom: 20px;
+`;
+
+const Head = styled.head`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+const Content = styled.div`
+  width: 100%;
 `;
 
 const ContentText = styled.p`
-  font-size: 6.6667vh;
-  margin: 0;
+  font-size: 50px;
+  margin-bottom: 20px;
+  font-family: "KOTRAHOPE";
+  font-weight: normal;
 `;
 
 const SwiperContainer = styled.div`
@@ -114,7 +120,7 @@ const SwiperContainer = styled.div`
 `;
 
 const More = styled.div`
-  width: 4.4792vw;
+  width: 100px;
   margin-top: 2.2222vh;
   display: flex;
   flex-direction: column;
@@ -122,7 +128,9 @@ const More = styled.div`
 `;
 
 const MoreText = styled.p`
-  font-size: 2.2222vh;
+  font-family: "KOTRAHOPE";
+  font-weight: normal;
+  font-size: 30px;
   margin: 0;
 `;
 

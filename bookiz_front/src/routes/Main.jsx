@@ -9,15 +9,13 @@ import NewCardList from "../components/Main/NewCardList";
 // import BookModal from "../components/Main/BookModal";
 
 function MainPage() {
-
   return (
     <div>
       <Container>
         <Navbar />
-        <HelloMain />
         <Bookiz />
         <BestCardList />
-        <NewCardList/>
+        <NewCardList />
       </Container>
     </div>
   );

@@ -40,6 +40,12 @@ const NewCardContainer = styled.div`
   align-items: center;
   width: 100%;
   height: 46.6667vh;
+  border-radius: 20px;
+  box-shadow: 3px 3px 3px 3px #999;
+  &:hover {
+    transform: scale(1.05);
+    transition: transform 0.8s;
+  }
 `;
 
 const Label = styled.div`
