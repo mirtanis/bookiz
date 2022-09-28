@@ -7,6 +7,7 @@ import { HiSearch } from "react-icons/hi";
 import { BsQuestionCircle } from "react-icons/bs";
 import HelpModal from "./HelpModal";
 import HelpSwiper from "./HelpSwiper";
+import Bookiz from "./Bookiz";
 
 function Navbar() {
   const [key, setKey] = useState("");
@@ -33,9 +34,7 @@ function Navbar() {
   return (
     <Container>
       <Logo />
-      <p>
-        B<span>OO</span>KIZ
-      </p>
+      <Bookiz />
       <NavSearch onSubmit={onSubmit}>
         <Button type="submit" aria-label="search">
           <HiSearch size={25} />
