@@ -33,6 +33,9 @@ function Navbar() {
   return (
     <Container>
       <Logo />
+      <p>
+        B<span>OO</span>KIZ
+      </p>
       <NavSearch onSubmit={onSubmit}>
         <Button type="submit" aria-label="search">
           <HiSearch size={25} />
@@ -76,6 +79,14 @@ const Container = styled.nav`
   left: 0;
   top: 0;
   z-index: 10;
+  > p {
+    font-size: 50px;
+    font-family: "KOTRAHOPE";
+    font-weight: normal;
+    > span {
+      color: red;
+    }
+  }
 `;
 
 const NavSearch = styled.form`
