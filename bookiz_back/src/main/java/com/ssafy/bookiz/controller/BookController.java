@@ -132,7 +132,7 @@ public class BookController {
         }
     }
 
-    @PatchMapping("/cnt")
+    @GetMapping("/pluscnt")
     public ResponseEntity<?> plusCnt(@RequestParam Long id) {
         BookDto book = bookService.plusCnt(id);
         return new ResponseEntity<>(book, HttpStatus.OK);
