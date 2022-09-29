@@ -10,10 +10,6 @@ FROM openjdk:8
 RUN mkdir -p /bookiz_back
 COPY ./ /bookiz_back
 
-VOLUME ["/secret"]
-RUN ls
-
-WORKDIR /secret
 RUN ls
 
 # RUN cp secret/application-aws.properties /bookiz_back/src/main/resources/
