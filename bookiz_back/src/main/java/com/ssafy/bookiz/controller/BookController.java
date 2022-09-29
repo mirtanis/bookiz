@@ -87,11 +87,11 @@ public class BookController {
         }
     }
 
-    @GetMapping("")
+    @GetMapping("/content")
     public ResponseEntity<?> getBookContents(@RequestParam Long id) {
         try {
-            List<Object> books = bookContentService.getBookContents(id);
-            return new ResponseEntity<List<Object>>(books, HttpStatus.OK);
+            List<Object> contents = bookContentService.getBookContents(id);
+            return new ResponseEntity<List<Object>>(contents, HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
