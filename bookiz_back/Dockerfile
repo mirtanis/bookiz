@@ -13,7 +13,9 @@ COPY ./ /bookiz_back
 RUN ls
 WORKDIR /usr
 RUN ls
-WORKDIR /root
+WORKDIR /src
+RUN ls
+WORKDIR ../lib
 RUN ls
 
 # RUN cp secret/application-aws.properties /bookiz_back/src/main/resources/
