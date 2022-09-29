@@ -9,9 +9,13 @@
 FROM openjdk:8
 RUN mkdir -p /bookiz_back
 COPY ./ /bookiz_back
+
+# ls
+
 # RUN cp secret/application-aws.properties /bookiz_back/src/main/resources/
-WORKDIR /bookiz_back
-RUN chmod +x ./gradlew
-RUN ./gradlew build
-ENTRYPOINT ["java", "-jar", "/build/libs/bookiz-0.0.1-SNAPSHOT.jar"]
-EXPOSE 8081
+# WORKDIR /bookiz_back
+
+#RUN chmod +x ./gradlew
+#RUN ./gradlew build
+#ENTRYPOINT ["java", "-jar", "/build/libs/bookiz-0.0.1-SNAPSHOT.jar"]
+#EXPOSE 8081
