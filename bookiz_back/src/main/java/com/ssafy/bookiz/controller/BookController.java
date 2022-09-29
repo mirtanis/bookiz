@@ -159,7 +159,7 @@ public class BookController {
         System.out.println("addContents 호출");
         Book book = bookService.findById2(reqs.get(0).getBook_id());
         bookContentService.addContents(reqs, book);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }// end of addContents API
 
     @PostMapping("/uploadFile")
@@ -168,20 +168,22 @@ public class BookController {
         String filePath = Paths.get("").toAbsolutePath() + File.separator + "tale" + File.separator + book_id;
         File folder = new File(filePath);
         if(!folder.exists()) {
-            folder.mkdir();
+            if(!folder.mkdirs()) {
+                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
         }
         filePath = filePath + File.separator + fileName;
         File temp = new File(filePath);
-        if(!(new File(filePath).exists())) {
+        if(!(temp.exists())) {
             try (FileOutputStream fos = new FileOutputStream(filePath)){
                 fos.write(file.getBytes());
                 System.out.println("파일 업로드 성공 : "+fileName);
             } catch (Exception e) {
-                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<>(HttpStatus.CONTINUE);
             }
         }
 
-        return new ResponseEntity(filePath, HttpStatus.OK);
+        return new ResponseEntity<>(filePath, HttpStatus.OK);
     }// end of uploadFile API
 
     @GetMapping("/display")

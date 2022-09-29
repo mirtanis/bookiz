@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 export const instance = axios.create({
-  baseURL: "https://j7a103.p.ssafy.io",
-  // baseURL: "http://localhost:8081",
+  // baseURL: "https://j7a103.p.ssafy.io",
+  baseURL: "http://localhost:8081",
   headers: {
     'Content-Type': 'application/json',
   },
