@@ -9,6 +9,7 @@ import HelpSwiper from "../Main/HelpSwiper";
 import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
 
 function BookPage(props) {
+	
 	const [isModal, setIsModal] = useState(false);
 
 	const [outButtonHover, setOutButtonHover] = useState(false);
@@ -17,27 +18,24 @@ function BookPage(props) {
 	//STT 시작---------------------------------------
 	const {
 		transcript,
-		listening,
 		resetTranscript,
 		browserSupportsSpeechRecognition
 	} = useSpeechRecognition();
+	SpeechRecognition.startListening({ continuous: true, language: 'ko' });
 	function stt() {
 		if (props.type !== 1) {
 			return;
 		}
-		SpeechRecognition.startListening({ continuous: true, language: 'ko' });
-		let cer = 0;
 		let sText = transcript.replaceAll(' ', '');
 		let cText = props.content;
 		let ss = [' ', '.', '!', '?'];
 		for (let i = 0; i < ss.length; i++) {
-			cText.replaceAll(ss[i], '');
+			cText = cText.replaceAll(ss[i], '');
 		}
-
-		let r = ' ' + sText.split('').reverse().join('');
-		let h = ' ' + cText.split('').reverse().join('');
+		let r = ' ' + cText.split('').reverse().join('');
+		let h = ' ' + sText.split('').reverse().join('');
 		let d = h.length < r.length ? h.length : r.length;
-
+	
 		let mat = new Array(d);
 		for (let i = 0; i < d; i++) {
 			mat[i] = new Array(r.length);
@@ -51,14 +49,13 @@ function BookPage(props) {
 				mat[i][j] = Math.min(mat[i - 1][j] + 1, mat[i][j - 1] + 1, mat[i - 1][j - 1] + (h[i] == r[j] ? 0 : 1));
 			}
 		}
-
-		cer = (r.length-mat[d-1][r.length-1])/r.length;
-		if(mat[d-1][r.length-1] < r.length/4) {
-			SpeechRecognition.stopListening();
-			resetTranscript();
+	
+		if(mat[d-1][r.length-1] < r.length/5) {
+			// SpeechRecognition.stopListening();
+			resetTranscript(true);
 			if(props.page !== props.totalpage){
+				props.setPage((page) => page+1);
 				props.setIsPageChanged(true);
-				props.setPage((page) => page + 1);
 			}
 		}
 	}
@@ -95,7 +92,6 @@ function BookPage(props) {
 
 	useEffect(() => {
 		if (props.isPageChanged) {
-			stt();
 			props.setIsPageChanged(false)
 			if(window.audio !== undefined){
 				TtsPause();
@@ -107,8 +103,15 @@ function BookPage(props) {
 		}
 	});
 
+	useEffect(() => {
+		stt();
+		},
+		[transcript]
+	);
+
 	return (
 		<Container>
+			<input type="hidden" value={transcript} onChange={stt}/>
 			<BookImageDiv>
 				<BookImage src={props.image} />
 			</BookImageDiv>
@@ -143,9 +146,6 @@ function BookPage(props) {
 					</Link>
 				</OutButtonDiv>
 			</BookContentDiv>
-			<div>
-			{transcript}
-			</div>
 			<PageInfo>
 				<PageText>
 					{props.page}/{props.totalpage}
