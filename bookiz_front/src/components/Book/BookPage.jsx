@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import styled, { ThemeContext } from "styled-components";
 import { Link } from "react-router-dom";
 import { BsQuestionCircle, BsMic } from "react-icons/bs";
 import { IoMdExit, IoIosExit } from "react-icons/io";
 import { FaRegPlayCircle, FaRegPauseCircle } from "react-icons/fa";
 import HelpModal from "../Main/HelpModal";
 import HelpSwiper from "../Main/HelpSwiper";
+import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
 
 function BookPage(props) {
 	const [isModal, setIsModal] = useState(false);
@@ -13,7 +14,56 @@ function BookPage(props) {
 	const [outButtonHover, setOutButtonHover] = useState(false);
 
 	const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+	//STT 시작---------------------------------------
+	const {
+		transcript,
+		listening,
+		resetTranscript,
+		browserSupportsSpeechRecognition
+	} = useSpeechRecognition();
+	function stt() {
+		if (props.type !== 1) {
+			return;
+		}
+		SpeechRecognition.startListening({ continuous: true, language: 'ko' });
+		let cer = 0;
+		let sText = transcript.replaceAll(' ', '');
+		let cText = props.content;
+		let ss = [' ', '.', '!', '?'];
+		for (let i = 0; i < ss.length; i++) {
+			cText.replaceAll(ss[i], '');
+		}
 
+		let r = ' ' + sText.split('').reverse().join('');
+		let h = ' ' + cText.split('').reverse().join('');
+		let d = h.length < r.length ? h.length : r.length;
+
+		let mat = new Array(d);
+		for (let i = 0; i < d; i++) {
+			mat[i] = new Array(r.length);
+			mat[i][0] = i;
+		}
+		for (let i = 1; i < r.length; i++) {
+			mat[0][i] = i;
+		}
+		for (let i = 1; i < d; i++) {
+			for (let j = 1; j < r.length; j++) {
+				mat[i][j] = Math.min(mat[i - 1][j] + 1, mat[i][j - 1] + 1, mat[i - 1][j - 1] + (h[i] == r[j] ? 0 : 1));
+			}
+		}
+
+		cer = (r.length-mat[d-1][r.length-1])/r.length;
+		if(mat[d-1][r.length-1] < r.length/4) {
+			SpeechRecognition.stopListening();
+			resetTranscript();
+			if(props.page !== props.totalpage){
+				props.setIsPageChanged(true);
+				props.setPage((page) => page + 1);
+			}
+		}
+	}
+	
+	//STT 끝---------------------------------------
 	const ModalHandler = () => {
 		console.log("modal");
 		setIsModal((prev) => !prev);
@@ -44,7 +94,8 @@ function BookPage(props) {
 	}
 
 	useEffect(() => {
-		if(props.isPageChanged){
+		if (props.isPageChanged) {
+			stt();
 			props.setIsPageChanged(false)
 			if(window.audio !== undefined){
 				TtsPause();
@@ -92,6 +143,9 @@ function BookPage(props) {
 					</Link>
 				</OutButtonDiv>
 			</BookContentDiv>
+			<div>
+			{transcript}
+			</div>
 			<PageInfo>
 				<PageText>
 					{props.page}/{props.totalpage}
