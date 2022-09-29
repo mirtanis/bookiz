@@ -7,12 +7,9 @@
 #EXPOSE 8081
 
 FROM openjdk:8
-ARG JAR_FILE=./build/libs/bookiz-0.0.1-SNAPSHOT.jar
+ARG JAR_FILE=./var/jenkins_home/workspace/deploy/bookiz_back/build/libs/bookiz-0.0.1-SNAPSHOT.jar
 RUN mkdir -p /bookiz_back
 COPY ./ /bookiz_back
-
-RUN mkdir -p /test
-COPY ../../ /test
 
 COPY ${JAR_FILE} app.jar
 ENTRYPOINT ["java", "-jar", "/app.jar"]
