@@ -4,7 +4,6 @@ import BestCard from "./BestCard";
 import { bookListApis, fetchData } from "../../utils/apis/api";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { keyframes } from "styled-components";
 
 function BestCardList() {
   const [bestSellers, setBestSellers] = useState([]);
