@@ -1,6 +1,5 @@
 package com.ssafy.bookiz.repository;
 
-import com.ssafy.bookiz.domain.Book;
 import com.ssafy.bookiz.domain.BookContent;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
