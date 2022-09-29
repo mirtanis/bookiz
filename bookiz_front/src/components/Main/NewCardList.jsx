@@ -47,20 +47,20 @@ function NewCardList() {
             space
             allowTouchMove={false}
             breakpoints={{
-              10: {
+              300: {
                 slidesPerView: 1,
               },
               576: {
-                slidesPerView: 1,
-              },
-              768: {
                 slidesPerView: 2,
               },
-              992: {
+              768: {
                 slidesPerView: 3,
               },
-              1280: {
+              992: {
                 slidesPerView: 4,
+              },
+              1280: {
+                slidesPerView: 5,
               },
             }}
             modules={[Navigation]}
@@ -106,7 +106,9 @@ const Head = styled.head`
 `;
 const Content = styled.div`
   width: 100%;
-  border: 10px solid #a87328;
+  padding: 10px;
+  border: 15px solid #a87328;
+  border-radius: 10px;  
   background-color: #281C0A;
 `;
 

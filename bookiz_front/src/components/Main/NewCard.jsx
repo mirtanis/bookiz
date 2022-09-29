@@ -40,7 +40,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: calc(50vh - 70px);
+  height: 100%;
 `;
 
 const NewCardContainer = styled.div`
@@ -80,7 +80,8 @@ const Label = styled.div`
 
 const Image = styled.img`
   width: 100%;
-  object-fit: fill !important;
+  height: 100%;
+  object-fit: cover !important;
   border-radius: 20px;
 `;
 

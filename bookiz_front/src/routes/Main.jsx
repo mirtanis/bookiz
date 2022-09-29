@@ -8,7 +8,6 @@ import SleepCardList from "../components/Main/SleepCardList";
 
 function MainPage() {
   return (
-    <div>
       <Container>
         <Navbar />
         <Wrapper>
@@ -17,34 +16,33 @@ function MainPage() {
         </BestContainer>
         <ListContainer>
           <NewCardList/> 
-          <SleepCardList/>
+          <NewCardList/> 
+          {/* <SleepCardList/> */}
         </ListContainer>
         </Wrapper>
           <BG />
           <BG2 />
           <BG3 /> 
       </Container>
-    </div>
+  
   );
 }
 
 export default MainPage;
 
 const Container = styled.div`
-  width: 95%;
+  width: 95%;  
   margin: auto;
   display: flex;
   justify-content: center;
-  height: calc(100vh - 70px);
+
 `;
 
-const Wrapper = styled.div `
-  margin-top: 70px;
+const Wrapper = styled.div ` 
   width: 100%;
   display: flex;
-  justify-content: space-between;
-  height: 100%;
-
+  justify-content: space-between; 
+  margin-top: 70px;
 `
 
 const BestContainer = styled.div`
@@ -56,7 +54,7 @@ const BestContainer = styled.div`
 
 const ListContainer = styled.div`
   width: 60%;
-  height: 100%;
+  height: 55%;
   padding: 0px 20px 0px 20px;      
 `
 
