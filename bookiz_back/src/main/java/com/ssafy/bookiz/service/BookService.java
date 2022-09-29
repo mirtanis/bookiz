@@ -84,6 +84,8 @@ public class BookService {
         form.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));
         book.setCreatedate(Timestamp.valueOf(form.format(today)));
         bookRepository.save(book);
+        book.setImage("https://j7a103.p.ssafy.io/api/books/display?image=" + book.getImage() + "&id=" + book.getId());
+        bookRepository.save(book);
         return book.getId();
     }
 }
