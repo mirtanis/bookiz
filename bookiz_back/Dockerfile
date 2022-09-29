@@ -9,7 +9,6 @@
 FROM openjdk:8
 RUN mkdir -p /bookiz_back
 COPY ./ /bookiz_back
-WORKDIR ../../../../
 RUN pwd
 RUN ls
 #RUN cp ../../../../secret/application-aws.properties /bookiz_back/src/main/resources/
