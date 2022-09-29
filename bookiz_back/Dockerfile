@@ -12,7 +12,9 @@ COPY ./ /bookiz_back
 
 VOLUME ["/secret"]
 RUN ls
-RUN secret/ ls
+
+WORKDIR /secret
+RUN ls
 
 # RUN cp secret/application-aws.properties /bookiz_back/src/main/resources/
 # WORKDIR /bookiz_back
