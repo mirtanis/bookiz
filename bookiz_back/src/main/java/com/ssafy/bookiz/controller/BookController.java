@@ -9,14 +9,17 @@ import com.ssafy.bookiz.service.BookService;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
@@ -84,11 +87,11 @@ public class BookController {
         }
     }
 
-    @GetMapping("")
+    @GetMapping("/content")
     public ResponseEntity<?> getBookContents(@RequestParam Long id) {
         try {
-            List<Object> books = bookContentService.getBookContents(id);
-            return new ResponseEntity<List<Object>>(books, HttpStatus.OK);
+            List<Object> contents = bookContentService.getBookContents(id);
+            return new ResponseEntity<List<Object>>(contents, HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
@@ -157,7 +160,7 @@ public class BookController {
         Book book = bookService.findById2(reqs.get(0).getBook_id());
         bookContentService.addContents(reqs, book);
         return new ResponseEntity(HttpStatus.OK);
-    }
+    }// end of addContents API
 
     @PostMapping("/uploadFile")
     public ResponseEntity<?> uploadFile(@RequestParam("file") MultipartFile file, @RequestParam("book_id") Long book_id) {
@@ -181,5 +184,21 @@ public class BookController {
         }
 
         return new ResponseEntity(filePath, HttpStatus.OK);
-    }
+    }// end of uploadFile API
+
+    @GetMapping("/display")
+    public ResponseEntity<?> display(@RequestParam("image") String image, @RequestParam("id") Long id) {
+        String filePath = Paths.get("").toAbsolutePath() + File.separator + "tale" + File.separator + id + File.separator + image;
+        Resource req = new FileSystemResource(filePath);
+        if(!req.exists()) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        try {
+            HttpHeaders header = new HttpHeaders();
+            header.add("Content-Type", Files.probeContentType(Paths.get(filePath)));
+            return new ResponseEntity<>(req, header, HttpStatus.OK);
+        }catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }// end of display API
 }
