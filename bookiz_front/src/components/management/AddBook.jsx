@@ -56,7 +56,7 @@ function AddBook() {
         req1.then((res) => {
             console.log(res.data.id);
             id = res.data.id;
-            let formData = makeForm(document.getElementById("inputImage").files[0], fileName, id);
+            let formData = makeImageForm(document.getElementById("inputImage").files[0], fileName, id);
             let req3 = upload(bookApis.BOOK_FILEUPLOAD, formData);
             req3.then((res) => {
                 console.log("표지 업로드 완료");
@@ -73,7 +73,7 @@ function AddBook() {
                     content.type = 2;
                     let audioName = document.getElementById("audio" + i).files[0].name;
                     content.audio = audioName;
-                    let audioData = makeForm(document.getElementById("audio"+i).files[0], audioName, id);
+                    let audioData = makeImageForm(document.getElementById("audio"+i).files[0], audioName, id);
                     req3 = upload(bookApis.BOOK_FILEUPLOAD, audioData);
                     req3.then((res) => {
                         console.log("오디오 업로드 완료");
@@ -83,7 +83,7 @@ function AddBook() {
                 }
                 if (document.getElementById("image" + i).files.length > 0) {
                     fileName = document.getElementById("image" + i).files[0].name;
-                    formData = makeForm(document.getElementById("image"+i).files[0], fileName, id);
+                    formData = makeImageForm(document.getElementById("image"+i).files[0], fileName, id);
                     req3 = upload(bookApis.BOOK_FILEUPLOAD, formData);
                     req3.then((res) => {
                         console.log("이미지 업로드 완료");
@@ -99,8 +99,9 @@ function AddBook() {
         });//end of for contents
     }
 
-    function makeForm(file, name, book_id) {
+    function makeImageForm(file, name, book_id) {
         let formData = new FormData();
+        name = bookApis.BOOK_DISPLAY(name, book_id);
         formData.append("file", file, name);
         formData.append("book_id", book_id);
         return formData;
