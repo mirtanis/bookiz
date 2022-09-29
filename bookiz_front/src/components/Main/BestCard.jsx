@@ -36,8 +36,8 @@ const BestCardContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 18.75vw;
-  height: 60vh;
+  width: 100%;
+  height: 100%;
   &:hover {
     transform: scale(1.05);
     transition: transform 0.8s;
@@ -45,8 +45,8 @@ const BestCardContainer = styled.div`
 `;
 
 const Crown = styled.img`
-  width: 6.25vw;
-  height: 13.3333vh;
+  width: 50px;
+  height: 50px;
 `;
 
 const Image = styled.img`
@@ -61,7 +61,7 @@ const Title = styled.div`
   background: linear-gradient(to bottom, rgba(1, 0, 0, 0), rgba(1, 1, 1, 1));
   justify-content: center;
   align-items: center;
-  width: 18.75vw;
+  width: 100%;
   font-size: 30px;
   font-family: "KOTRAHOPE";
   font-weight: normal;

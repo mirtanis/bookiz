@@ -40,7 +40,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 46.6667vh;
+  height: calc(50vh - 70px);
 `;
 
 const NewCardContainer = styled.div`
@@ -62,8 +62,8 @@ const Label = styled.div`
   position: absolute;
   top: 0px;
   left: -0px;
-  width: 100px !important;
-  height: 50px !important;
+  width: 60px !important;
+  height: 30px !important;
   border-bottom-right-radius: 20px;
   border-top-left-radius: 20px;
   background-color: #03c75a;
@@ -72,7 +72,7 @@ const Label = styled.div`
   align-items: center;
   > p {
     color: white;
-    font-size: 40px;
+    font-size: 25px;
     font-family: "KOTRAHOPE";
     font-weight: normal;
   }

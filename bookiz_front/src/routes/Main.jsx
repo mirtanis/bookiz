@@ -1,21 +1,28 @@
 import React from "react";
 import styled from "styled-components";
-import Bookiz from "../components/Main/Bookiz";
+import { keyframes } from "styled-components";
 import Navbar from "../components/Main/Navbar";
 import BestCardList from "../components/Main/BestCardList";
 import NewCardList from "../components/Main/NewCardList";
-import { keyframes } from "styled-components";
+import SleepCardList from "../components/Main/SleepCardList";
+
 function MainPage() {
   return (
     <div>
       <Container>
         <Navbar />
-        <Bookiz />
-        <BestCardList />
-        <NewCardList />
-        <BG />
-        <BG2 />
-        <BG3 />
+        <Wrapper>
+        <BestContainer>
+          <BestCardList />             
+        </BestContainer>
+        <ListContainer>
+          <NewCardList/> 
+          <SleepCardList/>
+        </ListContainer>
+        </Wrapper>
+          <BG />
+          <BG2 />
+          <BG3 /> 
       </Container>
     </div>
   );
@@ -24,9 +31,34 @@ function MainPage() {
 export default MainPage;
 
 const Container = styled.div`
-  width: 100%;
+  width: 95%;
   margin: auto;
+  display: flex;
+  justify-content: center;
+  height: calc(100vh - 70px);
 `;
+
+const Wrapper = styled.div `
+  margin-top: 70px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+
+`
+
+const BestContainer = styled.div`
+  width: 40%;
+  height: 100%;
+  padding: 0px 20px 0px 20px;
+
+`
+
+const ListContainer = styled.div`
+  width: 60%;
+  height: 100%;
+  padding: 0px 20px 0px 20px;      
+`
 
 const slide = keyframes`
   0% {

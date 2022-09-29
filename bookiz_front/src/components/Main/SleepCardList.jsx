@@ -8,23 +8,23 @@ import { Navigation } from "swiper";
 import { Link } from "react-router-dom";
 import { bookListApis, fetchData } from "../../utils/apis/api";
 
-function NewCardList() {
-  const [newBooks, setNewBooks] = useState([]);
+function SleepCardList() {
+  const [sleepBooks, setSleepBooks] = useState([]);
 
   useEffect(() => {
     const getnewBookList = async (url) => {
       return await fetchData.get(url);
     };
-    const res = getnewBookList(bookListApis.BOOK_NEW_LIST);
-    res.then((newlist) => {
-      setNewBooks(newlist.data);
+    const res = getnewBookList(bookListApis.BOOK_CATEGORY_LIST(1));
+    res.then((sleeplist) => {
+      setSleepBooks(sleeplist.data);
     });
   }, []);
 
   return (
     <Container>
       <Head>
-        <ContentText>신간 동화</ContentText>
+        <ContentText>잠들기 좋은 동화</ContentText>
         <More>
           <Link
             to="/booklist/new"
@@ -66,7 +66,7 @@ function NewCardList() {
             modules={[Navigation]}
             className="mySwiper"
           >
-            {newBooks.map((newBook, index) => {
+            {sleepBooks.map((newBook, index) => {
               return (
                 <div>
                   <SwiperSlide key={index}>
@@ -87,7 +87,7 @@ function NewCardList() {
   );
 }
 
-export default NewCardList;
+export default  SleepCardList;
 
 const Container = styled.div`
   width: 100%;
@@ -97,15 +97,17 @@ const Container = styled.div`
   justify-content: center;
   flex-direction: column;
   margin-bottom: 20px;
+
+  
 `;
 
 const Head = styled.head`
   display: flex;
   justify-content: space-between;
-  align-items:flex-end;
+  align-items: center;
 `;
 const Content = styled.div`
-  width: 100%;
+  width: 100%;  
   border: 10px solid #a87328;
   background-color: #281C0A;
 `;
@@ -126,7 +128,7 @@ const More = styled.div`
   margin-top: 2.2222vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
 `;
 
 const MoreText = styled.p`

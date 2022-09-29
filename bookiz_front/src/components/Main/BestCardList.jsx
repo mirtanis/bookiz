@@ -4,6 +4,7 @@ import BestCard from "./BestCard";
 import { bookListApis, fetchData } from "../../utils/apis/api";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { keyframes } from "styled-components";
 
 function BestCardList() {
   const [bestSellers, setBestSellers] = useState([]);
@@ -26,6 +27,7 @@ function BestCardList() {
 
   return (
     <Container>
+     
       <Head>
         <ContentText>베스트 셀러</ContentText>
         <More>
@@ -62,13 +64,14 @@ function BestCardList() {
 export default BestCardList;
 
 const Container = styled.div`
-  width: 80%;
+  width: 100%;
   display: flex;
   margin-top: 20px;
   margin: auto;
   justify-content: center;
   flex-direction: column;
   margin-bottom: 20px;
+  margin-right: 0px;
 `;
 
 const Head = styled.head`
@@ -91,9 +94,15 @@ const ContentText = styled.p`
 `;
 
 const BestCards = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+  margin-bottom: 1rem;
+  scroll-behavior: smooth; 
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+ 
 `;
 
 const More = styled.div`
@@ -101,17 +110,18 @@ const More = styled.div`
   margin-top: 2.2222vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
 `;
 
 const MoreText = styled.p`
   font-family: "KOTRAHOPE";
   font-weight: normal;
-  font-size: 30px;
+  font-size: 26px;
   margin: 0;
 `;
 
 const MoreImage = styled.img`
-  width: 100%;
-  height: 2.6667vh;
+  width: 80%;
+  height: 10%;
 `;
+
