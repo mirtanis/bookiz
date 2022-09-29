@@ -66,7 +66,7 @@ function AddBook() {
             for (let i = 0; i < pageNum; i++) {
                 content = { audio: '', content: '', image: '', page: '', type: '', book_id: id};
                 content.content = document.getElementById("str" + i).textContent;
-                content.page = i;
+                content.page = i+1;
                 if (content.content[0] !== `"`) {
                     content.type = 1;
                 } else if (document.getElementById("audio" + i).files.length > 0) {
