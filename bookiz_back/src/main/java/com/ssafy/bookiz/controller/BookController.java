@@ -87,7 +87,7 @@ public class BookController {
         }
     }
 
-    @GetMapping("/content")
+    @GetMapping("")
     public ResponseEntity<?> getBookContents(@RequestParam Long id) {
         try {
             List<Object> contents = bookContentService.getBookContents(id);

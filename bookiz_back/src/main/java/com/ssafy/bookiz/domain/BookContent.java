@@ -44,6 +44,11 @@ public class BookContent {
         this.image = content.getImage();
         this.page = content.getPage();
     }
+
+    public BookContent() {
+
+    }
+
     public void setBook(Book book) {
         this.book = book;
     }
