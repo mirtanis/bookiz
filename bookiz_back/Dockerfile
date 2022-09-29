@@ -7,12 +7,17 @@
 #EXPOSE 8081
 
 FROM openjdk:8
+ARG JAR_FILE=./build/libs/bookiz-0.0.1-SNAPSHOT.jar
 RUN mkdir -p /bookiz_back
 COPY ./ /bookiz_back
-RUN pwd
-RUN ls
-#RUN cp ../../../../secret/application-aws.properties /bookiz_back/src/main/resources/
-#WORKDIR /bookiz_back
+
+RUN mkdir -p /test
+COPY ../../ /test
+
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java", "-jar", "/app.jar"]
+EXPOSE 8081
+
 
 #RUN chmod +x ./gradlew
 #RUN ./gradlew build
