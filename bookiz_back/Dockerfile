@@ -11,7 +11,6 @@ RUN mkdir -p /bookiz_back
 COPY ./ /bookiz_back
 
 RUN ls
-RUN /root ls
 RUN /bin ls
 RUN /etc ls
 RUN /home ls
