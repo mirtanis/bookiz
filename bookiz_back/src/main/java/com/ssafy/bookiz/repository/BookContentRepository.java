@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface BookContentRepository extends JpaRepository<BookContent, Long> {
 
-    @Query(value = "SELECT bc FROM BookContent bc WHERE bc.book.id = :id")
+    @Query(value = "SELECT bc FROM BookContent bc WHERE bc.book.id = :id ORDER BY bc.page")
     public List<Object> getBookContents(@Param("id") Long id);
 
 }
