@@ -89,7 +89,7 @@ function AddBook() {
                         console.log("이미지 업로드 완료");
                     });
                 }
-                content.image = fileName;
+                content.image = mkImageURL(fileName, id);
                 contents.push(content);
             }// end of for
             const req2 = addContents(bookApis.BOOK_ADDCONTENTS, contents)
@@ -97,6 +97,10 @@ function AddBook() {
                 console.log("컨텐츠 업로드 완료");
             });
         });//end of for contents
+    }
+
+    function mkImageURL(name, id) {
+        return "https://j7a103.p.ssafy.io/api/books/display?image=" + name + "&id=" + id;
     }
 
     function makeForm(file, name, book_id) {

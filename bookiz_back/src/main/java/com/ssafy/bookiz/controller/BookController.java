@@ -132,7 +132,7 @@ public class BookController {
         }
     }
 
-    @GetMapping("/pluscnt")
+    @PatchMapping("/cnt")
     public ResponseEntity<?> plusCnt(@RequestParam Long id) {
         BookDto book = bookService.plusCnt(id);
         return new ResponseEntity<>(book, HttpStatus.OK);
@@ -180,7 +180,8 @@ public class BookController {
                 fos.write(file.getBytes());
                 System.out.println("파일 업로드 성공 : "+fileName);
             } catch (Exception e) {
-                return new ResponseEntity<>(HttpStatus.CONTINUE);
+                System.out.println("파일 업로드 실패 : "+fileName);
+                return new ResponseEntity<>(HttpStatus.ACCEPTED);
             }
         }
 
