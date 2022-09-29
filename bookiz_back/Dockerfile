@@ -6,9 +6,6 @@ COPY ${JAR_FILE} app.jar
 ENTRYPOINT ["java", "-jar", "/app.jar"]
 EXPOSE 8081
 
-# 호스트의 현재 디렉터리에 test 파일을 컨테이너(컨테이너 아이디 379***)의 / 디렉터리로 복사
-RUN docker container cp ./test 379:
-
 #FROM openjdk:8
 #RUN mkdir -p /bookiz_back
 #COPY ./ /bookiz_back
