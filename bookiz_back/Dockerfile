@@ -9,7 +9,7 @@
 FROM openjdk:8
 RUN mkdir -p /bookiz_back
 COPY ./ /bookiz_back
-RUN mv /secret/application-aws.properties /bookiz_back/src/main/resources/
+RUN cp /secret/application-aws.properties /bookiz_back/src/main/resources/
 RUN cd bookiz_back/
 RUN ./gradlew build
 ENTRYPOINT ["java", "-jar", "/bookiz_back/build/libs/bookiz-0.0.1-SNAPSHOT.jar"]
