@@ -11,11 +11,10 @@ RUN mkdir -p /bookiz_back
 COPY ./ /bookiz_back
 
 RUN ls
-RUN /etc ls
-RUN /home ls
-RUN /lib ls
 RUN /usr ls
 RUN /var ls
+RUN /home ls
+RUN /lib ls
 
 # RUN cp secret/application-aws.properties /bookiz_back/src/main/resources/
 # WORKDIR /bookiz_back
