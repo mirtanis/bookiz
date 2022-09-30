@@ -62,21 +62,20 @@ function BookPage(props) {
 	
 	//STT 끝---------------------------------------
 	const ModalHandler = () => {
-		console.log("modal");
 		setIsModal((prev) => !prev);
 	};
 
-	const TtsPlay = () => {
+	const audioPlay = () => {
 		window.audio.play();
 		setIsAudioPlaying(true);
 	};
 
-	const TtsPause = () => {
+	const audioPause = () => {
 		window.audio.pause();
 		setIsAudioPlaying(false);
 	}
 
-	const Tts = () => {
+	const setTts = () => {
 		window.audio = new Audio();
 		window.audio.src = `https://j7a103.p.ssafy.io/tts?text=${props.content}`;
 		window.audio.addEventListener("ended", function() {
@@ -85,16 +84,14 @@ function BookPage(props) {
 				props.setPage((page) => page + 1);
 			} else {
 				setIsAudioPlaying(false);
-				Tts();
+				setTts();
 			}
 		})
 	}
 
-	function audioPlay(url) {
+	function setAudio(url) {
 		window.audio = new Audio();
 		window.audio.src = url;
-		console.log(url);
-		window.audio.play();
 		window.audio.addEventListener("ended", function() {
 			if(props.page !== props.totalpage){
 				props.setIsPageChanged(true);
@@ -107,13 +104,14 @@ function BookPage(props) {
 		if (props.isPageChanged) {
 			props.setIsPageChanged(false)
 			if(window.audio !== undefined){
-				TtsPause();
+				audioPause();
 			}
-			Tts();
 			if(props.type === 3){
-				TtsPlay();
+				setTts();
+				audioPlay();
 			} else if (props.type === 2) {
-				audioPlay(props.audio);
+				setAudio(props.audio);
+				audioPlay();
 			}
 		}
 	});
@@ -147,8 +145,8 @@ function BookPage(props) {
 					</BookContent>
 					<SpeakerIconDiv>
 						{isAudioPlaying ?
-							<FaRegPauseCircle size={50} style={{ cursor: 'pointer' }} onClick={TtsPause} />
-							: <FaRegPlayCircle size={50} style={{ cursor: 'pointer' }} onClick={TtsPlay} />
+							<FaRegPauseCircle size={50} style={{ cursor: 'pointer' }} onClick={audioPause} />
+							: <FaRegPlayCircle size={50} style={{ cursor: 'pointer' }} onClick={audioPlay} />
 						}
 					</SpeakerIconDiv>
 				</BookContentContainer>
