@@ -28,7 +28,7 @@ function BookPage(props) {
 		}
 		let sText = transcript.replaceAll(' ', '');
 		let cText = props.content;
-		let ss = [' ', '.', '!', '?'];
+		let ss = [' ', '.', '!', '?', ','];
 		for (let i = 0; i < ss.length; i++) {
 			cText = cText.replaceAll(ss[i], '');
 		}
