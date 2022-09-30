@@ -97,7 +97,7 @@ function BookPage(props) {
 				TtsPause();
 			}
 			Tts();
-			if(props.type === 0){
+			if(props.type === 3){
 				TtsPlay();
 			}
 		}
