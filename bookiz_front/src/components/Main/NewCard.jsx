@@ -40,7 +40,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%;
+  height: 26vh;
 `;
 
 const NewCardContainer = styled.div`
@@ -50,6 +50,7 @@ const NewCardContainer = styled.div`
   align-items: center;
   width: 90%;
   height: 91%;
+  overflow: hidden;
   border-radius: 20px;
   box-shadow: 3px 3px 3px 3px black;
   &:hover {
