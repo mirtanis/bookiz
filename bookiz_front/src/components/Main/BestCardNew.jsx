@@ -107,12 +107,12 @@ const Content = styled.div`
 const GoldCard = styled.div`
  display: flex; 
  justify-content: center;
- height: 40vh;
+ height: 43vh;
 
 `
 
 const SilverBronzeCard = styled.div`
-width: 80%; 
+width: 100%; 
 height: 35vh;
 display: flex;
 flex-direction: row;
@@ -125,6 +125,7 @@ const ContentText = styled.p`
   margin-bottom: 20px;
   font-family: "KOTRAHOPE";
   font-weight: normal;
+  color: black;
 `;
 
 const BestCards = styled.div`
@@ -152,6 +153,7 @@ const MoreText = styled.p`
   font-weight: normal;
   font-size: 26px;
   margin: 0;
+  color: black;
 `;
 
 const MoreImage = styled.img`

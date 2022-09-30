@@ -7,6 +7,7 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import { Link } from "react-router-dom";
 import { bookListApis, fetchData } from "../../utils/apis/api";
+import bookshelf from "../../assets/images/bookshelf.png";
 
 function NewCardList() {
   const [newBooks, setNewBooks] = useState([]);
@@ -97,6 +98,7 @@ const Container = styled.div`
   justify-content: center;
   flex-direction: column;
   margin-bottom: 20px;
+
 `;
 
 const Head = styled.head`
@@ -104,23 +106,27 @@ const Head = styled.head`
   justify-content: space-between;
   align-items:flex-end;
 `;
+
 const Content = styled.div`
   width: 100%;
   padding: 10px;
-  border: 15px solid #a87328;
-  border-radius: 10px;  
-  background-color: #281C0A;
+  border-radius: 10px;    
+  
 `;
 
 const ContentText = styled.p`
   font-size: 36px;
-  margin-bottom: 20px;
+  color: black;
   font-family: "KOTRAHOPE";
   font-weight: normal;
 `;
 
 const SwiperContainer = styled.div`
   width: 100%;
+  background-image: url(${bookshelf});
+  border-radius: 10px;
+  border: 10px solid #361F16; 
+  border-width: 5px 5px 20px 5px;
 `;
 
 const More = styled.div`
@@ -134,6 +140,7 @@ const More = styled.div`
 const MoreText = styled.p`
   font-family: "KOTRAHOPE";
   font-weight: normal;
+  color: black;  
   font-size: 26px;
   margin: 0;
 `;

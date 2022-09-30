@@ -6,6 +6,7 @@ import BestCardList from "../components/Main/BestCardList";
 import NewCardList from "../components/Main/NewCardList";
 import SleepCardList from "../components/Main/SleepCardList";
 import BestCardListNew from "../components/Main/BestCardNew";
+import bgimg from "../assets/images/oakwoodimg.jpg"
 
 function MainPage() {
   return (
@@ -22,9 +23,9 @@ function MainPage() {
           {/* <SleepCardList/> */}
         </ListContainer>
         </Wrapper>
-          <BG />
+          {/* <BG />
           <BG2 />
-          <BG3 /> 
+          <BG3 />  */}
       </Container>
   
   );
@@ -33,18 +34,21 @@ function MainPage() {
 export default MainPage;
 
 const Container = styled.div`
-  width: 95%;  
+  height: 100vh;
   margin: auto;
   display: flex;
   justify-content: center;
-
+  /* background-image: url("https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/f6089272864385.5bf5cfa6c0b3f.jpg");  */
+  background-image: url(${bgimg});
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
 
 const Wrapper = styled.div ` 
-  width: 100%;
+  width: 90%;
   display: flex;
   justify-content: space-between; 
-  margin-top: 70px;
+  margin-top: 55px;
 `
 
 const BestContainer = styled.div`
@@ -56,7 +60,6 @@ const BestContainer = styled.div`
 
 const ListContainer = styled.div`
   width: 60%;
-  height: 55%;
   padding: 0px 20px 0px 20px;      
 `
 

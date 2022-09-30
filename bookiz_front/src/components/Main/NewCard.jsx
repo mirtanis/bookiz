@@ -52,7 +52,7 @@ const NewCardContainer = styled.div`
   height: 91%;
   overflow: hidden;
   border-radius: 20px;
-  box-shadow: 3px 3px 3px 3px black;
+  box-shadow: 5px 5px 13px 1px black;
   &:hover {
     transform: scale(1.05);
     transition: transform 0.8s;
