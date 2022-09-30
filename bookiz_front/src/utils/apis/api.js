@@ -33,7 +33,7 @@ export const bookApis = {
     return `/api/books?id=${id}`
   },
   BOOK_CNTUP : (id) => {
-    return `/api/books/pluscnt?id=${id}`
+    return `/api/books/cnt/${id}`
   },
   BOOK_ADDBOOK: `/api/books/addBook`,
   BOOK_ADDCONTENTS: `/api/books/addContents`,
