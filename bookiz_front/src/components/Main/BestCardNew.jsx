@@ -7,18 +7,20 @@ import { Link } from "react-router-dom";
 
 function BestCardListNew() {
   const [bestSellers, setBestSellers] = useState([]);
+ 
 
   useEffect(() => {
     const getRankList = async () => {
       return await fetchData.get(bookListApis.BOOK_RANK_LIST);
     };
     const res = getRankList(bookListApis.BOOK_RANK_LIST);
-    res.then((ranklist) => {
-      setBestSellers(ranklist.data);
-    });
+      res.then((ranklist) => {
+        setBestSellers(ranklist.data);        
+      });    
   }, []);
+  
+  console.log(bestSellers) 
 
-  console.log(bestSellers)
 
   const getCrown = [
     "assets/images/goldcrown.svg",
@@ -27,8 +29,7 @@ function BestCardListNew() {
   ];
 
   return (
-    <Container>
-     
+    <Container>     
       <Head>
         <ContentText>베스트 셀러</ContentText>
         <More>
@@ -41,35 +42,37 @@ function BestCardListNew() {
           </Link>
         </More>
       </Head>
-      <Content>
-        {/* <GoldCard>
-        <BestCard
-                crown={getCrown[0]}
-                // id={bestSellers[0].id}
-                title={bestSellers[0].title}
-                image={bestSellers[0].image}
-                info={bestSellers[0].info}
-                page={bestSellers[0].page}
+      <Content>     
+        <GoldCard>
+      {bestSellers.filter((bestSeller, i) => (i === 0)).map((bestSeller, index) => {           
+            return (
+              <BestCard
+                key={index}
+                crown={getCrown[index]}
+                id={bestSeller.id}
+                title={bestSeller.title}
+                image={bestSeller.image}
+                info={bestSeller.info}
+                page={bestSeller.page}
               />
-        </GoldCard> */}
-       {/* <SilverBronzeCard>
-       <BestCard
-                crown={getCrown[1]}
-                // id={bestSellers[1].id}
-                title={bestSellers[1].title}
-                image={bestSellers[1].image}
-                info={bestSellers[1].info}
-                page={bestSellers[1].page}
+            );
+          })}
+          </GoldCard> 
+          <SilverBronzeCard>
+          {bestSellers.filter((bestSeller, i) => (i > 0)).map((bestSeller, index) => {           
+            return (
+              <BestCard
+                key={index}
+                crown={getCrown[index+1]}
+                id={bestSeller.id}
+                title={bestSeller.title}
+                image={bestSeller.image}
+                info={bestSeller.info}
+                page={bestSeller.page}
               />
-               <BestCard
-                crown={getCrown[2]}
-                // id={bestSellers[2].id}
-                title={bestSellers[2].title}
-                image={bestSellers[2].image}
-                info={bestSellers[2].info}
-                page={bestSellers[2].page}
-              />
-       </SilverBronzeCard> */}
+            );
+          })}
+            </SilverBronzeCard>         
       </Content>
     </Container>
   );
@@ -97,15 +100,25 @@ const Head = styled.head`
 const Content = styled.div`
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: column;  
+  align-items: center;
 `;
 
 const GoldCard = styled.div`
-  
+ display: flex; 
+ justify-content: center;
+ width: 400px;
+ height: 400px;
+
 `
 
 const SilverBronzeCard = styled.div`
-  
+width: 80%; 
+height: 300px;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+
 `
 
 const ContentText = styled.p`

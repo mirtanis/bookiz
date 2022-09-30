@@ -12,11 +12,13 @@ function BestCard(props) {
 
   return (
     <div>
+      <Container>
       <BestCardContainer onClick={ModalHandler}>
         <Crown src={props.crown} />
         <Image src={props.image} />
         <Title>{props.title}</Title>
       </BestCardContainer>
+      </Container>
       <BookModal
         open={isModal}
         close={ModalHandler}
@@ -31,13 +33,23 @@ function BestCard(props) {
 
 export default BestCard;
 
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+`;
+
 const BestCardContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 91%;
+  border-radius: 20px; 
+  overflow: hidden;
   &:hover {
     transform: scale(1.05);
     transition: transform 0.8s;
@@ -53,7 +65,7 @@ const Image = styled.img`
   width: 100%;
   height: 100%;
   border-radius: 20px;
-  box-shadow: 3px 3px 3px 3px black;
+  object-fit: cover;
 `;
 
 const Title = styled.div`
