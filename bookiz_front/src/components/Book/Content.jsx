@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import BookPage from "./BookPage"
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
+import { bookApis, fetchData } from '../../utils/apis/api';
+import { useLocation, useSearchParams } from 'react-router-dom';
 
 function Content() {
   const [bookContents, setBookContents] = useState([
@@ -13,6 +15,18 @@ function Content() {
   const [page, setPage] = useState(1);
 
   const [isPageChanged, setIsPageChanged] = useState(true);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    const getBookContents = async (url) => {
+      return await fetchData.get(url);
+    };
+    const res = getBookContents(bookApis.BOOK_START(searchParams.get('id')));
+    res.then((bookcontents) => {
+      setBookContents(bookcontents.data);
+    });
+  }, []);
 
   return (
     <Container>
