@@ -5,6 +5,7 @@ import Navbar from "../components/Main/Navbar";
 import BestCardList from "../components/Main/BestCardList";
 import NewCardList from "../components/Main/NewCardList";
 import SleepCardList from "../components/Main/SleepCardList";
+import BestCardListNew from "../components/Main/BestCardNew";
 
 function MainPage() {
   return (
@@ -12,7 +13,8 @@ function MainPage() {
         <Navbar />
         <Wrapper>
         <BestContainer>
-          <BestCardList />             
+          {/* <BestCardList />              */}
+          <BestCardListNew/>
         </BestContainer>
         <ListContainer>
           <NewCardList/> 

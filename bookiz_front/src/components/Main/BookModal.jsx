@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { bookApis, fetchData } from "../../utils/apis/api";
 
 function BookModal(props) {
+  
   const { open, close, title, info, image, page } = props;
 
   const getPlusCnt = async (url) => {
