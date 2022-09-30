@@ -72,7 +72,7 @@ function AddBook() {
                 } else if (document.getElementById("audio" + i).files.length > 0) {
                     content.type = 2;
                     let audioName = document.getElementById("audio" + i).files[0].name;
-                    content.audio = audioName;
+                    content.audio = mkAudioURL(audioName, id);
                     let audioData = makeForm(document.getElementById("audio"+i).files[0], audioName, id);
                     req3 = upload(bookApis.BOOK_FILEUPLOAD, audioData);
                     req3.then((res) => {
@@ -101,6 +101,10 @@ function AddBook() {
 
     function mkImageURL(name, id) {
         return "https://j7a103.p.ssafy.io/api/books/display?image=" + name + "&id=" + id;
+    }
+
+    function mkAudioURL(name, id) {
+        return "https://j7a103.p.ssafy.io/api/books/audiofile?audio=" + name + "&id=" + id;
     }
 
     function makeForm(file, name, book_id) {
