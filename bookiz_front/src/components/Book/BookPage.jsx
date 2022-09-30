@@ -106,8 +106,8 @@ function BookPage(props) {
 			if(window.audio !== undefined){
 				audioPause();
 			}
+			setTts();
 			if(props.type === 3){
-				setTts();
 				audioPlay();
 			} else if (props.type === 2) {
 				setAudio(props.audio);
