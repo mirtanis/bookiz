@@ -9,7 +9,7 @@ function BookModal(props) {
   const { id, open, close, title, info, image, page } = props;
 
   const getPlusCnt = async (url) => {
-    return await fetchData.get(url)
+    return await fetchData.patch(url)
   }
 
   const onclick = (id) => getPlusCnt(bookApis.BOOK_CNTUP(id))
