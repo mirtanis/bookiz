@@ -1,9 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Logo from "./Logo";
 import { HiSearch } from "react-icons/hi";
+import { TbQuestionMark } from "react-icons/tb"; 
 import { BsQuestionCircle } from "react-icons/bs";
 import HelpModal from "./HelpModal";
 import HelpSwiper from "./HelpSwiper";
@@ -48,7 +49,7 @@ function Navbar() {
         />
       </NavSearch>
       <Help>
-        <BsQuestionCircle
+        <TbQuestionMark
           className="helpicon"
           size={50}
           onClick={ModalHandler}
@@ -122,16 +123,26 @@ const Button = styled.button`
   color: ${(props) => props.theme.colors.white};
 `;
 
+const pulse = keyframes`
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }  
+`
+
 const Help = styled.div`
-  margin-right: 20px;
+  margin-right: 20px;  
   .helpicon {
     background-color: white;
     border-radius: 50%;
+    box-shadow: 5px 5px 13px 1px black;
     &:hover {
       cursor: pointer;
+      animation: ${pulse} 1s infinite;
+      animation-timing-function: linear; 
     }
   }
 `;
+
 
 const HelpContainer = styled.main`
   max-width: 1440px;
