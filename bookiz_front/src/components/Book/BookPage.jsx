@@ -90,6 +90,19 @@ function BookPage(props) {
 		})
 	}
 
+	function audioPlay(url) {
+		window.audio = new Audio();
+		window.audio.src = url;
+		console.log(url);
+		window.audio.play();
+		window.audio.addEventListener("ended", function() {
+			if(props.page !== props.totalpage){
+				props.setIsPageChanged(true);
+				props.setPage((page) => page + 1);
+			}
+		})
+	}
+
 	useEffect(() => {
 		if (props.isPageChanged) {
 			props.setIsPageChanged(false)
@@ -99,6 +112,8 @@ function BookPage(props) {
 			Tts();
 			if(props.type === 3){
 				TtsPlay();
+			} else if (props.type === 2) {
+				audioPlay(props.audio);
 			}
 		}
 	});
