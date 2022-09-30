@@ -34,6 +34,7 @@ function Content() {
         page={bookContents[page - 1].page}
         content={bookContents[page - 1].content}
         image={bookContents[page - 1].image}
+        audio={bookContents[page - 1].audio}
         totalpage={bookContents.length}
         type={bookContents[page - 1].type}
         setPage={setPage}
