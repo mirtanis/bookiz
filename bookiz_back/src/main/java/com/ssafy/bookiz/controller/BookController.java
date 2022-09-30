@@ -203,4 +203,20 @@ public class BookController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }// end of display API
+
+    @GetMapping("/audiofile")
+    public ResponseEntity<?> audiofile(@RequestParam("audio") String audio, @RequestParam("id") Long id) {
+        String filePath = Paths.get("").toAbsolutePath() + File.separator + "tale" + File.separator + id + File.separator + audio;
+        Resource req = new FileSystemResource(filePath);
+        if (!req.exists()) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        try {
+            HttpHeaders header = new HttpHeaders();
+            header.add("Content-Type", "audio/mp3");
+            return new ResponseEntity<>(req, header, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
