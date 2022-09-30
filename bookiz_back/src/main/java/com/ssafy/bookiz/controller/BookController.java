@@ -138,6 +138,18 @@ public class BookController {
         return new ResponseEntity<>(book, HttpStatus.OK);
     }
 
+    @PatchMapping("/cnt")
+    public ResponseEntity<?> plusCntTest(@RequestBody Long id) {
+        BookDto book = bookService.plusCnt(id);
+        return new ResponseEntity<>(book, HttpStatus.OK);
+    }
+
+    @PatchMapping("/cnt/{id}")
+    public ResponseEntity<?> cntPlus(@PathVariable(value = "id") Long id) {
+        BookDto book = bookService.plusCnt(id);
+        return new ResponseEntity<>(book, HttpStatus.OK);
+    }
+
     @PostMapping("/addBook")
     public ResponseEntity<?> addBook(@RequestBody Book bookInput) {
         System.out.println("addBook 호출");
