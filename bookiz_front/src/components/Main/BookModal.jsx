@@ -38,7 +38,7 @@ function BookModal(props) {
               </BookInfo>
             </Book>
             <Start>
-            <Link to={{pathname: `/book?id=${id}`}} style={{ textDecoration: "none", width: "30%", height: "70%"}}>
+              <Link to={{pathname: `/book?id=${id}`}} style={{ textDecoration: "none", width: "30%", height: "70%"}}>
                 <StartBtn className="startbtn" onClick={onclick(id)}>시작하기</StartBtn>
               </Link>
               <Page>총 {page} 페이지</Page>
