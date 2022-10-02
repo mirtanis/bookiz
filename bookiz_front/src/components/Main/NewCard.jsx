@@ -41,7 +41,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 46.6667vh;
+  height: 26vh;
 `;
 
 const NewCardContainer = styled.div`
@@ -51,8 +51,9 @@ const NewCardContainer = styled.div`
   align-items: center;
   width: 90%;
   height: 91%;
+  overflow: hidden;
   border-radius: 20px;
-  box-shadow: 3px 3px 3px 3px black;
+  box-shadow: 5px 5px 13px 1px black;
   &:hover {
     transform: scale(1.05);
     transition: transform 0.8s;
@@ -63,8 +64,8 @@ const Label = styled.div`
   position: absolute;
   top: 0px;
   left: -0px;
-  width: 100px !important;
-  height: 50px !important;
+  width: 60px !important;
+  height: 30px !important;
   border-bottom-right-radius: 20px;
   border-top-left-radius: 20px;
   background-color: #03c75a;
@@ -73,7 +74,7 @@ const Label = styled.div`
   align-items: center;
   > p {
     color: white;
-    font-size: 40px;
+    font-size: 25px;
     font-family: "KOTRAHOPE";
     font-weight: normal;
   }
@@ -81,7 +82,8 @@ const Label = styled.div`
 
 const Image = styled.img`
   width: 100%;
-  object-fit: fill !important;
+  height: 100%;
+  object-fit: cover !important;
   border-radius: 20px;
 `;
 
