@@ -23,9 +23,7 @@ function MainPage() {
           {/* <SleepCardList/> */}
         </ListContainer>
         </Wrapper>
-          {/* <BG />
-          <BG2 />
-          <BG3 />  */}
+         
       </Container>
   
   );
@@ -62,52 +60,3 @@ const ListContainer = styled.div`
   width: 60%;
   padding: 0px 20px 0px 20px;      
 `
-
-const slide = keyframes`
-  0% {
-    transform:translateX(-25%);
-  }
-  100% {
-    transform:translateX(25%);
-  }
-
-`;
-
-const BG = styled.div`
-  animation: ${slide} 3s ease-in-out infinite alternate;
-  background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
-  bottom: 0;
-  left: -50%;
-  opacity: 0.5;
-  position: fixed;
-  right: -50%;
-  top: 0;
-  z-index: -1;
-`;
-
-const BG2 = styled.div`
-  animation: ${slide} 3s ease-in-out infinite alternate;
-  background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
-  bottom: 0;
-  left: -50%;
-  opacity: 0.5;
-  position: fixed;
-  right: -50%;
-  top: 0;
-  z-index: -1;
-  animation-direction: alternate-reverse;
-  animation-duration: 4s;
-`;
-
-const BG3 = styled.div`
-  animation: ${slide} 3s ease-in-out infinite alternate;
-  background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
-  bottom: 0;
-  left: -50%;
-  opacity: 0.5;
-  position: fixed;
-  right: -50%;
-  top: 0;
-  z-index: -1;
-  animation-duration: 5s;
-`;
