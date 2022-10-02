@@ -1,20 +1,25 @@
 import React, { useState, useEffect } from "react";
 import styled, { ThemeContext } from "styled-components";
 import { Link } from "react-router-dom";
-import { BsQuestionCircle, BsMic } from "react-icons/bs";
+import { BsQuestionCircle, BsMic, BsMicFill } from "react-icons/bs";
 import { IoMdExit, IoIosExit } from "react-icons/io";
 import { FaRegPlayCircle, FaRegPauseCircle } from "react-icons/fa";
 import HelpModal from "../Main/HelpModal";
 import HelpSwiper from "../Main/HelpSwiper";
 import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
+import EndModal from "./EndModal";
 
 function BookPage(props) {
 	
-	const [isModal, setIsModal] = useState(false);
+	const [isHelpModal, setIsHelpModal] = useState(false);
 
 	const [outButtonHover, setOutButtonHover] = useState(false);
 
 	const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+
+	const [isSpeaking, setIsSpeaking] = useState(false);
+
+	const [isEndModal, setIsEndModal] = useState(false);
 	//STT 시작---------------------------------------
 	const {
 		transcript,
@@ -56,13 +61,15 @@ function BookPage(props) {
 			if(props.page !== props.totalpage){
 				props.setPage((page) => page+1);
 				props.setIsPageChanged(true);
+			} else {
+				setIsEndModal(true);
 			}
 		}
 	}
 	
 	//STT 끝---------------------------------------
-	const ModalHandler = () => {
-		setIsModal((prev) => !prev);
+	const HelpModalHandler = () => {
+		setIsHelpModal((prev) => !prev);
 	};
 
 	const audioPlay = () => {
@@ -84,7 +91,7 @@ function BookPage(props) {
 				props.setPage((page) => page + 1);
 			} else {
 				setIsAudioPlaying(false);
-				setTts();
+				setIsEndModal(true);
 			}
 		})
 	}
@@ -96,6 +103,9 @@ function BookPage(props) {
 			if(props.page !== props.totalpage){
 				props.setIsPageChanged(true);
 				props.setPage((page) => page + 1);
+			} else {
+				setIsAudioPlaying(false);
+				setIsEndModal(true);
 			}
 		})
 	}
@@ -117,14 +127,17 @@ function BookPage(props) {
 	});
 
 	useEffect(() => {
+		setIsSpeaking(true);
 		stt();
+		setTimeout(() => {
+			setIsSpeaking(false)
+		}, 1000);
 		},
 		[transcript]
 	);
 
 	return (
 		<Container>
-			<input type="hidden" value={transcript} onChange={stt}/>
 			<BookImageDiv>
 				<BookImage src={props.image} />
 			</BookImageDiv>
@@ -134,7 +147,10 @@ function BookPage(props) {
 					<SpeakerDiv>
 						{props.type === 1 &&
 							<SpeakerImage>
-								<BsMic size={25} />
+								{isSpeaking ?
+									<BsMicFill size={25} />
+									: <BsMic size={25} />
+								}
 							</SpeakerImage>
 						}
 					</SpeakerDiv>
@@ -150,7 +166,7 @@ function BookPage(props) {
 						}
 					</SpeakerIconDiv>
 				</BookContentContainer>
-				<OutButtonDiv onMouseEnter={() => setOutButtonHover(true)} onMouseLeave={() => setOutButtonHover(false)}>
+				<OutButtonDiv onMouseEnter={() => setOutButtonHover(true)} onMouseLeave={() => setOutButtonHover(false)} onClick={() => audioPause()}>
 					<Link to="/" style={{ color: 'black', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
 						{outButtonHover ? 
 							<IoIosExit size={25} />
@@ -168,14 +184,19 @@ function BookPage(props) {
         <BsQuestionCircle
           className="helpicon"
           size={50}
-          onClick={ModalHandler}
+          onClick={HelpModalHandler}
         />
       </Help>
-      <HelpModal open={isModal} close={ModalHandler} title="도움 모달">
+      <HelpModal open={isHelpModal} close={HelpModalHandler} title="도움 모달">
         <HelpContainer>
           <HelpSwiper />
         </HelpContainer>
       </HelpModal>
+			{
+				isEndModal ?
+				<EndModal />
+				: null
+			}
 		</Container>
 	)
 	

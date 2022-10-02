@@ -3,7 +3,7 @@ import styled from "styled-components";
 import BookPage from "./BookPage"
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { bookApis, fetchData } from '../../utils/apis/api';
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
 function Content() {
   const [bookContents, setBookContents] = useState([]);
