@@ -22,6 +22,7 @@ function BestCard(props) {
       <BookModal
         open={isModal}
         close={ModalHandler}
+        id={props.id}
         title={props.title}
         info={props.info}
         image={props.image}

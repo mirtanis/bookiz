@@ -28,7 +28,7 @@ function BookPage(props) {
 		}
 		let sText = transcript.replaceAll(' ', '');
 		let cText = props.content;
-		let ss = [' ', '.', '!', '?'];
+		let ss = [' ', '.', '!', '?', ','];
 		for (let i = 0; i < ss.length; i++) {
 			cText = cText.replaceAll(ss[i], '');
 		}
@@ -62,21 +62,20 @@ function BookPage(props) {
 	
 	//STT 끝---------------------------------------
 	const ModalHandler = () => {
-		console.log("modal");
 		setIsModal((prev) => !prev);
 	};
 
-	const TtsPlay = () => {
+	const audioPlay = () => {
 		window.audio.play();
 		setIsAudioPlaying(true);
 	};
 
-	const TtsPause = () => {
+	const audioPause = () => {
 		window.audio.pause();
 		setIsAudioPlaying(false);
 	}
 
-	const Tts = () => {
+	const setTts = () => {
 		window.audio = new Audio();
 		window.audio.src = `https://j7a103.p.ssafy.io/tts?text=${props.content}`;
 		window.audio.addEventListener("ended", function() {
@@ -85,7 +84,18 @@ function BookPage(props) {
 				props.setPage((page) => page + 1);
 			} else {
 				setIsAudioPlaying(false);
-				Tts();
+				setTts();
+			}
+		})
+	}
+
+	function setAudio(url) {
+		window.audio = new Audio();
+		window.audio.src = url;
+		window.audio.addEventListener("ended", function() {
+			if(props.page !== props.totalpage){
+				props.setIsPageChanged(true);
+				props.setPage((page) => page + 1);
 			}
 		})
 	}
@@ -94,11 +104,14 @@ function BookPage(props) {
 		if (props.isPageChanged) {
 			props.setIsPageChanged(false)
 			if(window.audio !== undefined){
-				TtsPause();
+				audioPause();
 			}
-			Tts();
-			if(props.type === 0){
-				TtsPlay();
+			setTts();
+			if(props.type === 3){
+				audioPlay();
+			} else if (props.type === 2) {
+				setAudio(props.audio);
+				audioPlay();
 			}
 		}
 	});
@@ -132,8 +145,8 @@ function BookPage(props) {
 					</BookContent>
 					<SpeakerIconDiv>
 						{isAudioPlaying ?
-							<FaRegPauseCircle size={50} style={{ cursor: 'pointer' }} onClick={TtsPause} />
-							: <FaRegPlayCircle size={50} style={{ cursor: 'pointer' }} onClick={TtsPlay} />
+							<FaRegPauseCircle size={50} style={{ cursor: 'pointer' }} onClick={audioPause} />
+							: <FaRegPlayCircle size={50} style={{ cursor: 'pointer' }} onClick={audioPlay} />
 						}
 					</SpeakerIconDiv>
 				</BookContentContainer>

@@ -72,6 +72,7 @@ function NewCardList() {
                 <div>
                   <SwiperSlide key={index}>
                     <NewCard
+                      id={newBook.id}
                       title={newBook.title}
                       image={newBook.image}
                       info={newBook.info}

@@ -80,7 +80,7 @@ public class BookService {
     }
     public long addBook(Book book) {
         Date today = new Date();
-        SimpleDateFormat form = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        SimpleDateFormat form = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         form.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));
         book.setCreatedate(Timestamp.valueOf(form.format(today)));
         bookRepository.save(book);
