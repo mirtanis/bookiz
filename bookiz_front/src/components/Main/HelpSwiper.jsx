@@ -25,7 +25,7 @@ function HelpSwiper() {
           >
             <div>
               <img
-                src="assets/images/help1.png"
+                src="assets/images/help1.PNG"
                 alt="도움 이미지1"
                 width="1440"
                 height="600"
@@ -35,7 +35,7 @@ function HelpSwiper() {
           <SwiperSlide>
             <div>
               <img
-                src="assets/images/help2.png"
+                src="assets/images/help2.PNG"
                 alt="도움 이미지2"
                 width="1440"
                 height="600"
@@ -45,7 +45,7 @@ function HelpSwiper() {
           <SwiperSlide>
             <div>
               <img
-                src="assets/images/help3.png"
+                src="assets/images/help3.PNG"
                 alt="도움 이미지3"
                 width="1440"
                 height="600"
