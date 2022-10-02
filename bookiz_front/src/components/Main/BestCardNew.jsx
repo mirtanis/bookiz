@@ -5,18 +5,22 @@ import { bookListApis, fetchData } from "../../utils/apis/api";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-function BestCardList() {
+function BestCardListNew() {
   const [bestSellers, setBestSellers] = useState([]);
+ 
 
   useEffect(() => {
     const getRankList = async () => {
       return await fetchData.get(bookListApis.BOOK_RANK_LIST);
     };
     const res = getRankList(bookListApis.BOOK_RANK_LIST);
-    res.then((ranklist) => {
-      setBestSellers(ranklist.data);
-    });
+      res.then((ranklist) => {
+        setBestSellers(ranklist.data);        
+      });    
   }, []);
+  
+  console.log(bestSellers) 
+
 
   const getCrown = [
     "assets/images/goldcrown.svg",
@@ -25,8 +29,7 @@ function BestCardList() {
   ];
 
   return (
-    <Container>
-     
+    <Container>     
       <Head>
         <ContentText>베스트 셀러</ContentText>
         <More>
@@ -39,9 +42,9 @@ function BestCardList() {
           </Link>
         </More>
       </Head>
-      <Content>
-        <BestCards>
-          {bestSellers.map((bestSeller, index) => {
+      <Content>     
+        <GoldCard>
+      {bestSellers.filter((bestSeller, i) => (i === 0)).map((bestSeller, index) => {           
             return (
               <BestCard
                 key={index}
@@ -54,13 +57,28 @@ function BestCardList() {
               />
             );
           })}
-        </BestCards>
+          </GoldCard> 
+          <SilverBronzeCard>
+          {bestSellers.filter((bestSeller, i) => (i > 0)).map((bestSeller, index) => {           
+            return (
+              <BestCard
+                key={index}
+                crown={getCrown[index+1]}
+                id={bestSeller.id}
+                title={bestSeller.title}
+                image={bestSeller.image}
+                info={bestSeller.info}
+                page={bestSeller.page}
+              />
+            );
+          })}
+            </SilverBronzeCard>         
       </Content>
     </Container>
   );
 }
 
-export default BestCardList;
+export default BestCardListNew;
 
 const Container = styled.div`
   width: 100%;
@@ -82,14 +100,32 @@ const Head = styled.head`
 const Content = styled.div`
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: column;  
+  align-items: center;
 `;
+
+const GoldCard = styled.div`
+ display: flex; 
+ justify-content: center;
+ height: 43vh;
+
+`
+
+const SilverBronzeCard = styled.div`
+width: 100%; 
+height: 35vh;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+
+`
 
 const ContentText = styled.p`
   font-size: 50px;
   margin-bottom: 20px;
   font-family: "KOTRAHOPE";
   font-weight: normal;
+  color: black;
 `;
 
 const BestCards = styled.div`
@@ -117,6 +153,7 @@ const MoreText = styled.p`
   font-weight: normal;
   font-size: 26px;
   margin: 0;
+  color: black;
 `;
 
 const MoreImage = styled.img`
