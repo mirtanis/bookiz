@@ -27,7 +27,7 @@ const Container = styled.div`
 `;
 
 const KeywordContainer = styled.h2`
-  margin-top: 100px;
+  margin-top: 70px;
   height: 5rem;
   display: flex;
   align-items: center;

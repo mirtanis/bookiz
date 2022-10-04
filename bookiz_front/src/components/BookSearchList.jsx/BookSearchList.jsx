@@ -6,6 +6,9 @@ import BookListCard from "../BookList/BookListCard";
 import { bookListApis, fetchData } from "../../utils/apis/api";
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+import { keyframes } from "styled-components";
+import BookCard from "../Main/Card";
+
 
 function BookSearchList() {
   const [searchParams] = useSearchParams();
@@ -30,8 +33,13 @@ function BookSearchList() {
 
   return (
     <Container>
-      <Label>
-        페이지 당 표시할 게시물 수:&nbsp;
+       <BG />
+       <BG2 />
+       <BG3 /> 
+      <Label>        
+        <span>
+        페이지 당 카드 수:&nbsp;
+        </span>
         <select
           type="number"
           value={limit}
@@ -47,7 +55,7 @@ function BookSearchList() {
       <Content>
         {books.slice(offset, offset + limit).map((newBook, index) => {
           return (
-            <BookListCard
+            <BookCard
               id={newBook.id}
               title={newBook.title}
               image={newBook.image}
@@ -77,7 +85,7 @@ const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-top: 10.6667vh;
+  margin-top: 20px;
 `;
 
 const Content = styled.main`
@@ -104,4 +112,91 @@ const Label = styled.label`
   margin-bottom: 10px;
   display: flex;
   justify-content: end;
+  align-items: center;
+  > span {
+    padding: 2px;
+    background-color: ${(props) => props.theme.colors.mainYellow};
+    border-radius: 5px;
+    margin-right: 5px;
+    padding-left: 9px;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: "Noto Sansf KR", sans-serif;
+  }
+  > select {
+    -moz-appearance: none;
+	  -webkit-appearance: none;
+	  appearance: none; 
+    font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: black;
+  background-color: #fff;
+  padding: 0.6em 1.4em 0.5em 0.8em;
+  margin: 0;
+  border: 1px solid #aaa;
+  border-radius: 0.5em;
+  box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
+    font-weight: bold;
+    padding: 4px;
+    padding-left: 6px;
+    padding-right: 6px;
+    background-color:${(props) => props.theme.colors.mainYellow};
+  }
+  > option {
+    border-radius: 5px;
+  }
+
+
+`;
+
+const slide = keyframes`
+  0% {
+    transform:translateX(-25%);
+  }
+  100% {
+    transform:translateX(25%);
+  }
+
+`;
+
+
+const BG = styled.div`
+  animation: ${slide} 3s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
+  bottom: 0;
+  left: -50%;
+  opacity: 0.3;
+  position: fixed;
+  right: -50%;
+  top: 0;
+  z-index: -1;
+  animation-duration: 8s;
+`;
+
+const BG2 = styled.div`
+  animation: ${slide} 3s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
+  bottom: 0;
+  left: -50%;
+  opacity: 0.3;
+  position: fixed;
+  right: -50%;
+  top: 0;
+  z-index: -1;
+  animation-direction: alternate-reverse;
+  animation-duration: 10s;
+`;
+
+const BG3 = styled.div`
+  animation: ${slide} 3s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
+  bottom: 0;
+  left: -50%;
+  opacity: 0.5;
+  position: fixed;
+  right: -50%;
+  top: 0;
+  z-index: -1;
+  animation-duration: 10s;
 `;
