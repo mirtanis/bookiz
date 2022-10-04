@@ -1,23 +1,24 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import NewCard from "./NewCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import { Link } from "react-router-dom";
 import { bookListApis, fetchData } from "../../utils/apis/api";
+import BookCard from "./Card";
+import bookshelf from "../../assets/images/bookshelf.png";
 
-function SleepCardList() {
-  const [sleepBooks, setSleepBooks] = useState([]);
+function CateCardList() {
+  const [cateBooks, setCateBooks] = useState([]);
 
   useEffect(() => {
     const getnewBookList = async (url) => {
       return await fetchData.get(url);
     };
     const res = getnewBookList(bookListApis.BOOK_CATEGORY_LIST(3));
-    res.then((sleeplist) => {
-      setSleepBooks(sleeplist.data);
+    res.then((catelist) => {
+      setCateBooks(catelist.data);
     });
   }, []);
 
@@ -27,7 +28,7 @@ function SleepCardList() {
         <ContentText>러블리 공주 명작 동화</ContentText>
         <More>
           <Link
-            to="/booklist/new"
+            to="/booklist/3"
             style={{ textDecoration: "none", color: "black" }}
           >
             <MoreText>더보기</MoreText>
@@ -66,11 +67,12 @@ function SleepCardList() {
             modules={[Navigation]}
             className="mySwiper"
           >
-            {sleepBooks.map((newBook, index) => {
+            {cateBooks.map((newBook, index) => {
               return (
                 <div>
                   <SwiperSlide key={index}>
-                    <NewCard
+                    <BookCard
+                      id={newBook.id}
                       title={newBook.title}
                       image={newBook.image}
                       info={newBook.info}
@@ -87,7 +89,7 @@ function SleepCardList() {
   );
 }
 
-export default  SleepCardList;
+export default  CateCardList;
 
 const Container = styled.div`
   width: 100%;
@@ -98,29 +100,34 @@ const Container = styled.div`
   flex-direction: column;
   margin-bottom: 20px;
 
-  
 `;
 
 const Head = styled.head`
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items:flex-end;
 `;
+
 const Content = styled.div`
-  width: 100%;  
-  border: 10px solid #a87328;
-  background-color: #281C0A;
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;    
+  
 `;
 
 const ContentText = styled.p`
   font-size: 36px;
-  margin-bottom: 20px;
+  color: black;
   font-family: "KOTRAHOPE";
   font-weight: normal;
 `;
 
 const SwiperContainer = styled.div`
   width: 100%;
+  background-image: url(${bookshelf});
+  border-radius: 10px;
+  border: 10px solid #361F16; 
+  border-width: 5px 5px 20px 5px;
 `;
 
 const More = styled.div`
@@ -128,12 +135,13 @@ const More = styled.div`
   margin-top: 2.2222vh;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
 `;
 
 const MoreText = styled.p`
   font-family: "KOTRAHOPE";
   font-weight: normal;
+  color: black;  
   font-size: 26px;
   margin: 0;
 `;
