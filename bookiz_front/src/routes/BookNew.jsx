@@ -19,4 +19,5 @@ export default BookNewPage;
 const Container = styled.div`
   width: 90%;
   margin: auto;
+  margin-top: 70px;
 `;
