@@ -3,6 +3,7 @@ import BookModalPortal from "./Portal";
 import { IoClose } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { bookApis, fetchData } from "../../utils/apis/api";
+import BookImage from "../../assets/images/book.png"
 
 function BookModal(props) {
   const { id, open, close, title, info, image, page } = props;
@@ -19,7 +20,7 @@ function BookModal(props) {
       <Background onClick={close}>
         <Modal onClick={(e) => e.stopPropagation()}>
           <main style={{ position: "relative" }}>
-            <BackgroundImage src="./assets/images/book.png" alt="책" />
+            <BackgroundImage src={BookImage} alt="책" />
             <BookDiv>
               <header style={{ marginTop: "15px" }}>
                 <IoClose
