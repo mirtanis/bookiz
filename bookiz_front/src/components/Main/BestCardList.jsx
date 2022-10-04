@@ -19,9 +19,9 @@ function BestCardList() {
   }, []);
 
   const getCrown = [
-    "assets/images/goldcrown.svg",
-    "assets/images/silvercrown.svg",
-    "assets/images/bronzecrown.svg",
+    "assets/images/금메달.png",
+    "assets/images/은메달.png",
+    "assets/images/동메달.png",
   ];
 
   return (

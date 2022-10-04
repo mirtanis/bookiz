@@ -55,7 +55,7 @@ function BookPage(props) {
 			}
 		}
 	
-		if(mat[d-1][r.length-1] < r.length/5) {
+		if(mat[d-1][r.length-1] < r.length/4) {
 			// SpeechRecognition.stopListening();
 			resetTranscript(true);
 			if(props.page !== props.totalpage){
