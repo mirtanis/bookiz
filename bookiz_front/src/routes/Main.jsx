@@ -4,9 +4,9 @@ import { keyframes } from "styled-components";
 import Navbar from "../components/Main/Navbar";
 import BestCardList from "../components/Main/BestCardList";
 import NewCardList from "../components/Main/NewCardList";
-import SleepCardList from "../components/Main/SleepCardList";
 import BestCardListNew from "../components/Main/BestCardNew";
 import bgimg from "../assets/images/oakwoodimg.jpg"
+import CateCardList from "../components/Main/CateCardList";
 
 function MainPage() {
   return (
@@ -20,7 +20,7 @@ function MainPage() {
         <ListContainer>
           <NewCardList/> 
           {/* <NewCardList/>  */}
-          <SleepCardList/>
+          <CateCardList/>
         </ListContainer>
         </Wrapper>
          
