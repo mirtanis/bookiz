@@ -107,7 +107,8 @@ const SearchBox = styled.input`
   color: ${(props) => props.theme.colors.pointBlack};
   width: 600px;
   &:focus {
-    outline: none;
+    outline: none;    
+    border: 1px solid #ccc; padding: 7px 14px 9px; transition: 0.4s;
   }
 `;
 
