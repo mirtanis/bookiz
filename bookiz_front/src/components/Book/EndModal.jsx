@@ -1,34 +1,25 @@
 import React from "react";
 import styled from "styled-components";
-import BOOKIZ from "../../assets/icons/BOOKIZ-removebg.png"
 import { Link } from "react-router-dom";
+import { MdReplay } from "react-icons/md";
+import { AiOutlineHome } from "react-icons/ai";
 
 function EndModal() {
   return (
     <Container>
       <Modal>
-        <Title>
-          <TitleText>
-            다음에 만나요!
-          </TitleText>
-        </Title>
-        <Content>
-          <ModalImage src={BOOKIZ} />
-        </Content>
-        <Buttons>
-          <FirstPageButton onClick={() => window.location.reload()}>
-            <ButtonText>
-              처음부터 다시
-            </ButtonText>
-          </FirstPageButton>
-          <Link to="/" style={{ width: '30%', height: '50%', borderRadius: '20px', textDecoration: 'none', color: 'black' }}>
-            <HomeButton>
-              <ButtonText>
-                홈페이지로
-              </ButtonText>
-            </HomeButton>
-          </Link>
-        </Buttons>
+        <FirstPageButton onClick={() => window.location.reload()}>
+          <MdReplay size={100} />
+          <ButtonText>
+            처음부터
+          </ButtonText>
+        </FirstPageButton>
+        <StyledLink to="/">
+          <AiOutlineHome size={100} />
+          <ButtonText>
+            홈페이지
+          </ButtonText>
+        </StyledLink>
       </Modal>
     </Container>
   )
@@ -49,67 +40,46 @@ const Container = styled.div`
 `;
 
 const Modal = styled.div`
-  width: 90%;
-  height: 90%;
-  background-color: white;
-  border-radius: 20px;
-`;
-
-const Title = styled.div`
-  width: 100%;
-  height: 30%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const TitleText = styled.p`
-  margin : 0;
-  font-size : 5.5556vh;
-`
-
-const Content = styled.div`
-  width: 100%;
-  height: 40%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const ModalImage = styled.img`
-  height: 100%;
-`;
-
-const Buttons = styled.div`
-  width: 100%;
-  height: 30%;
+  width: 70%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 `;
 
 const FirstPageButton = styled.div`
-  width: 30%;
-  height: 50%;
-  border-radius: 20px;
-  background-color: blue;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
   cursor: pointer;
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  background-color: #0080FF;
+  :hover {
+    transform: scale(1.2);
+  }
 `;
 
-const HomeButton = styled.div`
-  width: 100%;
-  height: 100%;
-  border-radius: 20px;
-  background-color: red;
+const StyledLink = styled(Link)`
+  width: 250px;
+  height: 250px;
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  background-color: #FA5858;
+  border-radius: 50%;
+  :hover {
+    transform: scale(1.2);
+  }
 `;
 
 const ButtonText = styled.p`
   margin: 0;
   font-size: 4.5556vh;
+  margin-bottom: 20px;
 `;
