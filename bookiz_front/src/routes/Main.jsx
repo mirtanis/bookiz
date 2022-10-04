@@ -19,8 +19,8 @@ function MainPage() {
         </BestContainer>
         <ListContainer>
           <NewCardList/> 
-          <NewCardList/> 
-          {/* <SleepCardList/> */}
+          {/* <NewCardList/>  */}
+          <SleepCardList/>
         </ListContainer>
         </Wrapper>
          
