@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import BookPage from "./BookPage"
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
@@ -13,6 +13,8 @@ function Content() {
   const [isPageChanged, setIsPageChanged] = useState(true);
 
   const [searchParams, setSearchParams] = useSearchParams();
+
+  const myRef = useRef();
 
   const getBookContents = async (url) => {
     return await fetchData.get(url);
@@ -44,11 +46,13 @@ function Content() {
         setPage={setPage}
         isPageChanged={isPageChanged}
         setIsPageChanged={setIsPageChanged}
+        ref={myRef}
       />
       {page > 1 &&
         <LeftPageButton onClick={() => {
           setPage(page - 1)
           setIsPageChanged(true)
+          myRef.current.setEndModalFalse(false)
           }}>
           <AiOutlineLeft size={50} color={"white"} />
         </LeftPageButton>

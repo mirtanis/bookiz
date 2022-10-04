@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useImperativeHandle, forwardRef } from "react";
 import styled, { ThemeContext } from "styled-components";
 import { Link } from "react-router-dom";
 import { BsQuestionCircle, BsMic, BsMicFill } from "react-icons/bs";
@@ -9,8 +9,7 @@ import HelpSwiper from "../Main/HelpSwiper";
 import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
 import EndModal from "./EndModal";
 
-function BookPage(props) {
-	
+const BookPage = forwardRef((props, ref) => {
 	const [isHelpModal, setIsHelpModal] = useState(false);
 
 	const [outButtonHover, setOutButtonHover] = useState(false);
@@ -110,6 +109,14 @@ function BookPage(props) {
 		})
 	}
 
+	useImperativeHandle(ref, () => ({
+		setEndModalFalse
+	}))
+
+	function setEndModalFalse() {
+		setIsEndModal(false);
+	}
+
 	useEffect(() => {
 		if (props.isPageChanged) {
 			props.setIsPageChanged(false)
@@ -199,8 +206,7 @@ function BookPage(props) {
 			}
 		</Container>
 	)
-	
-}
+});
 
 export default BookPage;
 
