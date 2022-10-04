@@ -10,6 +10,7 @@ import BookAllPage from "./routes/BookAll";
 import BookSearchPage from "./routes/BookSearch";
 import BookNewPage from "./routes/BookNew";
 import AddBookPage from "./routes/AddBook";
+import STTtest from "./routes/STTtest";
 
 function App() {
   return (
@@ -22,7 +23,8 @@ function App() {
           <Route path="/booklist/new" element={<BookNewPage/>} />
           <Route path="/search" element={<BookSearchPage/>} />
           <Route path="*" element={<NotFoundPage/>}/>
-          <Route path="/addbook" element={<AddBookPage/>} />
+        <Route path="/addbook" element={<AddBookPage />} />
+        <Route path="/STTtest" element={<STTtest/>} />
       </Routes> 
     </BrowserRouter>
   );

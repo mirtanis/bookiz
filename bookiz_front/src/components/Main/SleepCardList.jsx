@@ -15,7 +15,7 @@ function SleepCardList() {
     const getnewBookList = async (url) => {
       return await fetchData.get(url);
     };
-    const res = getnewBookList(bookListApis.BOOK_CATEGORY_LIST(1));
+    const res = getnewBookList(bookListApis.BOOK_CATEGORY_LIST(3));
     res.then((sleeplist) => {
       setSleepBooks(sleeplist.data);
     });
@@ -24,7 +24,7 @@ function SleepCardList() {
   return (
     <Container>
       <Head>
-        <ContentText>잠들기 좋은 동화</ContentText>
+        <ContentText>러블리 공주 명작 동화</ContentText>
         <More>
           <Link
             to="/booklist/new"
