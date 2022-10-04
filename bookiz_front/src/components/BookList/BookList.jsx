@@ -80,7 +80,7 @@ const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
+  margin-top: 100px;
 `;
 
 const Content = styled.main`
