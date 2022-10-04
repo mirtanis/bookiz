@@ -1,17 +1,20 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import { Link } from "react-router-dom";
 import { keyframes } from "styled-components";
 
 function Bookiz() {
   return (
-    <BookizMain>
-      <span>B</span>
-      <span>O</span>
-      <span>O</span>
-      <span>K</span>
-      <span>I</span>
-      <span>Z</span>
-    </BookizMain>
+    <Link to="/" aria-label="메인페이지로 이동">
+      <BookizMain>
+        <span>B</span>
+        <span>O</span>
+        <span>O</span>
+        <span>K</span>
+        <span>I</span>
+        <span>Z</span>
+      </BookizMain>
+    </Link>
   );
 }
 
