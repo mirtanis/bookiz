@@ -19,6 +19,7 @@ const BookPage = forwardRef((props, ref) => {
 	const [isSpeaking, setIsSpeaking] = useState(false);
 
 	const [isEndModal, setIsEndModal] = useState(false);
+
 	//STT 시작---------------------------------------
 	const {
 		transcript,
@@ -55,7 +56,6 @@ const BookPage = forwardRef((props, ref) => {
 		}
 	
 		if(mat[d-1][r.length-1] < r.length/4) {
-			// SpeechRecognition.stopListening();
 			resetTranscript(true);
 			if(props.page !== props.totalpage){
 				props.setPage((page) => page+1);
@@ -129,6 +129,8 @@ const BookPage = forwardRef((props, ref) => {
 			} else if (props.type === 2) {
 				setAudio(props.audio);
 				audioPlay();
+			}else if((props.type === 1) && (document.getElementById("ckbtn").checked)) {
+				audioPlay();
 			}
 		}
 	});
@@ -142,6 +144,21 @@ const BookPage = forwardRef((props, ref) => {
 		},
 		[transcript]
 	);
+
+	function showToast() {
+		if(document.getElementById("ckbtn").checked) {
+			document.getElementById("toastBoxOn").style.visibility = "visible";
+			setTimeout(() => {
+				document.getElementById("toastBoxOn").style.visibility = "hidden";
+			}, 1000);
+		}else {
+			document.getElementById("toastBoxOff").style.visibility = "visible";
+			setTimeout(() => {
+				document.getElementById("toastBoxOff").style.visibility = "hidden";
+			}, 1000);
+		}
+		
+	}
 
 	return (
 		<Container>
@@ -172,6 +189,8 @@ const BookPage = forwardRef((props, ref) => {
 							: <FaRegPlayCircle size={50} style={{ cursor: 'pointer' }} onClick={audioPlay} />
 						}
 					</SpeakerIconDiv>
+						<OnOffBtn></OnOffBtn>
+						<StyledInput id="ckbtn" type="checkbox" title="전체 재생" onClick={showToast}></StyledInput>
 				</BookContentContainer>
 				<OutButtonDiv onMouseEnter={() => setOutButtonHover(true)} onMouseLeave={() => setOutButtonHover(false)} onClick={() => audioPause()}>
 					<Link to="/" style={{ color: 'black', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -204,6 +223,12 @@ const BookPage = forwardRef((props, ref) => {
 				<EndModal />
 				: null
 			}
+			<ToastMessageOn id="toastBoxOn" visibility="hidden">
+				<ToastText>전체 자동 재생 활성화</ToastText>
+			</ToastMessageOn>
+			<ToastMessageOff id="toastBoxOff" visibility="hidden">
+				<ToastText>전체 자동 재생 비활성화</ToastText>
+			</ToastMessageOff>
 		</Container>
 	)
 });
@@ -339,3 +364,64 @@ const HelpContainer = styled.main`
   max-width: 1440px;
   max-height: 600px;
 `;
+
+const OnOffBtn = styled.span`
+	htmlFor="ckbtn"
+	visibility: hidden;       
+`
+
+const StyledInput = styled.input`
+  margin: 20px;
+  appearance: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2.5px solid black;
+  border-radius: 0.35rem;
+  &:checked {
+    border-color: transparent;
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e");
+    background-size: 100% 100%;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-color: limegreen;
+  }
+  &:hover {
+	outline: 3px solid black;
+  }
+`;
+
+let ToastMessageOn =styled.div`
+visibility : hidden;
+	position: fixed;
+  z-index: 99;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24rem;
+  height: 2.625rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px 0 var(--black-40);
+  background-color: green;
+`
+
+let ToastMessageOff =styled.div`
+visibility : hidden;
+	position: fixed;
+  z-index: 99;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24rem;
+  height: 2.625rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px 0 var(--black-40);
+  background-color: green;
+`
+
+const ToastText = styled.div`
+	font-weight: bold;
+  letter-spacing: 0.29px;
+  text-align: center;
+  text-font : italic;
+  margin-top: 0.6rem;
+`
