@@ -36,7 +36,7 @@ const Container = styled.div`
 
 const MainContainer = styled.main`
   display: flex;
-  height: calc(100vh - 80px);
+  height: calc(100vh - 75px);
   justify-content: center;
   /* background-image: url("https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/f6089272864385.5bf5cfa6c0b3f.jpg");  */
   background-image: url(${bgimg});

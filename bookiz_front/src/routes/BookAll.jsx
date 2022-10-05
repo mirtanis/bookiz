@@ -8,7 +8,9 @@ function BookAllPage() {
     <div>
       <Container>
         <Navbar />
-        <BookAllList />
+        <MainContainer>
+          <BookAllList />
+        </MainContainer>
       </Container>
     </div>
   );
@@ -17,6 +19,12 @@ function BookAllPage() {
 export default BookAllPage;
 
 const Container = styled.div`
+  width: 100%;
+  height: 100vh;
+  margin: auto;
+`;
+
+const MainContainer = styled.main`
   width: 90%;
   margin: auto;
 `;
