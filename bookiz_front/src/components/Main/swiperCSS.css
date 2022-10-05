@@ -1,18 +1,25 @@
 .swiper-button-prev {
   color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 70px;
+  padding: 5px 10px 5px 15px;
 
 }
 .swiper-button-prev:hover {
-  opacity: 0.6;
+  opacity: 0.6;  
+  
 }
 
 .swiper-button-next {
-  color: white;
+  color: white;  
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 70px;
+  padding: 5px 10px 5px 15px;
  
 }
 
 .swiper-button-next:hover {
-  opacity: 0.6;
+  opacity: 0.6;  
 }
 
 .swiper {
