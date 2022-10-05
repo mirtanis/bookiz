@@ -16,7 +16,7 @@ function MainPage() {
         <Wrapper>
           <BestContainer>
             {/* <BestCardList /> */}
-            {/* <BestCardListNew /> */}
+            <BestCardListNew />
           </BestContainer>
           <ListContainer>
             <NewCardList />

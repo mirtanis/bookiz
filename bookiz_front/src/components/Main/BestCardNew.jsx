@@ -110,7 +110,7 @@ const Content = styled.div`
 const GoldCard = styled.div`
   display: flex;
   justify-content: center;
-  height: 43vh;
+  height: 40vh;
 `;
 
 const SilverBronzeCard = styled.div`
