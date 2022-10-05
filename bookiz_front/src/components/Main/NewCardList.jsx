@@ -128,7 +128,7 @@ const SwiperContainer = styled.div`
 `;
 
 const More = styled.div`
-  width: 80px;
+  width: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -139,9 +139,9 @@ const MoreText = styled.p`
   font-weight: normal;
   color: black;
   font-size: 26px;
+  margin: 0;
 `;
 
 const MoreImage = styled.img`
   width: 70%;
-  height: 2.6667vh;
 `;
