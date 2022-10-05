@@ -8,7 +8,9 @@ function BookListPage() {
     <div>
       <Container>
         <Navbar />
-        <BookList />
+        <MainContainer>
+          <BookList />
+        </MainContainer>
       </Container>
     </div>
   );
@@ -17,6 +19,12 @@ function BookListPage() {
 export default BookListPage;
 
 const Container = styled.div`
+  width: 100%;
+  height: 100vh;
+  margin: auto;
+`;
+
+const MainContainer = styled.main`
   width: 90%;
   margin: auto;
 `;

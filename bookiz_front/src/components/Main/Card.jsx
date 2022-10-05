@@ -12,11 +12,11 @@ function BookCard(props) {
 
   return (
     <div>
-      <Container>    
-      <BestCardContainer onClick={ModalHandler}>
-        <Image src={props.image} />
-        <Title>{props.title}</Title>
-      </BestCardContainer>
+      <Container>
+        <BestCardContainer onClick={ModalHandler}>
+          <Image src={props.image} />
+          <Title>{props.title}</Title>
+        </BestCardContainer>
       </Container>
       <BookModal
         open={isModal}
@@ -39,7 +39,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%;
+  height: 25vh;
 `;
 
 const BestCardContainer = styled.div`
@@ -49,7 +49,7 @@ const BestCardContainer = styled.div`
   align-items: center;
   width: 90%;
   height: 91%;
-  border-radius: 20px;  
+  border-radius: 20px;
   box-shadow: 5px 5px 15px 1px black;
   overflow: hidden;
   &:hover {
@@ -58,12 +58,11 @@ const BestCardContainer = styled.div`
   }
 `;
 
-
 const Image = styled.img`
   width: 100%;
   height: 100%;
   border-radius: 20px;
-  object-fit: cover !important;  
+  object-fit: cover !important;
 `;
 
 const Title = styled.div`

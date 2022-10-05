@@ -26,7 +26,6 @@ function BestCardList() {
 
   return (
     <Container>
-     
       <Head>
         <ContentText>베스트 셀러</ContentText>
         <More>
@@ -65,11 +64,9 @@ export default BestCardList;
 const Container = styled.div`
   width: 100%;
   display: flex;
-  margin-top: 20px;
   margin: auto;
   justify-content: center;
   flex-direction: column;
-  margin-bottom: 20px;
   margin-right: 0px;
 `;
 
@@ -87,7 +84,6 @@ const Content = styled.div`
 
 const ContentText = styled.p`
   font-size: 50px;
-  margin-bottom: 20px;
   font-family: "KOTRAHOPE";
   font-weight: normal;
 `;
@@ -97,11 +93,10 @@ const BestCards = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 1rem;
   margin-bottom: 1rem;
-  scroll-behavior: smooth; 
+  scroll-behavior: smooth;
   @media screen and (max-width: 768px) {
     grid-template-columns: repeat(1, 1fr);
   }
- 
 `;
 
 const More = styled.div`
@@ -123,4 +118,3 @@ const MoreImage = styled.img`
   width: 80%;
   height: 10%;
 `;
-

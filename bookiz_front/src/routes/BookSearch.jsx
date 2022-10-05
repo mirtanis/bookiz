@@ -12,8 +12,10 @@ function BookSearchPage() {
     <div>
       <Container>
         <Navbar />
-        <KeywordContainer>'{key}' 검색 결과</KeywordContainer>
-        <BookSearchList />
+        <MainContainer>
+          <KeywordContainer>'{key}' 검색 결과</KeywordContainer>
+          <BookSearchList />
+        </MainContainer>
       </Container>
     </div>
   );
@@ -22,6 +24,12 @@ function BookSearchPage() {
 export default BookSearchPage;
 
 const Container = styled.div`
+  width: 100%;
+  height: 100vh;
+  margin: auto;
+`;
+
+const MainContainer = styled.main`
   width: 90%;
   margin: auto;
 `;
