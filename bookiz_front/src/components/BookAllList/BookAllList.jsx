@@ -26,13 +26,11 @@ function BookAllList() {
 
   return (
     <Container>
-       <BG />
-       <BG2 />
-       <BG3 /> 
-      <Label>        
-        <span>
-        페이지 당 카드 수:&nbsp;
-        </span>
+      <BG />
+      <BG2 />
+      <BG3 />
+      <Label>
+        <span>페이지 당 카드 수:&nbsp;</span>
         <select
           type="number"
           value={limit}
@@ -76,6 +74,7 @@ export default BookAllList;
 
 const Container = styled.div`
   width: 100%;
+  height: calc(100vh - 100px);
   display: flex;
   flex-direction: column;
   margin-top: 100px;
@@ -118,29 +117,27 @@ const Label = styled.label`
   }
   > select {
     -moz-appearance: none;
-	  -webkit-appearance: none;
-	  appearance: none; 
+    -webkit-appearance: none;
+    appearance: none;
     font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: black;
-  background-color: #fff;
-  padding: 0.6em 1.4em 0.5em 0.8em;
-  margin: 0;
-  border: 1px solid #aaa;
-  border-radius: 0.5em;
-  box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
+    font-weight: 400;
+    line-height: 1.5;
+    color: black;
+    background-color: #fff;
+    padding: 0.6em 1.4em 0.5em 0.8em;
+    margin: 0;
+    border: 1px solid #aaa;
+    border-radius: 0.5em;
+    box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
     font-weight: bold;
     padding: 4px;
     padding-left: 6px;
     padding-right: 6px;
-    background-color:${(props) => props.theme.colors.mainYellow};
+    background-color: ${(props) => props.theme.colors.mainYellow};
   }
   > option {
     border-radius: 5px;
   }
-
-
 `;
 
 const slide = keyframes`
@@ -152,7 +149,6 @@ const slide = keyframes`
   }
 
 `;
-
 
 const BG = styled.div`
   animation: ${slide} 3s ease-in-out infinite alternate;

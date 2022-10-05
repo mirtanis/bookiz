@@ -63,13 +63,10 @@ export default BestCardList;
 
 const Container = styled.div`
   width: 100%;
-  height: calc(100vh - 60px);
   display: flex;
-  margin-top: 20px;
   margin: auto;
   justify-content: center;
   flex-direction: column;
-  margin-bottom: 20px;
   margin-right: 0px;
 `;
 
@@ -87,7 +84,6 @@ const Content = styled.div`
 
 const ContentText = styled.p`
   font-size: 50px;
-  margin-bottom: 20px;
   font-family: "KOTRAHOPE";
   font-weight: normal;
 `;
