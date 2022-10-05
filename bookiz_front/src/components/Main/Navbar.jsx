@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import Logo from "./Logo";
 import { HiSearch } from "react-icons/hi";
-import { TbQuestionMark } from "react-icons/tb"; 
+import { TbQuestionMark } from "react-icons/tb";
 import { BsQuestionCircle } from "react-icons/bs";
 import HelpModal from "./HelpModal";
 import HelpSwiper from "./HelpSwiper";
@@ -49,11 +49,7 @@ function Navbar() {
         />
       </NavSearch>
       <Help>
-        <TbQuestionMark
-          className="helpicon"
-          size={50}
-          onClick={ModalHandler}
-        />
+        <TbQuestionMark className="helpicon" size={50} onClick={ModalHandler} />
       </Help>
       <HelpModal open={isModal} close={ModalHandler} title="도움 모달">
         <HelpContainer>
@@ -73,7 +69,7 @@ const Container = styled.nav`
   justify-content: space-between;
   background-color: ${(props) => props.theme.colors.subYellow};
   width: 100%;
-  position: fixed;
+  position: sticky;
   margin: 0 auto;
   right: 0;
   left: 0;
@@ -107,8 +103,10 @@ const SearchBox = styled.input`
   color: ${(props) => props.theme.colors.pointBlack};
   width: 600px;
   &:focus {
-    outline: none;    
-    border: 1px solid #ccc; padding: 7px 14px 9px; transition: 0.4s;
+    outline: none;
+    border: 1px solid #ccc;
+    padding: 7px 14px 9px;
+    transition: 0.4s;
   }
 `;
 
@@ -128,10 +126,10 @@ const pulse = keyframes`
   0% { transform: scale(1); }
   50% { transform: scale(1.1); }
   100% { transform: scale(1); }  
-`
+`;
 
 const Help = styled.div`
-  margin-right: 20px;  
+  margin-right: 20px;
   .helpicon {
     background-color: white;
     border-radius: 50%;
@@ -139,11 +137,10 @@ const Help = styled.div`
     &:hover {
       cursor: pointer;
       animation: ${pulse} 1s infinite;
-      animation-timing-function: linear; 
+      animation-timing-function: linear;
     }
   }
 `;
-
 
 const HelpContainer = styled.main`
   max-width: 1440px;

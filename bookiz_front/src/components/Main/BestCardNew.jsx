@@ -7,20 +7,18 @@ import { Link } from "react-router-dom";
 
 function BestCardListNew() {
   const [bestSellers, setBestSellers] = useState([]);
- 
 
   useEffect(() => {
     const getRankList = async () => {
       return await fetchData.get(bookListApis.BOOK_RANK_LIST);
     };
     const res = getRankList(bookListApis.BOOK_RANK_LIST);
-      res.then((ranklist) => {
-        setBestSellers(ranklist.data);        
-      });    
+    res.then((ranklist) => {
+      setBestSellers(ranklist.data);
+    });
   }, []);
-  
-  console.log(bestSellers) 
 
+  console.log(bestSellers);
 
   const getCrown = [
     "assets/images/금메달.png",
@@ -32,7 +30,7 @@ function BestCardListNew() {
   ];
 
   return (
-    <Container>     
+    <Container>
       <Head>
         <ContentText>베스트 셀러</ContentText>
         <More>
@@ -45,37 +43,41 @@ function BestCardListNew() {
           </Link>
         </More>
       </Head>
-      <Content>     
+      <Content>
         <GoldCard>
-      {bestSellers.filter((bestSeller, i) => (i === 0)).map((bestSeller, index) => {           
-            return (
-              <BestCard
-                key={index}
-                crown={getCrown[index]}
-                id={bestSeller.id}
-                title={bestSeller.title}
-                image={bestSeller.image}
-                info={bestSeller.info}
-                page={bestSeller.page}
-              />
-            );
-          })}
-          </GoldCard> 
-          <SilverBronzeCard>
-          {bestSellers.filter((bestSeller, i) => (i > 0)).map((bestSeller, index) => {           
-            return (
-              <BestCard
-                key={index}
-                crown={getCrown[index+1]}
-                id={bestSeller.id}
-                title={bestSeller.title}
-                image={bestSeller.image}
-                info={bestSeller.info}
-                page={bestSeller.page}
-              />
-            );
-          })}
-            </SilverBronzeCard>         
+          {bestSellers
+            .filter((bestSeller, i) => i === 0)
+            .map((bestSeller, index) => {
+              return (
+                <BestCard
+                  key={index}
+                  crown={getCrown[index]}
+                  id={bestSeller.id}
+                  title={bestSeller.title}
+                  image={bestSeller.image}
+                  info={bestSeller.info}
+                  page={bestSeller.page}
+                />
+              );
+            })}
+        </GoldCard>
+        <SilverBronzeCard>
+          {bestSellers
+            .filter((bestSeller, i) => i > 0)
+            .map((bestSeller, index) => {
+              return (
+                <BestCard
+                  key={index}
+                  crown={getCrown[index + 1]}
+                  id={bestSeller.id}
+                  title={bestSeller.title}
+                  image={bestSeller.image}
+                  info={bestSeller.info}
+                  page={bestSeller.page}
+                />
+              );
+            })}
+        </SilverBronzeCard>
       </Content>
     </Container>
   );
@@ -86,11 +88,9 @@ export default BestCardListNew;
 const Container = styled.div`
   width: 100%;
   display: flex;
-  margin-top: 20px;
   margin: auto;
   justify-content: center;
   flex-direction: column;
-  margin-bottom: 20px;
   margin-right: 0px;
 `;
 
@@ -103,25 +103,23 @@ const Head = styled.head`
 const Content = styled.div`
   width: 100%;
   display: flex;
-  flex-direction: column;  
+  flex-direction: column;
   align-items: center;
 `;
 
 const GoldCard = styled.div`
- display: flex; 
- justify-content: center;
- height: 43vh;
-
-`
+  display: flex;
+  justify-content: center;
+  height: 43vh;
+`;
 
 const SilverBronzeCard = styled.div`
-width: 100%; 
-height: 35vh;
-display: flex;
-flex-direction: row;
-justify-content: space-between;
-
-`
+  width: 100%;
+  height: 35vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
 
 const ContentText = styled.p`
   font-size: 50px;
@@ -136,11 +134,10 @@ const BestCards = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 1rem;
   margin-bottom: 1rem;
-  scroll-behavior: smooth; 
+  scroll-behavior: smooth;
   @media screen and (max-width: 768px) {
     grid-template-columns: repeat(1, 1fr);
   }
- 
 `;
 
 const More = styled.div`
@@ -163,4 +160,3 @@ const MoreImage = styled.img`
   width: 80%;
   height: 10%;
 `;
-
