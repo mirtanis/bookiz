@@ -81,7 +81,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 100px;
-  height: calc(100vh - 100px);
 `;
 
 const Content = styled.main`
