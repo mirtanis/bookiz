@@ -5,34 +5,32 @@ import Navbar from "../components/Main/Navbar";
 import BestCardList from "../components/Main/BestCardList";
 import NewCardList from "../components/Main/NewCardList";
 import BestCardListNew from "../components/Main/BestCardNew";
-import bgimg from "../assets/images/oakwoodimg.jpg"
+import bgimg from "../assets/images/oakwoodimg.jpg";
 import CateCardList from "../components/Main/CateCardList";
 
 function MainPage() {
   return (
-      <Container>
-        <Navbar />
-        <Wrapper>
+    <Container>
+      <Navbar />
+      <Wrapper>
         <BestContainer>
           {/* <BestCardList />              */}
-          <BestCardListNew/>
+          <BestCardListNew />
         </BestContainer>
         <ListContainer>
-          <NewCardList/> 
+          <NewCardList />
           {/* <NewCardList/>  */}
-          <CateCardList/>
+          <CateCardList />
         </ListContainer>
-        </Wrapper>
-         
-      </Container>
-  
+      </Wrapper>
+    </Container>
   );
 }
 
 export default MainPage;
 
 const Container = styled.div`
-  height: 100vh;
+  height: 100%;
   margin: auto;
   display: flex;
   justify-content: center;
@@ -42,21 +40,21 @@ const Container = styled.div`
   background-size: cover;
 `;
 
-const Wrapper = styled.div ` 
+const Wrapper = styled.div`
   width: 90%;
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
   margin-top: 55px;
-`
+`;
 
 const BestContainer = styled.div`
   width: 40%;
-  height: 100%;
+  height: 100vh;
   padding: 0px 20px 0px 20px;
-
-`
+`;
 
 const ListContainer = styled.div`
   width: 60%;
-  padding: 0px 20px 0px 20px;      
-`
+  padding: 0px 20px 0px 20px;
+  height: 100vh;
+`;
