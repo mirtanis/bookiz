@@ -26,7 +26,6 @@ function BestCardList() {
 
   return (
     <Container>
-     
       <Head>
         <ContentText>베스트 셀러</ContentText>
         <More>
@@ -64,6 +63,7 @@ export default BestCardList;
 
 const Container = styled.div`
   width: 100%;
+  height: calc(100vh - 60px);
   display: flex;
   margin-top: 20px;
   margin: auto;
@@ -97,11 +97,10 @@ const BestCards = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 1rem;
   margin-bottom: 1rem;
-  scroll-behavior: smooth; 
+  scroll-behavior: smooth;
   @media screen and (max-width: 768px) {
     grid-template-columns: repeat(1, 1fr);
   }
- 
 `;
 
 const More = styled.div`
@@ -123,4 +122,3 @@ const MoreImage = styled.img`
   width: 80%;
   height: 10%;
 `;
-
