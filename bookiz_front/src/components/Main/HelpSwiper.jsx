@@ -3,14 +3,18 @@ import styled from "styled-components";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-import './swiperCSS.css';
-import { Navigation } from "swiper";
+import "swiper/css/pagination";
+import "./swiperCSS.css";
+import { Navigation, Pagination } from "swiper";
 
 function HelpSwiper() {
   return (
     <Content>
       <SwipeContainer>
         <Swiper
+          pagination={{
+            dynamicBullets: true,
+          }}
           watchOverflow={true}
           navigation={true}
           centeredSlides={true}
@@ -18,11 +22,10 @@ function HelpSwiper() {
           slidesPerView={1}
           spaceBetween={0}
           allowTouchMove={false}
-          modules={[Navigation]}
+          modules={[Navigation, Pagination]}
           className="mySwiper"
         >
-          <SwiperSlide
-          >
+          <SwiperSlide>
             <div>
               <img
                 src="assets/images/help1.PNG"
@@ -61,4 +64,8 @@ function HelpSwiper() {
 export default HelpSwiper;
 
 const Content = styled.div``;
-const SwipeContainer = styled.div``;
+const SwipeContainer = styled.div`
+  .swiper {
+    border-radius: 20px;
+  }
+`;
