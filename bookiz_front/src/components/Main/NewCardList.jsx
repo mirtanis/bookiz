@@ -94,25 +94,22 @@ export default NewCardList;
 const Container = styled.div`
   width: 100%;
   display: flex;
-  margin-top: 20px;
   margin: auto;
   justify-content: center;
   flex-direction: column;
-  margin-bottom: 20px;
-
 `;
 
 const Head = styled.head`
   display: flex;
   justify-content: space-between;
-  align-items:flex-end;
+  align-items: flex-end;
+  height: 70px;
 `;
 
 const Content = styled.div`
   width: 100%;
   padding: 10px;
-  border-radius: 10px;    
-  
+  border-radius: 10px;
 `;
 
 const ContentText = styled.p`
@@ -126,13 +123,12 @@ const SwiperContainer = styled.div`
   width: 100%;
   background-image: url(${bookshelf});
   border-radius: 10px;
-  border: 10px solid #361F16; 
+  border: 10px solid #361f16;
   border-width: 5px 5px 20px 5px;
 `;
 
 const More = styled.div`
-  width: 100px;
-  margin-top: 2.2222vh;
+  width: 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -141,9 +137,8 @@ const More = styled.div`
 const MoreText = styled.p`
   font-family: "KOTRAHOPE";
   font-weight: normal;
-  color: black;  
+  color: black;
   font-size: 26px;
-  margin: 0;
 `;
 
 const MoreImage = styled.img`

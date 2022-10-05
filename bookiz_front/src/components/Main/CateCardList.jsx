@@ -103,6 +103,7 @@ const Head = styled.head`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  height: 70px;
 `;
 
 const Content = styled.div`
@@ -128,7 +129,6 @@ const SwiperContainer = styled.div`
 
 const More = styled.div`
   width: 100px;
-  margin-top: 2.2222vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -144,5 +144,4 @@ const MoreText = styled.p`
 
 const MoreImage = styled.img`
   width: 70%;
-  height: 2.6667vh;
 `;

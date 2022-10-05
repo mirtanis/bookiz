@@ -101,7 +101,6 @@ const BestCards = styled.div`
 
 const More = styled.div`
   width: 100px;
-  margin-top: 2.2222vh;
   display: flex;
   flex-direction: column;
   align-items: flex-end;

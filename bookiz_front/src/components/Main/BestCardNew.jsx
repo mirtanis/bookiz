@@ -92,12 +92,14 @@ const Container = styled.div`
   justify-content: center;
   flex-direction: column;
   margin-right: 0px;
+  margin-bottom: 20px;
 `;
 
 const Head = styled.head`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 50px;
 `;
 
 const Content = styled.div`
@@ -123,7 +125,6 @@ const SilverBronzeCard = styled.div`
 
 const ContentText = styled.p`
   font-size: 50px;
-  margin-bottom: 20px;
   font-family: "KOTRAHOPE";
   font-weight: normal;
   color: black;
@@ -142,7 +143,6 @@ const BestCards = styled.div`
 
 const More = styled.div`
   width: 100px;
-  margin-top: 2.2222vh;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
