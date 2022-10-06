@@ -92,7 +92,7 @@ const Container = styled.div`
   justify-content: center;
   flex-direction: column;
   margin-right: 0px;
-  margin-bottom: 20px;
+  margin-bottom: 29px;
 `;
 
 const Head = styled.head`
