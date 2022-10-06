@@ -39,7 +39,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 25vh;
+  height: 30vh;
 `;
 
 const BestCardContainer = styled.div`

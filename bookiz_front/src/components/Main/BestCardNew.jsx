@@ -92,7 +92,7 @@ const Container = styled.div`
   justify-content: center;
   flex-direction: column;
   margin-right: 0px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 `;
 
 const Head = styled.head`
@@ -112,7 +112,7 @@ const Content = styled.div`
 const GoldCard = styled.div`
   display: flex;
   justify-content: center;
-  height: 40vh;
+  height: 43vh;
 `;
 
 const SilverBronzeCard = styled.div`
