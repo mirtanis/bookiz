@@ -97,6 +97,7 @@ const Container = styled.div`
   margin: auto;
   justify-content: center;
   flex-direction: column;
+  
 `;
 
 const Head = styled.head`
