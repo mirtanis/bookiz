@@ -112,12 +112,12 @@ const Content = styled.div`
 const GoldCard = styled.div`
   display: flex;
   justify-content: center;
-  height: 45vh;
+  height: 43vh;
 `;
 
 const SilverBronzeCard = styled.div`
   width: 100%;
-  height: 35vh;
+  height: 33vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
