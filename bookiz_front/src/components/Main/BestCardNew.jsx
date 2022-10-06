@@ -117,7 +117,7 @@ const GoldCard = styled.div`
 
 const SilverBronzeCard = styled.div`
   width: 100%;
-  height: 33vh;
+  height: 35vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
