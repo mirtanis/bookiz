@@ -11,7 +11,7 @@ function STTtestPage() {
     const contents = [
         "신데렐라는 어려서 부모님을 잃고요",
         "계모와 언니들에게 구박을 받었더래요",
-        "샤바샤바 아이샤바"
+        "샤바샤바 아이샤바 얼마나 울었을까 샤바샤바 아이샤바"
     ];
     const {
         transcript,
