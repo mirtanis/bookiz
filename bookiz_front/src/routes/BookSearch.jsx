@@ -35,7 +35,7 @@ const MainContainer = styled.main`
 `;
 
 const KeywordContainer = styled.h2`
-  margin-top: 70px;
+  margin-top: 20px;
   height: 5rem;
   display: flex;
   align-items: center;
