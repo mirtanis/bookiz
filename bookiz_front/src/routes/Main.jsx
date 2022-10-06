@@ -32,17 +32,18 @@ export default MainPage;
 
 const Container = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 100%;
+  background-image: url(${bgimg});
+  /* background-repeat: repeat;
+  background-size: cover; */
 `;
 
 const MainContainer = styled.main`
   display: flex;
-
   justify-content: center;
+  height: 100%;
   /* background-image: url("https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/f6089272864385.5bf5cfa6c0b3f.jpg");  */
-  background-image: url(${bgimg});
-  background-repeat: repeat;
-  background-size: cover;
+  
 `;
 
 const Wrapper = styled.div`
