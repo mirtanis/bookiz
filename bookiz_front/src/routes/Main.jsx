@@ -34,8 +34,9 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   background-image: url(${bgimg});
-  /* background-repeat: repeat;
-  background-size: cover; */
+  background-repeat: repeat;
+  background-size: cover;
+  min-height: 100vh;
 `;
 
 const MainContainer = styled.main`
