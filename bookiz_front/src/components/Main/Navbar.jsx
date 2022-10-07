@@ -1,12 +1,14 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Logo from "./Logo";
 import { HiSearch } from "react-icons/hi";
+import { TbQuestionMark } from "react-icons/tb";
 import { BsQuestionCircle } from "react-icons/bs";
 import HelpModal from "./HelpModal";
 import HelpSwiper from "./HelpSwiper";
+import Bookiz from "./Bookiz";
 
 function Navbar() {
   const [key, setKey] = useState("");
@@ -21,20 +23,19 @@ function Navbar() {
     if (!word) return;
     setKey(word);
     navigate({
-      pathname: "/booklist",
+      pathname: "/search",
       search: `?&keyword=${word}`,
     });
-    console.log("검색");
   };
 
   const ModalHandler = () => {
-    console.log("modal");
     setIsModal((prev) => !prev);
   };
 
   return (
     <Container>
       <Logo />
+      <Bookiz />
       <NavSearch onSubmit={onSubmit}>
         <Button type="submit" aria-label="search">
           <HiSearch size={25} />
@@ -48,11 +49,7 @@ function Navbar() {
         />
       </NavSearch>
       <Help>
-        <BsQuestionCircle
-          className="helpicon"
-          size={50}
-          onClick={ModalHandler}
-        />
+        <TbQuestionMark className="helpicon" size={50} onClick={ModalHandler} />
       </Help>
       <HelpModal open={isModal} close={ModalHandler} title="도움 모달">
         <HelpContainer>
@@ -72,12 +69,20 @@ const Container = styled.nav`
   justify-content: space-between;
   background-color: ${(props) => props.theme.colors.subYellow};
   width: 100%;
-  position: fixed;
+  position: sticky;
   margin: 0 auto;
   right: 0;
   left: 0;
   top: 0;
   z-index: 10;
+  > p {
+    font-size: 50px;
+    font-family: "KOTRAHOPE";
+    font-weight: normal;
+    > span {
+      color: red;
+    }
+  }
 `;
 
 const NavSearch = styled.form`
@@ -99,6 +104,9 @@ const SearchBox = styled.input`
   width: 600px;
   &:focus {
     outline: none;
+    border: 1px solid #ccc;
+    padding: 7px 14px 9px;
+    transition: 0.4s;
   }
 `;
 
@@ -114,13 +122,22 @@ const Button = styled.button`
   color: ${(props) => props.theme.colors.white};
 `;
 
+const pulse = keyframes`
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }  
+`;
+
 const Help = styled.div`
   margin-right: 20px;
   .helpicon {
     background-color: white;
     border-radius: 50%;
+    box-shadow: 5px 5px 13px 1px black;
     &:hover {
       cursor: pointer;
+      animation: ${pulse} 1s infinite;
+      animation-timing-function: linear;
     }
   }
 `;

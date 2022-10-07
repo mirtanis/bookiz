@@ -11,9 +11,11 @@ const colors = {
     pointRed: '#F58181',
     pointBlue: '#1472FF',
     pointBlack: '#393838',
-    pointGray: '#5C5C5C',
+    mainGrey: '#D9D9D9',
+    pointGrey: '#5C5C5C',
     disabledGray: '#999999',
 }
+
 
 export const theme = {
     colors

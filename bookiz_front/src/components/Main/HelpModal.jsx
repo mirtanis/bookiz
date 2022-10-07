@@ -10,10 +10,9 @@ function HelpModal(props) {
         <Background onClick={close}>
           <section onClick={(e) => e.stopPropagation()}>
             <header>
-              <p>{title}</p>
               <IoClose
                 className="closeicon"
-                size={20}
+                size={30}
                 color="#ffffff"
                 onClick={close}
               ></IoClose>
@@ -42,14 +41,16 @@ const Background = styled.div`
   & section {
     width: 90%;
     max-width: 1440px;
+    border-radius: 10px;
+    padding: 30px;
+    padding-bottom: 50px;
     background-color: ${(props) => props.theme.colors.subBlack};
     & header {
       display: flex;
-      justify-content: space-between;
-      padding-left: 30px;
-      padding-right: 30px;
-      align-items: center;
+      justify-content: end;
+      align-items: end;
       color: ${(props) => props.theme.colors.white};
+      margin-bottom: 20px;
       & p {
         font-size: 24px;
         font-weight: 700;

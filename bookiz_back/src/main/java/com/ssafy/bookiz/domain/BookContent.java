@@ -13,7 +13,7 @@ public class BookContent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "book_content_id", columnDefinition = "INT UNSIGNED")
-    private Long book_content_id;
+    private Long id;
 
     @Column(columnDefinition = "INT UNSIGNED")
     private Integer page;
@@ -35,4 +35,21 @@ public class BookContent {
     @JoinColumn(name = "book_id")
     @JsonIgnore
     private Book book;
+
+    public BookContent(RequestBookContent content) {
+        super();
+        this.audio = content.getAudio();
+        this.content = content.getContent();
+        this.type = content.getType();
+        this.image = content.getImage();
+        this.page = content.getPage();
+    }
+
+    public BookContent() {
+
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
 }

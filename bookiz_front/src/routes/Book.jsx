@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Content from "../components/Book/Content";
 
 function BookPage() {
+
   return (
     <div>
       <Container>
@@ -15,6 +16,6 @@ function BookPage() {
 export default BookPage;
 
 const Container = styled.div`
-  width: 1440px;
+  width: 100%;
   margin: auto;
 `;
