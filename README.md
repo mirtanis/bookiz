@@ -1,7 +1,6 @@
 # BOOKIZ
 
-![특화PJT_서울_1반_A103_UCC경진대회](/uploads/058b7b31fce36112043cf28ef2964b624d00c911/특화PJT_서울_1반_A107_UCC경진대회.mp4)
-
+![특화PJT_서울_1반_A103_UCC경진대회](-/raw/develop/exec/특화PJT_서울_1반_A107_UCC경진대회.mp4)
 ## 목차
 
 1. [**서비스 소개**](#1)
